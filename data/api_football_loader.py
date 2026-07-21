@@ -16,7 +16,7 @@
 
 用法：
     export API_FOOTBALL_KEY=你的key
-    python3 -m football_betting.data.api_football_loader 2023 --limit 20
+    python3 -m data.api_football_loader 2023 --limit 20
 """
 from __future__ import annotations
 import json

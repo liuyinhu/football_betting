@@ -7,7 +7,7 @@
      校准 models/poisson_live.py 里的 FEATURE_WEIGHTS
 
 用法：
-    python3 -m football_betting.data.analyze_apifootball 2024
+    python3 -m data.analyze_apifootball 2024
 """
 from __future__ import annotations
 import json
@@ -159,7 +159,7 @@ def poisson_regression(details: list) -> None:
 
     print(f"  有效样本 {len(clean)} 条，泊松回归（log 链接）系数：\n")
     print(f"  {'特征':12s}{'当前权重':>10s}{'回归拟合':>12s}")
-    from ..models.poisson_live import FEATURE_WEIGHTS
+    from models.poisson_live import FEATURE_WEIGHTS
     cur = {"sot": FEATURE_WEIGHTS["sot"], "corner": FEATURE_WEIGHTS["corner"],
            "xg": FEATURE_WEIGHTS["xg"], "possession": FEATURE_WEIGHTS["possession"]}
     for name, b in zip(names, beta):

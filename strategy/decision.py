@@ -2,8 +2,8 @@
 from __future__ import annotations
 from typing import Dict, List, Tuple
 
-from ..core.state import MatchState, OddsSnapshot, BetRecommendation
-from ..models.poisson_live import outcome_probabilities, final_score_distribution
+from core.state import MatchState, OddsSnapshot, BetRecommendation
+from models.poisson_live import outcome_probabilities, final_score_distribution
 
 
 # ---------- 配置 ----------

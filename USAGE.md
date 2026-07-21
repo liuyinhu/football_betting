@@ -24,13 +24,14 @@
 ## 1. 环境准备
 
 ```bash
-pip install -r football_betting/requirements.txt
+pip install -r requirements.txt
 ```
 
 依赖：`numpy`、`scipy`。
 
-> 所有命令都在**项目根目录**（`qqq/`，即 `football_betting/` 的上一级）下运行，
-> 使用 `python3 -m football_betting.xxx` 的模块方式，否则会报 `ModuleNotFoundError`。
+> 所有命令都在**项目根目录**（`qqq/`）下运行。
+> 顶层脚本直接用 `python3 predict.py`、`python3 main.py`；
+> 子包模块用 `python3 -m data.xxx` 的方式运行，否则会报 `ModuleNotFoundError`。
 
 ---
 
@@ -38,16 +39,16 @@ pip install -r football_betting/requirements.txt
 
 ```bash
 # 1) 生成一个 JSON 输入模板（带中文注释）
-python3 -m football_betting.predict -t
+python3 predict.py -t
 
 # 2) 编辑生成的 match.example.json 后，运行预测
-python3 -m football_betting.predict match.example.json
+python3 predict.py match.example.json
 ```
 
 也可以不带文件、纯交互式逐步输入：
 
 ```bash
-python3 -m football_betting.predict
+python3 predict.py
 ```
 
 ---
@@ -59,19 +60,19 @@ python3 -m football_betting.predict
 
 ```bash
 # 默认：用近 3 个赛季（2023-2025）训练
-python3 -m football_betting.data.train_strength
+python3 -m data.train_strength
 
 # 指定起止年份（如全量 8 赛季）
-python3 -m football_betting.data.train_strength 2018 2025
+python3 -m data.train_strength 2018 2025
 
 # 只用最近 N 个赛季
-python3 -m football_betting.data.train_strength 3
+python3 -m data.train_strength 3
 ```
 
 > 💡 强度模型只用 `csl_raw/`（openfootball）赛果训练——它队名统一、赛季完整。
 > API-Football 数据队名风格不同，**不参与强度训练**，只用于第 4 节的特征分析。
 
-**输出模型位置**：`football_betting/data/csl_strength.json`
+**输出模型位置**：`data/csl_strength.json`
 
 模型内容（JSON）：
 
@@ -92,10 +93,10 @@ python3 -m football_betting.data.train_strength 3
 
 ```bash
 # 默认：用 2023-2024 训练，2025 测试
-python3 -m football_betting.data.validate
+python3 -m data.validate
 
 # 自定义训练/测试赛季
-python3 -m football_betting.data.validate 2023,2024 2025
+python3 -m data.validate 2023,2024 2025
 ```
 
 输出准确率、对数损失（log-loss）以及与"永远猜主胜"基线的对比。
@@ -115,10 +116,10 @@ openfootball 只有**赛果比分**。要得到**分钟级事件**（进球/红�
 export API_FOOTBALL_KEY=你的key
 
 # 拉取 2024 赛季最新 10 场（自动按日期倒序、本地缓存、遇限速自动重试）
-python3 -m football_betting.data.api_football_loader 2024 --limit 10
+python3 -m data.api_football_loader 2024 --limit 10
 
 # 拉取整季（谨慎，每场消耗 2 个请求，易超配额）
-python3 -m football_betting.data.api_football_loader 2024 --all
+python3 -m data.api_football_loader 2024 --all
 ```
 
 - 每场消耗 **2 个请求**（statistics + events），已缓存的场次**零消耗**
@@ -130,7 +131,7 @@ python3 -m football_betting.data.api_football_loader 2024 --all
 ### 4.2 分析数据 / 校准特征权重
 
 ```bash
-python3 -m football_betting.data.analyze_apifootball 2024
+python3 -m data.analyze_apifootball 2024
 ```
 
 输出三部分（**不消耗 API 配额**）：
@@ -171,7 +172,7 @@ python3 -m football_betting.data.analyze_apifootball 2024
 运行：
 
 ```bash
-python3 -m football_betting.predict prematch.json
+python3 predict.py prematch.json
 ```
 
 程序会打印：`✓ 已从训练模型载入赛前 λ: 上海海港 1.72 vs 北京国安 1.05`
@@ -205,7 +206,7 @@ python3 -m football_betting.predict prematch.json
 ```
 
 ```bash
-python3 -m football_betting.predict live.json
+python3 predict.py live.json
 ```
 
 ---
@@ -328,8 +329,8 @@ xG（Expected Goals，预期进球）衡量射门机会的质量：把每次射�
 
 ## 10. 常见问题
 
-**Q: 报错 `ModuleNotFoundError: No module named 'football_betting'`？**
-A: 必须在**项目根目录**（`football_betting/` 的上一级）运行，用 `python3 -m football_betting.predict`。
+**Q: 报错 `ModuleNotFoundError: No module named 'core'` / `data` 等？**
+A: 必须在**项目根目录**（`qqq/`）运行：顶层脚本用 `python3 predict.py`，子包用 `python3 -m data.xxx`。
 
 **Q: 提示"球队未在训练数据中找到"？**
 A: 该队可能不在所选训练赛季里。换用更全的赛季重新训练，或在 `state` 里手动填 `prior_lambda_h/a`。
@@ -349,6 +350,6 @@ A: 已在 `expected_lambdas()` 中把 λ 限制在 `[0.2, 3.0]` 合理区间。
 **Q: 模拟回测怎么跑？**
 A:
 ```bash
-python3 -m football_betting.main          # 单场模拟
-python3 -m football_betting.main mc 500   # 500 场蒙特卡洛
+python3 main.py          # 单场模拟
+python3 main.py mc 500   # 500 场蒙特卡洛
 ```

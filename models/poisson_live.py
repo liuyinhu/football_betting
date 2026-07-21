@@ -14,7 +14,7 @@ from typing import Dict, Tuple
 
 from scipy.stats import poisson
 
-from ..core.state import MatchState
+from core.state import MatchState
 
 
 # ---- 场面特征对剩余 lambda 的权重(可调节/可学习) ----

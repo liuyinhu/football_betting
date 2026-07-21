@@ -12,7 +12,7 @@
 ## 项目结构
 
 ```
-football_betting/
+qqq/                        # 项目根目录（在此运行所有命令）
 ├── core/state.py            # 数据类：MatchState、OddsSnapshot、BetRecommendation
 ├── models/poisson_live.py   # 时变泊松 + DC 比分/胜平负分布、FEATURE_WEIGHTS
 ├── strategy/decision.py     # EV 过滤 + 分数凯利仓位
@@ -48,19 +48,21 @@ football_betting/
 ## 安装
 
 ```bash
-pip install -r football_betting/requirements.txt
+pip install -r requirements.txt
 ```
+
+> 所有命令都在**项目根目录**（`qqq/`）下运行。
 
 ## 运行演示（单场模拟比赛）
 
 ```bash
-python -m football_betting.main
+python3 main.py
 ```
 
 ## 蒙特卡洛回测（500 场）
 
 ```bash
-python -m football_betting.main mc 500
+python3 main.py mc 500
 ```
 
 ## 预测真实比赛
@@ -69,10 +71,10 @@ python -m football_betting.main mc 500
 
 ```bash
 # 生成带中文注释的 JSON 输入模板
-python -m football_betting.predict -t
+python3 predict.py -t
 
 # 编辑后运行预测
-python -m football_betting.predict match.example.json
+python3 predict.py match.example.json
 ```
 
 ## 拉取真实中超数据（API-Football）
@@ -84,7 +86,7 @@ python -m football_betting.predict match.example.json
 export API_FOOTBALL_KEY=你的key
 
 # 拉取 2024 赛季最新 10 场（自动倒序、本地缓存、遇限速自动重试）
-python3 -m football_betting.data.api_football_loader 2024 --limit 10
+python3 -m data.api_football_loader 2024 --limit 10
 ```
 
 - 缓存写入 `data/apifootball_raw/cache/`，汇总写入 `data/apifootball_raw/seasons/`
@@ -93,7 +95,7 @@ python3 -m football_betting.data.api_football_loader 2024 --limit 10
 分析这些数据（不消耗配额），校准特征权重：
 
 ```bash
-python3 -m football_betting.data.analyze_apifootball 2024
+python3 -m data.analyze_apifootball 2024
 ```
 
 输出：进球分钟分布、各特征与进球的相关性、泊松回归对 `FEATURE_WEIGHTS` 的校准建议。
@@ -110,7 +112,7 @@ class MyLiveFeed:
 然后接入同一套评估流程：
 
 ```python
-from football_betting.strategy.decision import evaluate
+from strategy.decision import evaluate
 state, odds = feed.step()
 for rec in evaluate(state, odds):
     print(rec)

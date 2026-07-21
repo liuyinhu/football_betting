@@ -2,14 +2,14 @@
 然后结算并展示盈亏。
 
 运行:
-    python -m football_betting.main
+    python main.py
 """
 from __future__ import annotations
 
-from .feeds.simulated import SimulatedFeed
-from .models.poisson_live import outcome_probabilities
-from .strategy.decision import evaluate
-from .backtest.paper_trader import PaperTrader
+from feeds.simulated import SimulatedFeed
+from models.poisson_live import outcome_probabilities
+from strategy.decision import evaluate
+from backtest.paper_trader import PaperTrader
 
 
 def pretty_probs(p: dict) -> str:

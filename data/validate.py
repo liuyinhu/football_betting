@@ -6,7 +6,7 @@
   - 与朴素基线(永远猜主胜)对比
 
 运行:
-    python3 -m football_betting.data.validate
+    python3 -m data.validate
 """
 from __future__ import annotations
 import math
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     import sys
     # 默认: 近几年训练(2023-2024) 测试(2025)
     if len(sys.argv) >= 3:
-        # 例如 python -m football_betting.data.validate 2023,2024 2025
+        # 例如 python -m data.validate 2023,2024 2025
         train_years = [int(x) for x in sys.argv[1].split(",")]
         test_years = [int(x) for x in sys.argv[2].split(",")]
     else:

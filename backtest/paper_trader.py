@@ -10,8 +10,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import List
 
-from ..core.state import BetRecommendation, MatchState, OddsSnapshot
-from ..strategy.decision import evaluate
+from core.state import BetRecommendation, MatchState, OddsSnapshot
+from strategy.decision import evaluate
 
 
 @dataclass

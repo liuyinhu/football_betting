@@ -9,10 +9,10 @@
 两种用法：
 
 1) 交互式(逐步提问):
-       python3 -m football_betting.predict
+       python3 predict.py
 
 2) 编辑一个 JSON 文件并传入(可重复使用, 无需重复输入):
-       python3 -m football_betting.predict match.json
+       python3 predict.py match.json
    (首次运行会写出模板文件 match.example.json)
 """
 from __future__ import annotations
@@ -20,9 +20,9 @@ import json
 import sys
 from pathlib import Path
 
-from .core.state import MatchState, OddsSnapshot
-from .models.poisson_live import outcome_probabilities, final_score_distribution
-from .strategy.decision import evaluate
+from core.state import MatchState, OddsSnapshot
+from models.poisson_live import outcome_probabilities, final_score_distribution
+from strategy.decision import evaluate
 
 
 # ---------------------------------------------------------------------------
@@ -129,7 +129,7 @@ def _fuzzy_find_team(name: str, teams: dict) -> str | None:
 
     # 先尝试中文 -> 英文映射
     try:
-        from .data.team_names import zh_to_en
+        from data.team_names import zh_to_en
         mapped = zh_to_en(name)
         if mapped and mapped in teams:
             return mapped
@@ -158,10 +158,10 @@ def _apply_trained_lambdas(s: dict) -> None:
     if not home_team or not away_team:
         return
     try:
-        from .data.train_strength import load as load_model, expected_lambdas, MODEL_PATH
+        from data.train_strength import load as load_model, expected_lambdas, MODEL_PATH
         if not MODEL_PATH.exists():
             print("⚠️ 未找到训练模型，跳过自动 λ。先运行: "
-                  "python3 -m football_betting.data.train_strength")
+                  "python3 -m data.train_strength")
             return
         model = load_model()
         teams = model["teams"]
@@ -175,7 +175,7 @@ def _apply_trained_lambdas(s: dict) -> None:
         s.setdefault("prior_lambda_h", round(lam_h, 3))
         s.setdefault("prior_lambda_a", round(lam_a, 3))
         try:
-            from .data.team_names import en_to_zh
+            from data.team_names import en_to_zh
             hz, az = en_to_zh(h) or h, en_to_zh(a) or a
         except Exception:
             hz, az = h, a
@@ -244,7 +244,7 @@ def write_template(path: str = "match.example.json") -> None:
     template = '''{
   // ============================================================
   //  足球实时预测输入文件  (支持 // 注释，运行时会自动忽略)
-  //  运行:  python3 -m football_betting.predict match.example.json
+  //  运行:  python3 predict.py match.example.json
   // ============================================================
 
   "state": {                       // —— 比赛当前场面 ——
@@ -291,7 +291,7 @@ def write_template(path: str = "match.example.json") -> None:
 }
 '''
     Path(path).write_text(template, encoding="utf-8")
-    print(f"已生成模板文件: {path}  (编辑后运行: python3 -m football_betting.predict {path})")
+    print(f"已生成模板文件: {path}  (编辑后运行: python3 predict.py {path})")
 
 
 # ---------------------------------------------------------------------------

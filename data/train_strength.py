@@ -145,9 +145,9 @@ def load(path: Path = MODEL_PATH) -> Dict:
 if __name__ == "__main__":
     import sys
     # 用法:
-    #   python3 -m football_betting.data.train_strength            # 默认近3季 2023-2025
-    #   python3 -m football_betting.data.train_strength 2022 2025  # 指定起止年份
-    #   python3 -m football_betting.data.train_strength 3          # 最近N季
+    #   python3 -m data.train_strength            # 默认近3季 2023-2025
+    #   python3 -m data.train_strength 2022 2025  # 指定起止年份
+    #   python3 -m data.train_strength 3          # 最近N季
     all_years = list(range(2018, 2026))
     latest = all_years[-1]
 

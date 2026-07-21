@@ -3,7 +3,7 @@ from __future__ import annotations
 import random
 from typing import Iterator, Tuple
 
-from ..core.state import MatchState, OddsSnapshot
+from core.state import MatchState, OddsSnapshot
 
 
 class SimulatedFeed:
@@ -72,7 +72,7 @@ class SimulatedFeed:
     def _synth_odds(self) -> OddsSnapshot:
         """非常粗略的模拟庄家：用当前状态的泊松概率 + 菣佣
         + 少量随机噪声, 使模型有时能找到价值。"""
-        from ..models.poisson_live import outcome_probabilities, final_score_distribution
+        from models.poisson_live import outcome_probabilities, final_score_distribution
         probs = outcome_probabilities(self.state)
 
         def to_odds(p: float) -> float | None:
