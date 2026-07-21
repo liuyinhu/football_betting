@@ -14,8 +14,14 @@ from collections import Counter
 
 from scipy.stats import poisson
 
-from .csl_loader import load_matches
+from .api_football_loader import load_all_matches
 from .train_strength import train, expected_lambdas
+
+
+def _matches_for(years):
+    """从 apifootball 全量数据里按赛季筛选。"""
+    allm = load_all_matches()
+    return [m for m in allm if m.season in years]
 
 
 def outcome_probs(lam_h: float, lam_a: float, max_g: int = 8):
@@ -31,10 +37,10 @@ def outcome_probs(lam_h: float, lam_a: float, max_g: int = 8):
 
 
 def walk_forward(train_years, test_years):
-    train_matches = load_matches(train_years)
+    train_matches = _matches_for(train_years)
     model = train(train_matches)
 
-    test_matches = load_matches(test_years)
+    test_matches = _matches_for(test_years)
     n = correct = 0
     logloss = 0.0
     naive_correct = 0
@@ -78,6 +84,7 @@ if __name__ == "__main__":
         train_years = [int(x) for x in sys.argv[1].split(",")]
         test_years = [int(x) for x in sys.argv[2].split(",")]
     else:
-        train_years = [2023, 2024]
-        test_years = [2025]
+        # 默认: 用 2024+2025 训练, 2026 当前赛季测试
+        train_years = [2024, 2025]
+        test_years = [2026]
     walk_forward(train_years, test_years)

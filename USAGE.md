@@ -55,22 +55,19 @@ python3 predict.py
 
 ## 3. 训练中超模型
 
-模型基于 [openfootball/world](https://github.com/openfootball/world) 的公开中超历史赛果，
+模型基于 **API-Football** 拉取的中超真实赛果（`data/apifootball_raw/`），
 用 Dixon-Coles / 泊松最大似然估计（MLE）拟合各队的**攻击力 / 防守力**。
 
 ```bash
-# 默认：用近 3 个赛季（2023-2025）训练
+# 默认：用全部已拉取赛季训练
 python3 -m data.train_strength
 
-# 指定起止年份（如全量 8 赛季）
-python3 -m data.train_strength 2018 2025
-
-# 只用最近 N 个赛季
-python3 -m data.train_strength 3
+# 只用指定起止年份
+python3 -m data.train_strength 2025 2026
 ```
 
-> 💡 强度模型只用 `csl_raw/`（openfootball）赛果训练——它队名统一、赛季完整。
-> API-Football 数据队名风格不同，**不参与强度训练**，只用于第 4 节的特征分析。
+> 💡 数据经 `load_all_details()` 按 `fixture_id` 合并去重后统一训练，队名自洽。
+> `seasons/` 下所有 `csl_*_details.json`（包括跨赛季的 `csl_latest_details.json`）都会被纳入。
 
 **输出模型位置**：`data/csl_strength.json`
 
@@ -78,11 +75,12 @@ python3 -m data.train_strength 3
 
 ```json
 {
-  "teams": { "Shanghai Port": { "attack": 0.65, "defence": 0.42 }, ... },
-  "home_adv": 0.247,
-  "rho": -0.107,
-  "n_matches": 559,
-  "train_years": [2023, 2024, 2025],
+  "teams": { "Shanghai Shenhua": { "attack": 0.37, "defence": -0.11 }, ... },
+  "home_adv": 0.296,
+  "rho": -0.036,
+  "n_matches": 425,
+  "train_years": [2024, 2025, 2026],
+  "data_source": "apifootball_raw",
   "converged": true
 }
 ```
@@ -92,22 +90,22 @@ python3 -m data.train_strength 3
 ### 验证模型效果
 
 ```bash
-# 默认：用 2023-2024 训练，2025 测试
+# 默认：用 2024+2025 训练，2026 测试
 python3 -m data.validate
 
 # 自定义训练/测试赛季
-python3 -m data.validate 2023,2024 2025
+python3 -m data.validate 2024,2025 2026
 ```
 
 输出准确率、对数损失（log-loss）以及与"永远猜主胜"基线的对比。
 
-> 参考：用 2023-2024 训练、2025 测试，准确率约 **56%**，log-loss 约 **0.93**，均优于"永远猜主胜"基线（45.8% / 1.10）。
+> 参考：用 2024+2025 训练、2026 测试，准确率约 **49.6%**，log-loss 约 **1.04**，均优于"永远猜主胜"基线（48.7% / 1.10）。
 
 ---
 
 ## 4. 拉取与分析 API-Football 数据
 
-openfootball 只有**赛果比分**。要得到**分钟级事件**（进球/红黄牌/换人）和**场面统计**（射正、角球、控球、xG），可用 API-Football 免费档拉取。这类数据用于**校准实时特征权重 `FEATURE_WEIGHTS`**，不参与强度训练。
+除了用于训练强度模型，API-Football 还提供**分钟级事件**（进球/红黄牌/换人）和**场面统计**（射正、角球、控球、xG）。这类数据用于**校准实时特征权重 `FEATURE_WEIGHTS`**。
 
 ### 4.1 拉取数据
 
@@ -263,21 +261,27 @@ xG（Expected Goals，预期进球）衡量射门机会的质量：把每次射�
   "比赛状态": {
     "主队": "河南队",
     "客队": "大连英博",
+
     "分钟": 27,
     "主队进球": 0,
     "客队进球": 1,
-    "主队射正": 3,
-    "客队射正": 2
+
+    "主队射门": 3, "客队射门": 3,
+    "主队射正": 1, "客队射正": 1,
+    "主队角球": 4, "客队角球": 0,
+    "控球率": 50,
+    "主队红牌": 0, "客队红牌": 0
   },
   "赔率": {
-    "主胜": 2.10,
-    "平": 3.30,
-    "客胜": 3.50,
-    "大球": { "2.5": 1.95 },
-    "小球": { "2.5": 1.85 }
+    "主胜": 3.35, "平局": 3.5, "客胜": 1.91,
+    "大球": { "3": 1.78 },
+    "小球": { "3": 2.06 }
+    // "精确比分": { "1-1": 7.10, "0-1": 11, "0-2": 11 }
   }
 }
 ```
+
+> 💡 这份示例即项目自带的 `match_cn.json`，可直接运行 `python3 predict.py match_cn.json`。
 
 常用中文字段对照：
 
@@ -288,9 +292,10 @@ xG（Expected Goals，预期进球）衡量射门机会的质量：把每次射�
 | 主队 / 客队 | home_team / away_team |
 | 分钟 / 时间 | minute |
 | 主队进球 / 客队进球 | score_h / score_a |
+| 主队射门 / 客队射门 | shots_h / shots_a |
 | 主队射正 / 客队射正 | sot_h / sot_a |
 | 主队角球 / 客队角球 | corners_h / corners_a |
-| 主队控球率 | possession_h |
+| 控球率 / 主队控球率 | possession_h |
 | 主队红牌 / 客队红牌 | red_h / red_a |
 | 主胜 / 平 / 客胜 | home / draw / away |
 | 大球 / 小球 | over / under |
@@ -336,10 +341,10 @@ A: 必须在**项目根目录**（`qqq/`）运行：顶层脚本用 `python3 pre
 A: 该队可能不在所选训练赛季里。换用更全的赛季重新训练，或在 `state` 里手动填 `prior_lambda_h/a`。
 
 **Q: 有没有 2026 年数据？**
-A: openfootball 数据源目前最新到 2025 赛季。API-Football 免费档可拉的赛季为 2022–2024，更新赛季需付费。
+A: 有。Pro 档可拉当前 2026 赛季（含最新已完赛场次）。免费档仅限 2022–2024。本项目当前训练数据含 2024/2025/2026 三个赛季。
 
-**Q: 为什么不把 openfootball 和 API-Football 数据合在一起训练？**
-A: 两者队名风格不同（如 `Shanghai Port FC` vs `SHANGHAI SIPG`、`Shandong Taishan` vs `Shandong Luneng`），同一赛季 16 队里往往只有几个能对上。直接合并会把同一支队当成两个实体，污染攻防强度估计。因此**强度训练只用 openfootball**，API-Football 只用于特征分析。
+**Q: 为什么不用 openfootball 数据了？**
+A: 早期版本用 openfootball 赛果训练强度、API-Football 只做特征分析，但两者队名风格不同（如 `Shanghai Port FC` vs `SHANGHAI SIPG`）无法合并。现已**全面改用 API-Football 单一数据源**：分钟级明细更丰富、含当前赛季，且队名自洽，训练与预测不再有队名错配问题。
 
 **Q: API-Football 拉取报 429 / 配额用尽？**
 A: 免费档限速约 10 请求/分钟、100 请求/天。加载器已内置 6.5 秒请求间隔与 429 自动重试；若当天配额用尽，等次日重置即可（已缓存的场次不再消耗）。

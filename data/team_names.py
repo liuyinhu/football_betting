@@ -1,45 +1,35 @@
 """中超球队的中英文名称映射。
 
-把常见中文队名(及别名)映射到 openfootball 数据集使用的英文名。
+把常见中文队名(及别名)映射到 data/apifootball_raw 数据集使用的英文名。
 predict.py 使用它, 让用户可以直接输入中文队名。
+
+注意：本表与训练数据(API-Football)的队名保持一致。API-Football 对部分
+球队沿用旧译名(如 Shandong Luneng=山东泰山、SHANGHAI SIPG=上海海港)。
 """
 from __future__ import annotations
 
-# 英文(openfootball) -> 中文名/别名列表
+# 英文(API-Football) -> 中文名/别名列表
 _EN_TO_ZH = {
-    "Beijing Guoan":          ["北京国安", "国安"],
-    "Cangzhou Mighty Lions":  ["沧州雄狮", "沧州"],
-    "Changchun Yatai":        ["长春亚泰", "亚泰"],
-    "Chengdu Rongcheng":      ["成都蓉城", "成都"],
-    "Dalian Pro":             ["大连人", "大连一方"],
-    "Dalian Yingbo":          ["大连英博", "大连鲲城"],
-    "Henan FC":               ["河南队", "河南嵩山龙门", "河南建业", "建业"],
-    "Meizhou Hakka":          ["梅州客家", "梅州"],
-    "Nantong Zhiyun":         ["南通支云", "南通"],
-    "Qingdao Hainiu":         ["青岛海牛", "海牛"],
-    "Qingdao West Coast":     ["青岛西海岸", "西海岸"],
-    "Shandong Taishan":       ["山东泰山", "泰山", "山东鲁能"],
-    "Shanghai Port FC":       ["上海海港", "海港", "上海上港", "上港"],
-    "Shanghai Shenhua":       ["上海申花", "申花"],
-    "Shenzhen FC":            ["深圳队", "深圳佳兆业"],
-    "Shenzhen Peng City":     ["深圳新鹏城", "深圳鹏城", "鹏城"],
-    "Tianjin Jinmen Tiger":   ["天津津门虎", "津门虎", "天津泰达", "泰达"],
-    "Wuhan Three Towns":      ["武汉三镇", "三镇"],
-    "Yunnan Yukun":           ["云南玉昆", "玉昆"],
-    "Zhejiang Professional":  ["浙江队", "浙江职业", "浙江绿城"],
-    # 较早的球队(若用 2018-2022 训练仍有用)
-    "Guangzhou Evergrande":   ["广州恒大", "恒大", "广州队"],
-    "Guangzhou R&F":          ["广州富力", "富力"],
-    "Jiangsu Suning":         ["江苏苏宁", "苏宁", "江苏舜天"],
-    "Tianjin Quanjian FC":    ["天津权健", "权健"],
-    "Tianjin Tianhai":        ["天津天海", "天海"],
-    "Hebei China Fortune":    ["河北华夏幸福", "华夏幸福", "河北队"],
-    "Wuhan Zall":             ["武汉卓尔", "卓尔"],
-    "Beijing Renhe":          ["北京人和", "人和"],
-    "Chongqing Lifan":        ["重庆力帆", "重庆当代", "重庆两江竞技"],
-    "Shanghai SIPG":          ["上海上港"],
-    "Guizhou Hengfeng":       ["贵州恒丰"],
-    "Wuhan FC":               ["武汉队"],
+    "Beijing Guoan":            ["北京国安", "国安"],
+    "Changchun Yatai":          ["长春亚泰", "亚泰"],
+    "Chengdu Better City":      ["成都蓉城", "成都", "蓉城"],
+    "Chongqing Tongliang Long": ["重庆铜梁龙", "重庆", "铜梁龙"],
+    "Dalian Zhixing":           ["大连智行", "大连英博", "大连"],
+    "Hangzhou Greentown":       ["杭州绿城", "浙江队", "浙江绿城", "绿城"],
+    "Henan Jianye":             ["河南建业", "河南队", "河南嵩山龙门", "建业"],
+    "Meizhou Kejia":            ["梅州客家", "梅州"],
+    "Nantong Zhiyun":           ["南通支云", "南通"],
+    "Qingdao Jonoon":           ["青岛中能", "中能"],
+    "Qingdao Youth Island":     ["青岛青春岛", "青春岛"],
+    "SHANGHAI SIPG":            ["上海海港", "海港", "上海上港", "上港"],
+    "Shandong Luneng":          ["山东泰山", "泰山", "山东鲁能", "鲁能"],
+    "Shanghai Shenhua":         ["上海申花", "申花"],
+    "Shenyang Urban":           ["沈阳城市", "沈阳"],
+    "Shijiazhuang Y. J.":       ["石家庄永昌", "石家庄功夫", "石家庄"],
+    "Sichuan Jiuniu":           ["四川九牛", "九牛"],
+    "Tianjin Teda":             ["天津泰达", "泰达", "天津津门虎", "津门虎"],
+    "Wuhan Three Towns":        ["武汉三镇", "三镇"],
+    "Yunnan Yukun":             ["云南玉昆", "玉昆"],
 }
 
 # 构建反向映射: 中文 -> 英文

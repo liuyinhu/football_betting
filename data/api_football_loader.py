@@ -1,22 +1,27 @@
-"""通过 API-Football (v3) 免费档拉取中超比赛的分钟级/事件级数据。
+"""通过 API-Football (v3) 拉取中超比赛的分钟级/事件级数据。
 
-免费档限制（务必注意）：
+配额与限速（按套餐不同）：
     - 认证：请求头 x-apisports-key，key 从环境变量 API_FOOTBALL_KEY 读取
-    - 配额：约 100 请求/天
+    - 免费档：约 100 请求/天、10 请求/分钟，仅可拉 2022–2024 赛季
+    - Pro 档：约 7500 请求/天、300 请求/分钟，可拉当前赛季（含最新场次）
     - 每场比赛需要 2 个请求（statistics + events），因此本模块会：
-        * 本地缓存每场结果到 data/apifootball_raw/（避免重复消耗配额）
-        * 提供 --limit 限制拉取场次
-        * 请求间加入延时，避免触发限流
+        * 本地缓存每场结果到 data/apifootball_raw/cache/（避免重复消耗配额）
+        * 提供 --limit / --latest 限制拉取场次
+        * 请求间加入延时（REQUEST_DELAY，可用 API_FOOTBALL_DELAY 覆盖）
 
 主要接口：
     /leagues                          查联赛 id（中超默认 169）
-    /fixtures?league=169&season=2023  拉某赛季的赛程赛果
+    /fixtures?league=169&season=2026  拉某赛季的赛程赛果
     /fixtures/statistics?fixture=ID   终场场面统计（射门/射正/角球/控球…）
     /fixtures/events?fixture=ID       带分钟的事件（进球/红黄牌/换人…）
 
 用法：
     export API_FOOTBALL_KEY=你的key
-    python3 -m data.api_football_loader 2023 --limit 20
+    # 单赛季：拉 2026 赛季最新 20 场
+    python3 -m data.api_football_loader 2026 --limit 20
+    # 跨赛季：拉全局最新 200 场（自动从当前赛季往回补齐）
+    python3 -m data.api_football_loader --latest 200
+    # 提速（Pro 档）：export API_FOOTBALL_DELAY=0.3
 """
 from __future__ import annotations
 import json
@@ -40,8 +45,11 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "apifootball_raw"
 CACHE_DIR = DATA_DIR / "cache"        # 单场缓存
 SEASON_DIR = DATA_DIR / "seasons"     # 赛季汇总
 
-# 每次请求之间的间隔（秒）。免费档限速约 10 次/分钟，故设为 ≥6.5 秒
-REQUEST_DELAY = 6.5
+# 每次请求之间的间隔（秒）。
+#   免费档限速约 10 次/分钟 → 需 ≥6.5 秒
+#   Pro 档限速约 300 次/分钟 → 0.3 秒即可（约 200/分钟，留安全余量）
+# 可用环境变量 API_FOOTBALL_DELAY 覆盖。
+REQUEST_DELAY = float(os.environ.get("API_FOOTBALL_DELAY", "0.35"))
 
 
 # ---------------------------------------------------------------------------
@@ -297,6 +305,59 @@ def load_season_details(season: int,
     return out
 
 
+def load_latest_details(n: int,
+                        league: int = CSL_LEAGUE_ID,
+                        seasons: Optional[List[int]] = None) -> List[FixtureData]:
+    """跨赛季拉取「最新 n 场」已完赛比赛（按比赛日期全局倒序）。
+
+    从最新赛季往回逐季收集完赛比赛，直到凑够 n 场。
+    适合付费档：可跨越当前赛季与上一赛季边界。
+    seasons 未指定时，默认从当前年往回试 [当前年, -1, -2, -3]。
+    """
+    if seasons is None:
+        from datetime import date
+        cur = date.today().year
+        seasons = [cur, cur - 1, cur - 2, cur - 3]
+
+    # 1) 逐季收集完赛赛程（只请求赛程，成本低）
+    collected: List[dict] = []
+    for season in seasons:
+        try:
+            fx = fetch_fixtures(season, league)
+        except Exception as e:
+            print(f"  {season} 赛季赛程获取失败（跳过）：{e}")
+            continue
+        ft = [f for f in fx
+              if (f["fixture"].get("status") or {}).get("short") == "FT"]
+        print(f"{season} 赛季已完赛 {len(ft)} 场")
+        collected.extend(ft)
+        # 已收集到的完赛场次够多就不再往更早赛季翻
+        if len(collected) >= n:
+            break
+
+    # 2) 全局按日期倒序，取前 n 场
+    collected.sort(key=lambda f: f["fixture"].get("date") or "", reverse=True)
+    picked = collected[:n]
+    if picked:
+        newest = picked[0]["fixture"].get("date", "")[:10]
+        oldest = picked[-1]["fixture"].get("date", "")[:10]
+        print(f"\n目标最新 {len(picked)} 场，日期范围 {oldest} ~ {newest}\n")
+
+    # 3) 逐场拉明细
+    out: List[FixtureData] = []
+    for i, fx in enumerate(picked, 1):
+        try:
+            fd = load_fixture_detail(fx)
+            out.append(fd)
+            print(f"  [{i}/{len(picked)}] {fd.date[:10]} {fd.home} {fd.hg}-{fd.ag} {fd.away}  "
+                  f"射正 {fd.home_stats.shots_on}-{fd.away_stats.shots_on}  "
+                  f"事件 {len(fd.events)}")
+        except Exception as e:
+            print(f"  [{i}] 拉取失败 fixture={fx['fixture']['id']}: {e}")
+            break
+    return out
+
+
 # ---------------------------------------------------------------------------
 # 与现有训练器互通
 # ---------------------------------------------------------------------------
@@ -320,6 +381,36 @@ def load_saved_details(season: int) -> List[FixtureData]:
     return [_fixture_from_dict(d) for d in raw]
 
 
+def load_all_details() -> List[FixtureData]:
+    """读取 seasons/ 下所有已保存的明细文件，按 fixture_id 去重合并。
+
+    汇聚 csl_<season>_details.json 与 csl_latest_details.json 等所有产物，
+    同一场比赛（fixture_id 相同）只保留一份。不消耗 API 配额。
+    返回按比赛日期升序排列的完整明细列表。
+    """
+    if not SEASON_DIR.exists():
+        raise FileNotFoundError(f"未找到目录 {SEASON_DIR}，请先运行拉取命令。")
+
+    merged: Dict[int, FixtureData] = {}
+    files = sorted(SEASON_DIR.glob("csl_*_details.json"))
+    if not files:
+        raise FileNotFoundError(f"{SEASON_DIR} 下没有任何 csl_*_details.json 文件。")
+
+    for fp in files:
+        raw = json.loads(fp.read_text(encoding="utf-8"))
+        for d in raw:
+            fd = _fixture_from_dict(d)
+            merged[fd.fixture_id] = fd  # 相同 fixture_id 覆盖去重
+
+    details = sorted(merged.values(), key=lambda d: d.date or "")
+    return details
+
+
+def load_all_matches() -> List["Match"]:
+    """合并所有明细并转成 csl_loader.Match，供 train_strength 直接训练。"""
+    return to_matches(load_all_details())
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
@@ -327,11 +418,10 @@ if __name__ == "__main__":
     import sys
 
     args = sys.argv[1:]
-    season = 2023
-    limit: Optional[int] = 10  # 默认保守，避免一次跑光配额
+    season = 2024
+    limit: Optional[int] = 10  # 单赛季默认保守
+    latest_n: Optional[int] = None  # 跨赛季「最新 N 场」
 
-    # 解析：第一个纯数字当赛季；--limit N / --all
-    i = 0
     positional = [a for a in args if not a.startswith("--")]
     if positional:
         season = int(positional[0])
@@ -340,14 +430,23 @@ if __name__ == "__main__":
     elif "--limit" in args:
         idx = args.index("--limit")
         limit = int(args[idx + 1])
+    if "--latest" in args:
+        idx = args.index("--latest")
+        latest_n = int(args[idx + 1])
 
-    print(f"赛季={season}  limit={limit}")
-    print("提示：免费档约 100 请求/天，每场消耗 2 个请求（statistics+events）。\n")
+    print(f"请求间隔 REQUEST_DELAY={REQUEST_DELAY}s（可用 API_FOOTBALL_DELAY 覆盖）")
 
-    details = load_season_details(season, limit=limit)
+    if latest_n is not None:
+        # 跨赛季模式：拉最新 N 场
+        print(f"模式=跨赛季最新 {latest_n} 场\n")
+        details = load_latest_details(latest_n)
+        out_path = SEASON_DIR / "csl_latest_details.json"
+    else:
+        # 单赛季模式
+        print(f"模式=单赛季  赛季={season}  limit={limit}\n")
+        details = load_season_details(season, limit=limit)
+        out_path = SEASON_DIR / f"csl_{season}_details.json"
 
-    # 汇总保存为一个赛季文件，便于后续训练使用
-    out_path = SEASON_DIR / f"csl_{season}_details.json"
     SEASON_DIR.mkdir(parents=True, exist_ok=True)
     out_path.write_text(
         json.dumps([asdict(d) for d in details], ensure_ascii=False, indent=2),

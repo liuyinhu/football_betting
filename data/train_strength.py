@@ -1,4 +1,4 @@
-"""在中超历史数据上训练 Dixon-Coles / 泊松 球队强度模型。
+"""在中超真实比赛数据（data/apifootball_raw）上训练 Dixon-Coles / 泊松 球队强度模型。
 
 模型(经典最大似然估计)：
     主队进球 ~ Poisson(mu_home)
@@ -25,7 +25,8 @@ from typing import Dict, List
 import numpy as np
 from scipy.optimize import minimize
 
-from .csl_loader import Match, load_matches
+from .csl_loader import Match
+from .api_football_loader import load_all_matches
 
 MODEL_PATH = Path(__file__).resolve().parent.parent / "data" / "csl_strength.json"
 
@@ -144,28 +145,27 @@ def load(path: Path = MODEL_PATH) -> Dict:
 
 if __name__ == "__main__":
     import sys
+    # 数据源：data/apifootball_raw（分钟级/事件级明细，队名自洽）
     # 用法:
-    #   python3 -m data.train_strength            # 默认近3季 2023-2025
-    #   python3 -m data.train_strength 2022 2025  # 指定起止年份
-    #   python3 -m data.train_strength 3          # 最近N季
-    all_years = list(range(2018, 2026))
-    latest = all_years[-1]
+    #   python3 -m data.train_strength            # 用全部已拉取赛季
+    #   python3 -m data.train_strength 2025 2026  # 只用指定起止年份
+    all_matches = load_all_matches()
+    all_seasons = sorted({m.season for m in all_matches})
+    latest = all_seasons[-1]
 
     args = sys.argv[1:]
     if len(args) == 2:
         start, end = int(args[0]), int(args[1])
-        years = list(range(start, end + 1))
-    elif len(args) == 1:
-        n = int(args[0])
-        years = all_years[-n:]
+        years = [s for s in all_seasons if start <= s <= end]
     else:
-        years = [2023, 2024, 2025]   # 默认近3个赛季
+        years = all_seasons  # 默认全部
 
-    print(f"使用赛季: {years}")
-    matches = load_matches(years)
+    matches = [m for m in all_matches if m.season in years]
+    print(f"数据源: data/apifootball_raw   使用赛季: {years}   共 {len(matches)} 场")
     # 近几年数据时间跨度小, 用较小衰减即可
     model = train(matches, decay=0.0018, latest_season=latest)
     model["train_years"] = years
+    model["data_source"] = "apifootball_raw"
     save(model)
     print(f"\n收敛: {model['converged']}  NLL={model['nll']:.1f}  主场优势={model['home_adv']:.3f}  rho={model['rho']:.3f}")
     print(f"训练赛季: {years}  球队数: {len(model['teams'])}")

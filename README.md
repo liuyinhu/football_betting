@@ -19,31 +19,35 @@ qqq/                        # 项目根目录（在此运行所有命令）
 ├── feeds/simulated.py       # 模拟实时数据源（用于演示与回测）
 ├── backtest/paper_trader.py # 简易纸面交易引擎
 ├── data/                    # 数据加载、训练、验证、队名映射（详见下方）
-│   ├── csl_loader.py            # openfootball 中超赛果加载
+│   ├── csl_loader.py            # Match 数据类 + openfootball 赛果加载（备用）
 │   ├── train_strength.py        # Dixon-Coles/泊松 MLE 训练攻防强度
 │   ├── validate.py              # walk-forward 验证
-│   ├── team_names.py            # 中文队名 / 别名映射
-│   ├── api_football_loader.py   # API-Football 拉取分钟级事件+场面统计
+│   ├── team_names.py            # 中文队名 / 别名映射（对齐 API-Football 命名）
+│   ├── api_football_loader.py   # API-Football 拉取 + 合并去重加载器
 │   ├── analyze_apifootball.py   # 进球分布/相关性/权重校准分析
 │   ├── csl_strength.json        # 训练产出的强度模型
-│   ├── csl_raw/                 # openfootball 原始赛果（按赛季 txt）
-│   └── apifootball_raw/         # API-Football 数据
+│   └── apifootball_raw/         # API-Football 数据（唯一训练数据源）
 │       ├── cache/                   # 单场缓存 fixture_<id>.json（不入库）
 │       └── seasons/                 # 赛季汇总 csl_<season>_details.json
 ├── predict.py               # 交互式 / JSON 文件预测入口
 └── main.py                  # 端到端可运行演示
 ```
 
-## 数据来源与分工
+## 数据来源
 
-本项目使用两个互补的数据源，**分工明确、不混用**：
+本项目**统一使用 API-Football 数据**（`data/apifootball_raw/`）训练与分析：
 
-| 数据源 | 内容 | 用途 |
-|--------|------|------|
-| **openfootball**（`csl_raw/`） | 8 赛季完整赛果、队名统一 | 训练**攻防强度模型**（赛前 λ） |
-| **API-Football**（`apifootball_raw/`） | 分钟级事件 + 射正/角球/xG 等场面统计 | 校准**实时特征权重** `FEATURE_WEIGHTS` |
+| 用途 | 说明 |
+|------|------|
+| **攻防强度模型**（赛前 λ） | 由所有已拉取赛季的赛果 MLE 拟合（Dixon-Coles/泊松） |
+| **实时特征权重** `FEATURE_WEIGHTS` | 由分钟级事件 + 射正/角球/xG 等场面统计校准 |
 
-> ⚠️ 两个数据源队名风格不同（如 `Shanghai Port FC` vs `SHANGHAI SIPG`），**不能直接合并训练强度**，否则同队会被拆成两个实体。详见 [USAGE.md](USAGE.md)。
+数据经 `load_all_details()` 按 `fixture_id` **合并去重**后统一训练，队名自洽
+（如 `SHANGHAI SIPG`=上海海港、`Shandong Luneng`=山东泰山），中文映射见 `team_names.py`。
+
+> 说明：早期版本曾用 openfootball（`csl_raw/`）训练强度，因其与 API-Football
+> 队名风格不一致，现已**全面切换为 API-Football 单一数据源**。`csl_loader.py`
+> 仅保留 `Match` 数据类供训练器复用。
 
 ## 安装
 
@@ -70,27 +74,38 @@ python3 main.py mc 500
 详见 [USAGE.md](USAGE.md)，涵盖训练中超模型、赛前预测、实时预测、中文队名 / 中文字段等完整用法。
 
 ```bash
-# 生成带中文注释的 JSON 输入模板
-python3 predict.py -t
+# 用全部已拉取的 API-Football 数据训练强度模型
+python3 -m data.train_strength
 
-# 编辑后运行预测
+# walk-forward 验证（默认：2024+2025 训练、2026 测试）
+python3 -m data.validate
+
+# 生成带中文注释的 JSON 输入模板，编辑后预测
+python3 predict.py -t
 python3 predict.py match.example.json
 ```
 
 ## 拉取真实中超数据（API-Football）
 
-除了 openfootball 赛果，还可用 API-Football 拉取**分钟级事件 + 场面统计（射正/角球/xG）**：
+本项目的训练/分析数据均来自 API-Football（**分钟级事件 + 射正/角球/xG 场面统计**）：
 
 ```bash
-# 设置 API key（免费档约 100 请求/天、10 请求/分钟）
+# 设置 API key
 export API_FOOTBALL_KEY=你的key
 
-# 拉取 2024 赛季最新 10 场（自动倒序、本地缓存、遇限速自动重试）
-python3 -m data.api_football_loader 2024 --limit 10
+# 单赛季：拉 2026 赛季最新 10 场（自动倒序、本地缓存、遇限速自动重试）
+python3 -m data.api_football_loader 2026 --limit 10
+
+# 单赛季：拉整个赛季
+python3 -m data.api_football_loader 2025 --all
+
+# 跨赛季：拉全局最新 200 场（自动从当前赛季往回补齐）
+python3 -m data.api_football_loader --latest 200
 ```
 
 - 缓存写入 `data/apifootball_raw/cache/`，汇总写入 `data/apifootball_raw/seasons/`
-- 重复运行命中缓存、零配额消耗；免费档实际可拉赛季为 **2022–2024**
+- 免费档约 100 请求/天、仅可拉 2022–2024；Pro 档 7500 请求/天、可拉当前赛季
+- 提速：`export API_FOOTBALL_DELAY=0.3`（Pro 档限速 300/分钟）
 
 分析这些数据（不消耗配额），校准特征权重：
 
