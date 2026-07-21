@@ -1,0 +1,32 @@
+{
+  // ============================================================
+  //  中超对阵预测示例 (自动从训练模型载入赛前 λ)
+  //  运行:  python3 -m football_betting.predict match_csl.json
+  //
+  //  只要填 home_team / away_team, 程序会用训练好的球队攻防强度
+  //  自动算出 prior_lambda_h / prior_lambda_a, 无需手填!
+  // ============================================================
+
+  "state": {
+    "home_team": "Shanghai Port FC",   // 主队 (支持模糊匹配, 如 "Shanghai Port")
+    "away_team": "Shenzhen Peng City",  // 客队
+
+    "minute": 55,                       // 当前分钟
+    "score_h": 1,                       // 主队进球
+    "score_a": 1,                       // 客队进球
+
+    "sot_h": 5, "sot_a": 3,             // 射正
+    "shots_h": 11, "shots_a": 6,        // 总射门
+    "corners_h": 6, "corners_a": 2,     // 角球
+    "possession_h": 62,                 // 主队控球率
+    "red_h": 0, "red_a": 0,             // 红牌
+    "xg_h": 1.6, "xg_a": 0.8            // 实时 xG
+    // prior_lambda_h/a 不用填, 会自动从模型算出
+  },
+
+  "odds": {
+    "home": 1.90, "draw": 3.40, "away": 4.50,
+    "over":  { "2.5": 2.05 },
+    "under": { "2.5": 1.78 }
+  }
+}

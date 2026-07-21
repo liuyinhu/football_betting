@@ -1,0 +1,95 @@
+{
+  "teams": {
+    "Beijing Guoan": {
+      "attack": 0.4846935184666372,
+      "defence": 0.11786487854565683
+    },
+    "Cangzhou Mighty Lions": {
+      "attack": -0.2537682212387858,
+      "defence": -0.3947248058535784
+    },
+    "Changchun Yatai": {
+      "attack": 0.03780434917662704,
+      "defence": -0.340306275062052
+    },
+    "Chengdu Rongcheng": {
+      "attack": 0.3236421983673122,
+      "defence": 0.35887089828107266
+    },
+    "Dalian Pro": {
+      "attack": -0.49135757341490943,
+      "defence": -0.21790265065456654
+    },
+    "Dalian Yingbo": {
+      "attack": -0.3008226059756874,
+      "defence": -0.10291119304384153
+    },
+    "Henan FC": {
+      "attack": -0.13360638696009294,
+      "defence": -0.07515705549802489
+    },
+    "Meizhou Hakka": {
+      "attack": -0.001437925543474337,
+      "defence": -0.36185690749221466
+    },
+    "Nantong Zhiyun": {
+      "attack": -0.3046644973248933,
+      "defence": -0.38797601603066967
+    },
+    "Qingdao Hainiu": {
+      "attack": -0.3844827084030744,
+      "defence": -0.24634676084846244
+    },
+    "Qingdao West Coast": {
+      "attack": 0.19470542468954083,
+      "defence": -0.42167834302231444
+    },
+    "Shandong Taishan": {
+      "attack": 0.3106356305417506,
+      "defence": -0.0716590347946399
+    },
+    "Shanghai Port FC": {
+      "attack": 0.6500889605764598,
+      "defence": 0.06818952851776304
+    },
+    "Shanghai Shenhua": {
+      "attack": 0.3671810669416353,
+      "defence": 0.3929401439231241
+    },
+    "Shenzhen FC": {
+      "attack": -0.6039108909274838,
+      "defence": -0.7235533653053923
+    },
+    "Shenzhen Peng City": {
+      "attack": -0.2772059030958061,
+      "defence": -0.40424746093638264
+    },
+    "Tianjin Jinmen Tiger": {
+      "attack": 0.03824510778938837,
+      "defence": -0.08321899409473597
+    },
+    "Wuhan Three Towns": {
+      "attack": -0.053927122526272464,
+      "defence": -0.15992569892523084
+    },
+    "Yunnan Yukun": {
+      "attack": 0.0831178959392079,
+      "defence": -0.33560917991629924
+    },
+    "Zhejiang Professional": {
+      "attack": 0.31506968292186305,
+      "defence": -0.2523269591164528
+    }
+  },
+  "home_adv": 0.24702354411166372,
+  "rho": -0.10731260195680767,
+  "n_matches": 559,
+  "latest_season": 2025,
+  "converged": true,
+  "nll": 780.1034317390222,
+  "train_years": [
+    2023,
+    2024,
+    2025
+  ]
+}
