@@ -1,0 +1,4442 @@
+[
+  {
+    "fixture_id": 925528090,
+    "season": 2026,
+    "date": "2026-03-06",
+    "home": "Chengdu Better City",
+    "away": "Shenzhen Peng City",
+    "hg": 5,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 975642928,
+    "season": 2026,
+    "date": "2026-03-07",
+    "home": "Tianjin Teda",
+    "away": "Chongqing Tongliang Long",
+    "hg": 0,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 948996934,
+    "season": 2026,
+    "date": "2026-03-07",
+    "home": "Shandong Luneng",
+    "away": "Liaoning Tieren",
+    "hg": 3,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 988315458,
+    "season": 2026,
+    "date": "2026-03-07",
+    "home": "Shanghai Shenhua",
+    "away": "Dalian Zhixing",
+    "hg": 5,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 989789506,
+    "season": 2026,
+    "date": "2026-03-07",
+    "home": "SHANGHAI SIPG",
+    "away": "Henan Jianye",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 946229913,
+    "season": 2026,
+    "date": "2026-03-07",
+    "home": "Yunnan Yukun",
+    "away": "Qingdao Jonoon",
+    "hg": 3,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 979644556,
+    "season": 2026,
+    "date": "2026-03-08",
+    "home": "Hangzhou Greentown",
+    "away": "Qingdao West Coast",
+    "hg": 2,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 917910062,
+    "season": 2026,
+    "date": "2026-03-08",
+    "home": "Wuhan Three Towns",
+    "away": "Beijing Guoan",
+    "hg": 0,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 983060963,
+    "season": 2026,
+    "date": "2026-03-13",
+    "home": "Wuhan Three Towns",
+    "away": "Dalian Zhixing",
+    "hg": 4,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 964908106,
+    "season": 2026,
+    "date": "2026-03-14",
+    "home": "Shandong Luneng",
+    "away": "Beijing Guoan",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 931285427,
+    "season": 2026,
+    "date": "2026-03-14",
+    "home": "Hangzhou Greentown",
+    "away": "Shanghai Shenhua",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 939975344,
+    "season": 2026,
+    "date": "2026-03-14",
+    "home": "Chongqing Tongliang Long",
+    "away": "Liaoning Tieren",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 966844973,
+    "season": 2026,
+    "date": "2026-03-14",
+    "home": "Shenzhen Peng City",
+    "away": "Tianjin Teda",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 913746680,
+    "season": 2026,
+    "date": "2026-03-15",
+    "home": "Henan Jianye",
+    "away": "Yunnan Yukun",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 908870029,
+    "season": 2026,
+    "date": "2026-03-15",
+    "home": "SHANGHAI SIPG",
+    "away": "Qingdao West Coast",
+    "hg": 4,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 948048809,
+    "season": 2026,
+    "date": "2026-03-15",
+    "home": "Chengdu Better City",
+    "away": "Qingdao Jonoon",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 940439217,
+    "season": 2026,
+    "date": "2026-03-20",
+    "home": "Dalian Zhixing",
+    "away": "SHANGHAI SIPG",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 901353461,
+    "season": 2026,
+    "date": "2026-03-20",
+    "home": "Qingdao Jonoon",
+    "away": "Hangzhou Greentown",
+    "hg": 1,
+    "ag": 4,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 963399975,
+    "season": 2026,
+    "date": "2026-03-21",
+    "home": "Beijing Guoan",
+    "away": "Shanghai Shenhua",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 931968668,
+    "season": 2026,
+    "date": "2026-03-21",
+    "home": "Liaoning Tieren",
+    "away": "Tianjin Teda",
+    "hg": 3,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 971093204,
+    "season": 2026,
+    "date": "2026-03-21",
+    "home": "Henan Jianye",
+    "away": "Wuhan Three Towns",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 965507869,
+    "season": 2026,
+    "date": "2026-03-21",
+    "home": "Chongqing Tongliang Long",
+    "away": "Chengdu Better City",
+    "hg": 3,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 904524726,
+    "season": 2026,
+    "date": "2026-03-21",
+    "home": "Qingdao West Coast",
+    "away": "Shenzhen Peng City",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 918863307,
+    "season": 2026,
+    "date": "2026-03-21",
+    "home": "Yunnan Yukun",
+    "away": "Shandong Luneng",
+    "hg": 4,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 905872783,
+    "season": 2026,
+    "date": "2026-04-03",
+    "home": "Chengdu Better City",
+    "away": "Qingdao West Coast",
+    "hg": 5,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 911346781,
+    "season": 2026,
+    "date": "2026-04-04",
+    "home": "Qingdao Jonoon",
+    "away": "Henan Jianye",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 911487911,
+    "season": 2026,
+    "date": "2026-04-04",
+    "home": "Liaoning Tieren",
+    "away": "Beijing Guoan",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 936958287,
+    "season": 2026,
+    "date": "2026-04-04",
+    "home": "Shandong Luneng",
+    "away": "Dalian Zhixing",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 913764085,
+    "season": 2026,
+    "date": "2026-04-04",
+    "home": "SHANGHAI SIPG",
+    "away": "Yunnan Yukun",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 933195020,
+    "season": 2026,
+    "date": "2026-04-05",
+    "home": "Hangzhou Greentown",
+    "away": "Chongqing Tongliang Long",
+    "hg": 0,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 965007011,
+    "season": 2026,
+    "date": "2026-04-05",
+    "home": "Shenzhen Peng City",
+    "away": "Wuhan Three Towns",
+    "hg": 5,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 973948877,
+    "season": 2026,
+    "date": "2026-04-05",
+    "home": "Tianjin Teda",
+    "away": "Shanghai Shenhua",
+    "hg": 2,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 943023449,
+    "season": 2026,
+    "date": "2026-04-10",
+    "home": "Dalian Zhixing",
+    "away": "Hangzhou Greentown",
+    "hg": 3,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 976403987,
+    "season": 2026,
+    "date": "2026-04-11",
+    "home": "Chongqing Tongliang Long",
+    "away": "Wuhan Three Towns",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 902347390,
+    "season": 2026,
+    "date": "2026-04-11",
+    "home": "Qingdao West Coast",
+    "away": "Liaoning Tieren",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 947865736,
+    "season": 2026,
+    "date": "2026-04-11",
+    "home": "Henan Jianye",
+    "away": "Shandong Luneng",
+    "hg": 0,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 914939688,
+    "season": 2026,
+    "date": "2026-04-11",
+    "home": "Shanghai Shenhua",
+    "away": "SHANGHAI SIPG",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 959849163,
+    "season": 2026,
+    "date": "2026-04-12",
+    "home": "Tianjin Teda",
+    "away": "Qingdao Jonoon",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 978746983,
+    "season": 2026,
+    "date": "2026-04-12",
+    "home": "Beijing Guoan",
+    "away": "Chengdu Better City",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 975847259,
+    "season": 2026,
+    "date": "2026-04-12",
+    "home": "Shenzhen Peng City",
+    "away": "Yunnan Yukun",
+    "hg": 3,
+    "ag": 4,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 958359538,
+    "season": 2026,
+    "date": "2026-04-17",
+    "home": "Qingdao Jonoon",
+    "away": "Qingdao West Coast",
+    "hg": 0,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 916072206,
+    "season": 2026,
+    "date": "2026-04-17",
+    "home": "Shandong Luneng",
+    "away": "SHANGHAI SIPG",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 982396556,
+    "season": 2026,
+    "date": "2026-04-17",
+    "home": "Chongqing Tongliang Long",
+    "away": "Shenzhen Peng City",
+    "hg": 2,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 910897702,
+    "season": 2026,
+    "date": "2026-04-17",
+    "home": "Hangzhou Greentown",
+    "away": "Beijing Guoan",
+    "hg": 0,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 904152239,
+    "season": 2026,
+    "date": "2026-04-17",
+    "home": "Wuhan Three Towns",
+    "away": "Chengdu Better City",
+    "hg": 0,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 920153517,
+    "season": 2026,
+    "date": "2026-04-17",
+    "home": "Yunnan Yukun",
+    "away": "Tianjin Teda",
+    "hg": 0,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 917961476,
+    "season": 2026,
+    "date": "2026-04-18",
+    "home": "Dalian Zhixing",
+    "away": "Henan Jianye",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 951710385,
+    "season": 2026,
+    "date": "2026-04-18",
+    "home": "Shanghai Shenhua",
+    "away": "Liaoning Tieren",
+    "hg": 3,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 970146929,
+    "season": 2026,
+    "date": "2026-04-21",
+    "home": "Shenzhen Peng City",
+    "away": "Beijing Guoan",
+    "hg": 0,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 962663270,
+    "season": 2026,
+    "date": "2026-04-21",
+    "home": "Chengdu Better City",
+    "away": "Yunnan Yukun",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 966220647,
+    "season": 2026,
+    "date": "2026-04-21",
+    "home": "Wuhan Three Towns",
+    "away": "Hangzhou Greentown",
+    "hg": 2,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 962649681,
+    "season": 2026,
+    "date": "2026-04-21",
+    "home": "SHANGHAI SIPG",
+    "away": "Chongqing Tongliang Long",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 935626040,
+    "season": 2026,
+    "date": "2026-04-21",
+    "home": "Tianjin Teda",
+    "away": "Shandong Luneng",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 975456979,
+    "season": 2026,
+    "date": "2026-04-22",
+    "home": "Liaoning Tieren",
+    "away": "Dalian Zhixing",
+    "hg": 0,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 976850947,
+    "season": 2026,
+    "date": "2026-04-22",
+    "home": "Qingdao West Coast",
+    "away": "Henan Jianye",
+    "hg": 0,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 929294494,
+    "season": 2026,
+    "date": "2026-04-22",
+    "home": "Shanghai Shenhua",
+    "away": "Qingdao Jonoon",
+    "hg": 2,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 928432810,
+    "season": 2026,
+    "date": "2026-04-25",
+    "home": "Chengdu Better City",
+    "away": "Hangzhou Greentown",
+    "hg": 4,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 986274622,
+    "season": 2026,
+    "date": "2026-04-25",
+    "home": "Beijing Guoan",
+    "away": "Tianjin Teda",
+    "hg": 2,
+    "ag": 4,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 909142296,
+    "season": 2026,
+    "date": "2026-04-25",
+    "home": "SHANGHAI SIPG",
+    "away": "Wuhan Three Towns",
+    "hg": 4,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 962271029,
+    "season": 2026,
+    "date": "2026-04-26",
+    "home": "Qingdao Jonoon",
+    "away": "Shandong Luneng",
+    "hg": 4,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 939338965,
+    "season": 2026,
+    "date": "2026-04-26",
+    "home": "Shenzhen Peng City",
+    "away": "Liaoning Tieren",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 976222948,
+    "season": 2026,
+    "date": "2026-04-26",
+    "home": "Chongqing Tongliang Long",
+    "away": "Qingdao West Coast",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 979799922,
+    "season": 2026,
+    "date": "2026-04-26",
+    "home": "Dalian Zhixing",
+    "away": "Yunnan Yukun",
+    "hg": 1,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 907323764,
+    "season": 2026,
+    "date": "2026-04-26",
+    "home": "Henan Jianye",
+    "away": "Shanghai Shenhua",
+    "hg": 0,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 988720921,
+    "season": 2026,
+    "date": "2026-05-01",
+    "home": "Henan Jianye",
+    "away": "Liaoning Tieren",
+    "hg": 4,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 965987105,
+    "season": 2026,
+    "date": "2026-05-01",
+    "home": "Dalian Zhixing",
+    "away": "Chongqing Tongliang Long",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 980827039,
+    "season": 2026,
+    "date": "2026-05-01",
+    "home": "Tianjin Teda",
+    "away": "Wuhan Three Towns",
+    "hg": 2,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 951988482,
+    "season": 2026,
+    "date": "2026-05-01",
+    "home": "Shandong Luneng",
+    "away": "Qingdao West Coast",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 918338756,
+    "season": 2026,
+    "date": "2026-05-01",
+    "home": "Shanghai Shenhua",
+    "away": "Chengdu Better City",
+    "hg": 2,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 963886751,
+    "season": 2026,
+    "date": "2026-05-02",
+    "home": "Qingdao Jonoon",
+    "away": "SHANGHAI SIPG",
+    "hg": 3,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 951716589,
+    "season": 2026,
+    "date": "2026-05-02",
+    "home": "Hangzhou Greentown",
+    "away": "Shenzhen Peng City",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 972526863,
+    "season": 2026,
+    "date": "2026-05-02",
+    "home": "Yunnan Yukun",
+    "away": "Beijing Guoan",
+    "hg": 3,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 909121369,
+    "season": 2026,
+    "date": "2026-05-05",
+    "home": "Qingdao West Coast",
+    "away": "Tianjin Teda",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 918060200,
+    "season": 2026,
+    "date": "2026-05-05",
+    "home": "Shandong Luneng",
+    "away": "Shanghai Shenhua",
+    "hg": 4,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 972148737,
+    "season": 2026,
+    "date": "2026-05-05",
+    "home": "Liaoning Tieren",
+    "away": "Chengdu Better City",
+    "hg": 0,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 915676942,
+    "season": 2026,
+    "date": "2026-05-05",
+    "home": "Chongqing Tongliang Long",
+    "away": "Henan Jianye",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 921501869,
+    "season": 2026,
+    "date": "2026-05-06",
+    "home": "Wuhan Three Towns",
+    "away": "Qingdao Jonoon",
+    "hg": 1,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 918171187,
+    "season": 2026,
+    "date": "2026-05-06",
+    "home": "SHANGHAI SIPG",
+    "away": "Shenzhen Peng City",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 942716528,
+    "season": 2026,
+    "date": "2026-05-06",
+    "home": "Beijing Guoan",
+    "away": "Dalian Zhixing",
+    "hg": 3,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 925350242,
+    "season": 2026,
+    "date": "2026-05-06",
+    "home": "Yunnan Yukun",
+    "away": "Hangzhou Greentown",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 980453313,
+    "season": 2026,
+    "date": "2026-05-09",
+    "home": "Shanghai Shenhua",
+    "away": "Chongqing Tongliang Long",
+    "hg": 2,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 931979592,
+    "season": 2026,
+    "date": "2026-05-09",
+    "home": "Chengdu Better City",
+    "away": "Henan Jianye",
+    "hg": 3,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 974264406,
+    "season": 2026,
+    "date": "2026-05-10",
+    "home": "Qingdao West Coast",
+    "away": "Wuhan Three Towns",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 942283062,
+    "season": 2026,
+    "date": "2026-05-10",
+    "home": "Shenzhen Peng City",
+    "away": "Shandong Luneng",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 935290521,
+    "season": 2026,
+    "date": "2026-05-10",
+    "home": "Liaoning Tieren",
+    "away": "Yunnan Yukun",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 952934621,
+    "season": 2026,
+    "date": "2026-05-10",
+    "home": "Beijing Guoan",
+    "away": "SHANGHAI SIPG",
+    "hg": 2,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 976128426,
+    "season": 2026,
+    "date": "2026-05-10",
+    "home": "Hangzhou Greentown",
+    "away": "Tianjin Teda",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 910567299,
+    "season": 2026,
+    "date": "2026-05-10",
+    "home": "Qingdao Jonoon",
+    "away": "Dalian Zhixing",
+    "hg": 3,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 949703152,
+    "season": 2026,
+    "date": "2026-05-15",
+    "home": "SHANGHAI SIPG",
+    "away": "Hangzhou Greentown",
+    "hg": 2,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 903418930,
+    "season": 2026,
+    "date": "2026-05-15",
+    "home": "Henan Jianye",
+    "away": "Shenzhen Peng City",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 988060574,
+    "season": 2026,
+    "date": "2026-05-15",
+    "home": "Tianjin Teda",
+    "away": "Chengdu Better City",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 956196978,
+    "season": 2026,
+    "date": "2026-05-15",
+    "home": "Beijing Guoan",
+    "away": "Qingdao Jonoon",
+    "hg": 4,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 966594846,
+    "season": 2026,
+    "date": "2026-05-15",
+    "home": "Dalian Zhixing",
+    "away": "Qingdao West Coast",
+    "hg": 2,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 972407316,
+    "season": 2026,
+    "date": "2026-05-16",
+    "home": "Wuhan Three Towns",
+    "away": "Liaoning Tieren",
+    "hg": 2,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 902507360,
+    "season": 2026,
+    "date": "2026-05-16",
+    "home": "Shandong Luneng",
+    "away": "Chongqing Tongliang Long",
+    "hg": 3,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 980983102,
+    "season": 2026,
+    "date": "2026-05-16",
+    "home": "Yunnan Yukun",
+    "away": "Shanghai Shenhua",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 975742417,
+    "season": 2026,
+    "date": "2026-05-19",
+    "home": "Tianjin Teda",
+    "away": "Henan Jianye",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 978971641,
+    "season": 2026,
+    "date": "2026-05-19",
+    "home": "Shenzhen Peng City",
+    "away": "Dalian Zhixing",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 940782923,
+    "season": 2026,
+    "date": "2026-05-19",
+    "home": "Qingdao West Coast",
+    "away": "Beijing Guoan",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 940454038,
+    "season": 2026,
+    "date": "2026-05-19",
+    "home": "Chengdu Better City",
+    "away": "SHANGHAI SIPG",
+    "hg": 0,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 986213452,
+    "season": 2026,
+    "date": "2026-05-20",
+    "home": "Liaoning Tieren",
+    "away": "Qingdao Jonoon",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 900322621,
+    "season": 2026,
+    "date": "2026-05-20",
+    "home": "Shanghai Shenhua",
+    "away": "Wuhan Three Towns",
+    "hg": 2,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 957426278,
+    "season": 2026,
+    "date": "2026-05-20",
+    "home": "Chongqing Tongliang Long",
+    "away": "Yunnan Yukun",
+    "hg": 0,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 979769912,
+    "season": 2026,
+    "date": "2026-05-20",
+    "home": "Hangzhou Greentown",
+    "away": "Shandong Luneng",
+    "hg": 4,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 942163725,
+    "season": 2026,
+    "date": "2026-05-23",
+    "home": "SHANGHAI SIPG",
+    "away": "Tianjin Teda",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 925415575,
+    "season": 2026,
+    "date": "2026-05-23",
+    "home": "Beijing Guoan",
+    "away": "Henan Jianye",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 952761240,
+    "season": 2026,
+    "date": "2026-05-23",
+    "home": "Dalian Zhixing",
+    "away": "Chengdu Better City",
+    "hg": 2,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 974432634,
+    "season": 2026,
+    "date": "2026-05-24",
+    "home": "Qingdao Jonoon",
+    "away": "Chongqing Tongliang Long",
+    "hg": 0,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 962831080,
+    "season": 2026,
+    "date": "2026-05-24",
+    "home": "Yunnan Yukun",
+    "away": "Qingdao West Coast",
+    "hg": 2,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 976624218,
+    "season": 2026,
+    "date": "2026-05-24",
+    "home": "Shandong Luneng",
+    "away": "Wuhan Three Towns",
+    "hg": 3,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 988471805,
+    "season": 2026,
+    "date": "2026-05-24",
+    "home": "Hangzhou Greentown",
+    "away": "Liaoning Tieren",
+    "hg": 0,
+    "ag": 5,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 961261366,
+    "season": 2026,
+    "date": "2026-05-24",
+    "home": "Shanghai Shenhua",
+    "away": "Shenzhen Peng City",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 972031558,
+    "season": 2026,
+    "date": "2026-05-29",
+    "home": "Liaoning Tieren",
+    "away": "SHANGHAI SIPG",
+    "hg": 3,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 954435110,
+    "season": 2026,
+    "date": "2026-05-30",
+    "home": "Qingdao West Coast",
+    "away": "Shanghai Shenhua",
+    "hg": 2,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 960830664,
+    "season": 2026,
+    "date": "2026-05-30",
+    "home": "Henan Jianye",
+    "away": "Hangzhou Greentown",
+    "hg": 0,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 933178609,
+    "season": 2026,
+    "date": "2026-05-30",
+    "home": "Chengdu Better City",
+    "away": "Shandong Luneng",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 902965716,
+    "season": 2026,
+    "date": "2026-05-30",
+    "home": "Shenzhen Peng City",
+    "away": "Qingdao Jonoon",
+    "hg": 3,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 930759242,
+    "season": 2026,
+    "date": "2026-05-30",
+    "home": "Chongqing Tongliang Long",
+    "away": "Beijing Guoan",
+    "hg": 2,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 977088465,
+    "season": 2026,
+    "date": "2026-05-31",
+    "home": "Tianjin Teda",
+    "away": "Dalian Zhixing",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 942726843,
+    "season": 2026,
+    "date": "2026-05-31",
+    "home": "Wuhan Three Towns",
+    "away": "Yunnan Yukun",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 938913650,
+    "season": 2026,
+    "date": "2026-06-26",
+    "home": "Qingdao Jonoon",
+    "away": "Yunnan Yukun",
+    "hg": 4,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 928112491,
+    "season": 2026,
+    "date": "2026-06-27",
+    "home": "Liaoning Tieren",
+    "away": "Shandong Luneng",
+    "hg": 1,
+    "ag": 5,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 948951514,
+    "season": 2026,
+    "date": "2026-06-27",
+    "home": "Henan Jianye",
+    "away": "SHANGHAI SIPG",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 908350338,
+    "season": 2026,
+    "date": "2026-06-27",
+    "home": "Shenzhen Peng City",
+    "away": "Chengdu Better City",
+    "hg": 2,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 941751028,
+    "season": 2026,
+    "date": "2026-06-27",
+    "home": "Chongqing Tongliang Long",
+    "away": "Tianjin Teda",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 966931925,
+    "season": 2026,
+    "date": "2026-06-27",
+    "home": "Beijing Guoan",
+    "away": "Wuhan Three Towns",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 914560085,
+    "season": 2026,
+    "date": "2026-06-28",
+    "home": "Qingdao West Coast",
+    "away": "Hangzhou Greentown",
+    "hg": 3,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 915847766,
+    "season": 2026,
+    "date": "2026-06-28",
+    "home": "Dalian Zhixing",
+    "away": "Shanghai Shenhua",
+    "hg": 1,
+    "ag": 4,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 945545398,
+    "season": 2026,
+    "date": "2026-07-03",
+    "home": "Yunnan Yukun",
+    "away": "Henan Jianye",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 980501092,
+    "season": 2026,
+    "date": "2026-07-04",
+    "home": "Liaoning Tieren",
+    "away": "Chongqing Tongliang Long",
+    "hg": 3,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 903358866,
+    "season": 2026,
+    "date": "2026-07-04",
+    "home": "Qingdao West Coast",
+    "away": "SHANGHAI SIPG",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 909139713,
+    "season": 2026,
+    "date": "2026-07-04",
+    "home": "Beijing Guoan",
+    "away": "Shandong Luneng",
+    "hg": 2,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 945676581,
+    "season": 2026,
+    "date": "2026-07-04",
+    "home": "Dalian Zhixing",
+    "away": "Wuhan Three Towns",
+    "hg": 3,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 912505801,
+    "season": 2026,
+    "date": "2026-07-04",
+    "home": "Tianjin Teda",
+    "away": "Shenzhen Peng City",
+    "hg": 3,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 947603352,
+    "season": 2026,
+    "date": "2026-07-05",
+    "home": "Qingdao Jonoon",
+    "away": "Chengdu Better City",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 900856021,
+    "season": 2026,
+    "date": "2026-07-05",
+    "home": "Shanghai Shenhua",
+    "away": "Hangzhou Greentown",
+    "hg": 3,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 932523652,
+    "season": 2026,
+    "date": "2026-07-10",
+    "home": "Shandong Luneng",
+    "away": "Yunnan Yukun",
+    "hg": 4,
+    "ag": 3,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 923126094,
+    "season": 2026,
+    "date": "2026-07-11",
+    "home": "Shenzhen Peng City",
+    "away": "Qingdao West Coast",
+    "hg": 3,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 910859836,
+    "season": 2026,
+    "date": "2026-07-11",
+    "home": "Chengdu Better City",
+    "away": "Chongqing Tongliang Long",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 902223647,
+    "season": 2026,
+    "date": "2026-07-14",
+    "home": "Hangzhou Greentown",
+    "away": "Qingdao Jonoon",
+    "hg": 3,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 954347737,
+    "season": 2026,
+    "date": "2026-07-17",
+    "home": "Qingdao West Coast",
+    "away": "Chengdu Better City",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 954483592,
+    "season": 2026,
+    "date": "2026-07-17",
+    "home": "Henan Jianye",
+    "away": "Qingdao Jonoon",
+    "hg": 5,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 911492831,
+    "season": 2026,
+    "date": "2026-07-17",
+    "home": "Beijing Guoan",
+    "away": "Liaoning Tieren",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 985891251,
+    "season": 2026,
+    "date": "2026-07-17",
+    "home": "Yunnan Yukun",
+    "away": "SHANGHAI SIPG",
+    "hg": 2,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 920514636,
+    "season": 2026,
+    "date": "2026-07-18",
+    "home": "Chongqing Tongliang Long",
+    "away": "Hangzhou Greentown",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 970945232,
+    "season": 2026,
+    "date": "2026-07-18",
+    "home": "Shanghai Shenhua",
+    "away": "Tianjin Teda",
+    "hg": 0,
+    "ag": 2,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 953787554,
+    "season": 2026,
+    "date": "2026-07-18",
+    "home": "Dalian Zhixing",
+    "away": "Shandong Luneng",
+    "hg": 3,
+    "ag": 1,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  },
+  {
+    "fixture_id": 957248007,
+    "season": 2026,
+    "date": "2026-07-18",
+    "home": "Wuhan Three Towns",
+    "away": "Shenzhen Peng City",
+    "hg": 2,
+    "ag": 0,
+    "home_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "away_stats": {
+      "shots": null,
+      "shots_on": null,
+      "corners": null,
+      "possession": null,
+      "fouls": null,
+      "yellow": null,
+      "red": null,
+      "xg": null
+    },
+    "events": []
+  }
+]

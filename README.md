@@ -22,8 +22,9 @@ qqq/                        # 项目根目录（在此运行所有命令）
 │   ├── csl_loader.py            # Match 数据类 + openfootball 赛果加载（备用）
 │   ├── train_strength.py        # Dixon-Coles/泊松 MLE 训练攻防强度
 │   ├── validate.py              # walk-forward 验证
-│   ├── team_names.py            # 中文队名 / 别名映射（对齐 API-Football 命名）
+│   ├── team_names.py            # 中文队名 / 别名映射（含辽宁铁人等新队）
 │   ├── api_football_loader.py   # API-Football 拉取 + 合并去重加载器
+│   ├── cfa_loader.py            # 中国足协官方 API 拉取（当前赛季赛果，队名权威）
 │   ├── analyze_apifootball.py   # 进球分布/相关性/权重校准分析
 │   ├── csl_strength.json        # 训练产出的强度模型
 │   └── apifootball_raw/         # API-Football 数据（唯一训练数据源）
@@ -35,19 +36,16 @@ qqq/                        # 项目根目录（在此运行所有命令）
 
 ## 数据来源
 
-本项目**统一使用 API-Football 数据**（`data/apifootball_raw/`）训练与分析：
+本项目用**两个互补数据源**，统一汇入 `data/apifootball_raw/seasons/`，经 `load_all_details()` 按 `fixture_id` 合并去重后训练：
 
-| 用途 | 说明 |
-|------|------|
-| **攻防强度模型**（赛前 λ） | 由所有已拉取赛季的赛果 MLE 拟合（Dixon-Coles/泊松） |
-| **实时特征权重** `FEATURE_WEIGHTS` | 由分钟级事件 + 射正/角球/xG 等场面统计校准 |
+| 数据源 | 负责赛季 | 提供内容 | 优势 |
+|--------|---------|---------|------|
+| **中国足协官方 API**（`cfa_loader.py`） | 当前赛季（2026） | 赛程赛果 + 比分 | 官方、免费、队名/升降级永远最新准确 |
+| **API-Football**（`api_football_loader.py`） | 历史赛季（2024/2025） | 赛果 + 射正/角球/xG + 分钟级事件 | 场面统计丰富，用于校准 `FEATURE_WEIGHTS` |
 
-数据经 `load_all_details()` 按 `fixture_id` **合并去重**后统一训练，队名自洽
-（如 `SHANGHAI SIPG`=上海海港、`Shandong Luneng`=山东泰山），中文映射见 `team_names.py`。
+两源队名经归一化对齐（如 `SHANGHAI SIPG`=上海海港、`Shandong Luneng`=山东泰山），同一支队跨赛季自洽，中文映射见 `team_names.py`。
 
-> 说明：早期版本曾用 openfootball（`csl_raw/`）训练强度，因其与 API-Football
-> 队名风格不一致，现已**全面切换为 API-Football 单一数据源**。`csl_loader.py`
-> 仅保留 `Match` 数据类供训练器复用。
+> 为什么引入官方源：API-Football 的 **2026 中超参赛名单滞后**（缺辽宁铁人、青岛西海岸、深圳新鹏城，却混入已降级的队）；中国足协官方 API 名单准确，故当前赛季改用官方数据。早期版本曾用 openfootball（`csl_loader.py` 仅保留 `Match` 数据类）。
 
 ## 安装
 
@@ -85,27 +83,40 @@ python3 predict.py -t
 python3 predict.py match.example.json
 ```
 
-## 拉取真实中超数据（API-Football）
+## 拉取真实中超数据
 
-本项目的训练/分析数据均来自 API-Football（**分钟级事件 + 射正/角球/xG 场面统计**）：
+### 方式一：中国足协官方 API（推荐，当前赛季）
+
+官方、免费、无需鉴权，队名/升降级永远最新准确（含辽宁铁人等新升班马）：
+
+```bash
+# 抓取当前赛季（2026）全部已完赛场次，保存到 seasons/csl_2026_details.json
+python3 -m data.cfa_loader
+```
+
+- 数据源：`https://api.cfl-china.cn`（中超 CSL / 中甲 CFL1 / 中乙 CFL2）
+- 只提供赛程赛果 + 比分，**无**射正/角球/xG，故仅用于训练强度模型
+- 只能取当前赛季（服务端忽略历史赛季参数）
+
+### 方式二：API-Football（历史赛季 + 场面统计）
+
+提供**分钟级事件 + 射正/角球/xG**，用于校准 `FEATURE_WEIGHTS`：
 
 ```bash
 # 设置 API key
 export API_FOOTBALL_KEY=你的key
 
-# 单赛季：拉 2026 赛季最新 10 场（自动倒序、本地缓存、遇限速自动重试）
-python3 -m data.api_football_loader 2026 --limit 10
+# 单赛季：拉 2025 赛季最新 10 场（自动倒序、本地缓存、遇限速自动重试）
+python3 -m data.api_football_loader 2025 --limit 10
 
 # 单赛季：拉整个赛季
 python3 -m data.api_football_loader 2025 --all
-
-# 跨赛季：拉全局最新 200 场（自动从当前赛季往回补齐）
-python3 -m data.api_football_loader --latest 200
 ```
 
 - 缓存写入 `data/apifootball_raw/cache/`，汇总写入 `data/apifootball_raw/seasons/`
 - 免费档约 100 请求/天、仅可拉 2022–2024；Pro 档 7500 请求/天、可拉当前赛季
 - 提速：`export API_FOOTBALL_DELAY=0.3`（Pro 档限速 300/分钟）
+- ⚠️ 其当前赛季参赛名单可能滞后，**当前赛季请优先用方式一（官方 API）**
 
 分析这些数据（不消耗配额），校准特征权重：
 

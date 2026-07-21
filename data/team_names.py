@@ -14,12 +14,12 @@ _EN_TO_ZH = {
     "Changchun Yatai":          ["长春亚泰", "亚泰"],
     "Chengdu Better City":      ["成都蓉城", "成都", "蓉城"],
     "Chongqing Tongliang Long": ["重庆铜梁龙", "重庆", "铜梁龙"],
-    "Dalian Zhixing":           ["大连智行", "大连英博", "大连"],
-    "Hangzhou Greentown":       ["杭州绿城", "浙江队", "浙江绿城", "绿城"],
-    "Henan Jianye":             ["河南建业", "河南队", "河南嵩山龙门", "建业"],
+    "Dalian Zhixing":           ["大连英博海发", "大连英博", "大连智行", "大连"],
+    "Hangzhou Greentown":       ["浙江俱乐部绿城", "杭州绿城", "浙江队", "浙江绿城", "绿城"],
+    "Henan Jianye":             ["河南俱乐部彩陶坊", "河南彩陶坊", "河南建业", "河南队", "河南嵩山龙门", "建业", "彩陶坊"],
     "Meizhou Kejia":            ["梅州客家", "梅州"],
     "Nantong Zhiyun":           ["南通支云", "南通"],
-    "Qingdao Jonoon":           ["青岛中能", "中能"],
+    "Qingdao Jonoon":           ["青岛海牛", "青岛中能", "海牛", "中能"],
     "Qingdao Youth Island":     ["青岛青春岛", "青春岛"],
     "SHANGHAI SIPG":            ["上海海港", "海港", "上海上港", "上港"],
     "Shandong Luneng":          ["山东泰山", "泰山", "山东鲁能", "鲁能"],
@@ -30,6 +30,10 @@ _EN_TO_ZH = {
     "Tianjin Teda":             ["天津泰达", "泰达", "天津津门虎", "津门虎"],
     "Wuhan Three Towns":        ["武汉三镇", "三镇"],
     "Yunnan Yukun":             ["云南玉昆", "玉昆"],
+    # —— 2026 赛季新升/新进球队（数据源：中国足协官方 API）——
+    "Liaoning Tieren":          ["辽宁铁人", "辽宁铁人楠波湾", "辽宁队", "铁人"],
+    "Qingdao West Coast":       ["青岛西海岸", "西海岸"],
+    "Shenzhen Peng City":       ["深圳新鹏城", "深圳", "新鹏城", "鹏城"],
 }
 
 # 构建反向映射: 中文 -> 英文
