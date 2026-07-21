@@ -78,7 +78,10 @@ python3 -m data.train_strength
 # walk-forward 验证（默认：2024+2025 训练、2026 测试）
 python3 -m data.validate
 
-# 生成带中文注释的 JSON 输入模板，编辑后预测
+# ★ 最简单：只给两个队名做赛前胜率预测
+python3 predict.py 辽宁铁人 北京国安
+
+# 生成带中文注释的 JSON 输入模板，编辑后预测（可填实时比分/赔率）
 python3 predict.py -t
 python3 predict.py match.example.json
 ```

@@ -331,13 +331,40 @@ def report(state: MatchState, odds: OddsSnapshot) -> None:
     print("\n⚠️ 仅供学习研究，模型不保证盈利，请勿用于真实赌博。")
 
 
+def build_from_teams(home: str, away: str) -> tuple[MatchState, OddsSnapshot]:
+    """只给主客队名做赛前预测（minute=0, 比分 0-0），λ 由训练模型自动填充。"""
+    s = {"home_team": home, "away_team": away, "minute": 0,
+         "score_h": 0, "score_a": 0}
+    _apply_trained_lambdas(s)
+    if "prior_lambda_h" not in s:
+        raise SystemExit(
+            f"无法为 '{home}' 或 '{away}' 载入赛前 λ。请检查队名是否正确，"
+            f"或先运行: python3 -m data.train_strength")
+    state = MatchState(match_id="PREMATCH", minute=0,
+                       **{k: v for k, v in s.items()
+                          if k not in ("match_id", "minute", "home_team", "away_team")})
+    odds = OddsSnapshot(match_id="PREMATCH", minute=0)
+    return state, odds
+
+
 def main() -> None:
     args = sys.argv[1:]
     if args and args[0] in ("-t", "--template"):
         write_template()
         return
-    if args:
+    if len(args) == 1 and Path(args[0]).exists():
+        # 单个已存在的文件 -> JSON 模式
         state, odds = build_from_json(args[0])
+    elif len(args) >= 2:
+        # 两个参数 -> 只按队名做赛前预测:  python3 predict.py 主队 客队
+        state, odds = build_from_teams(args[0], args[1])
+    elif args:
+        # 单个参数但不是文件 -> 提示用法
+        raise SystemExit(
+            f"找不到文件 '{args[0]}'。用法:\n"
+            f"  赛前预测(只给队名):  python3 predict.py 主队 客队\n"
+            f"  文件预测:            python3 predict.py match.json\n"
+            f"  交互式:              python3 predict.py")
     else:
         state, odds = build_from_prompts()
     report(state, odds)
