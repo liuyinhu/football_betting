@@ -1,19 +1,19 @@
-"""Interactive real-match predictor.
+"""交互式真实比赛预测器。
 
-You input the CURRENT live match state (score, minute, shots, corners, etc.)
-and the CURRENT market odds. The program outputs:
-  - final score probability distribution (top scores)
-  - 1X2 / Over-Under / BTTS probabilities
-  - value bet recommendations (EV + Kelly stake)
+你输入当前的实时比赛状态(比分、分钟、射门、角球等)
+和当前的市场赔率。程序输出：
+  - 最终比分概率分布(概率最高的几个比分)
+  - 胜平负 / 大小球 / 双方进球 概率
+  - 价值投注推荐(EV + 凯利仓位)
 
-Two ways to use:
+两种用法：
 
-1) Interactive (prompts you step by step):
+1) 交互式(逐步提问):
        python3 -m football_betting.predict
 
-2) Edit a JSON file and pass it (repeatable, no re-typing):
+2) 编辑一个 JSON 文件并传入(可重复使用, 无需重复输入):
        python3 -m football_betting.predict match.json
-   (a template is written to match.example.json on first run)
+   (首次运行会写出模板文件 match.example.json)
 """
 from __future__ import annotations
 import json
@@ -26,7 +26,7 @@ from .strategy.decision import evaluate
 
 
 # ---------------------------------------------------------------------------
-# helpers
+# 辅助函数
 # ---------------------------------------------------------------------------
 def _ask(prompt: str, cast, default):
     raw = input(f"{prompt} [{default}]: ").strip()
@@ -35,7 +35,7 @@ def _ask(prompt: str, cast, default):
     try:
         return cast(raw)
     except ValueError:
-        print(f"  ! invalid, using default {default}")
+        print(f"  ! 无效输入, 使用默认值 {default}")
         return default
 
 
@@ -88,12 +88,12 @@ def build_from_prompts() -> tuple[MatchState, OddsSnapshot]:
 
 
 def _strip_json_comments(text: str) -> str:
-    """Remove // line comments and /* */ block comments so a commented
-    JSON template can still be parsed by the standard json module."""
+    """剔除 // 行注释和 /* */ 块注释, 让带注释的 JSON
+    仍能被标准 json 模块解析。"""
     import re
-    # remove /* ... */ block comments
+    # 剔除 /* ... */ 块注释
     text = re.sub(r"/\*.*?\*/", "", text, flags=re.DOTALL)
-    # remove // line comments (but keep :// inside strings like http://)
+    # 剔除 // 行注释(保留字符串内的 :// 如 http://)
     out_lines = []
     for line in text.splitlines():
         in_str = False
@@ -113,33 +113,46 @@ def _strip_json_comments(text: str) -> str:
                 cut = i
                 break
         out_lines.append(line[:cut] if cut is not None else line)
-    # remove trailing commas before } or ]
+    # 剔除 } 或 ] 前的多余逗号
     joined = "\n".join(out_lines)
     joined = re.sub(r",(\s*[}\]])", r"\1", joined)
     return joined
 
 
 def _fuzzy_find_team(name: str, teams: dict) -> str | None:
-    """Case-insensitive substring / difflib match of a team name."""
+    """将球队名(中文或英文)匹配到模型中的键。
+
+    顺序: 精确匹配 -> 中文映射 -> 忽略大小写 -> 子串匹配 -> difflib 模糊匹配。
+    """
     if name in teams:
         return name
+
+    # 先尝试中文 -> 英文映射
+    try:
+        from .data.team_names import zh_to_en
+        mapped = zh_to_en(name)
+        if mapped and mapped in teams:
+            return mapped
+    except Exception:
+        pass
+
     low = name.lower().strip()
     for t in teams:
         if t.lower() == low:
             return t
-    # substring match
+    # 子串匹配
     cands = [t for t in teams if low in t.lower() or t.lower() in low]
     if len(cands) == 1:
         return cands[0]
-    # difflib closest
+    # difflib 最相近匹配
     import difflib
     close = difflib.get_close_matches(name, list(teams), n=1, cutoff=0.6)
     return close[0] if close else (cands[0] if cands else None)
 
 
 def _apply_trained_lambdas(s: dict) -> None:
-    """If s has home_team/away_team and a trained model exists, fill
-    prior_lambda_h/a automatically (unless user already provided them)."""
+    """若 s 中有 home_team/away_team 且存在训练模型,
+    则自动填充 prior_lambda_h/a(除非用户已手动提供)。"""
     home_team = s.get("home_team")
     away_team = s.get("away_team")
     if not home_team or not away_team:
@@ -161,18 +174,57 @@ def _apply_trained_lambdas(s: dict) -> None:
         lam_h, lam_a = expected_lambdas(model, h, a)
         s.setdefault("prior_lambda_h", round(lam_h, 3))
         s.setdefault("prior_lambda_a", round(lam_a, 3))
-        print(f"✓ 已从训练模型载入赛前 λ:  {h} {lam_h:.2f}  vs  {a} {lam_a:.2f}")
+        try:
+            from .data.team_names import en_to_zh
+            hz, az = en_to_zh(h) or h, en_to_zh(a) or a
+        except Exception:
+            hz, az = h, a
+        print(f"✓ 已从训练模型载入赛前 λ:  {hz}({h}) {lam_h:.2f}  vs  {az}({a}) {lam_a:.2f}")
     except Exception as e:
         print(f"⚠️ 自动 λ 失败: {e}")
+
+
+# ---------------------------------------------------------------------------
+# 中文字段名 -> 内部英文键的映射
+# ---------------------------------------------------------------------------
+_STATE_KEY_ALIASES = {
+    "主队": "home_team", "客队": "away_team",
+    "主队名": "home_team", "客队名": "away_team",
+    "分钟": "minute", "比赛分钟": "minute", "时间": "minute",
+    "主队进球": "score_h", "客队进球": "score_a",
+    "主队比分": "score_h", "客队比分": "score_a",
+    "主队射门": "shots_h", "客队射门": "shots_a",
+    "主队射正": "sot_h", "客队射正": "sot_a",
+    "主队角球": "corners_h", "客队角球": "corners_a",
+    "主队危险进攻": "dangerous_attacks_h", "客队危险进攻": "dangerous_attacks_a",
+    "主队控球": "possession_h", "主队控球率": "possession_h", "控球率": "possession_h",
+    "主队红牌": "red_h", "客队红牌": "red_a",
+    "主队黄牌": "yellow_h", "客队黄牌": "yellow_a",
+    "主队犯规": "fouls_h", "客队犯规": "fouls_a",
+    "主队xg": "xg_h", "客队xg": "xg_a", "主队xG": "xg_h", "客队xG": "xg_a",
+    "主队预期进球": "prior_lambda_h", "客队预期进球": "prior_lambda_a",
+}
+_ODDS_KEY_ALIASES = {
+    "主胜": "home", "平局": "draw", "客胜": "away", "平": "draw",
+    "大球": "over", "小球": "under", "大": "over", "小": "under",
+    "精确比分": "exact", "比分": "exact",
+}
+_TOP_KEY_ALIASES = {"比赛状态": "state", "场面": "state", "赔率": "odds", "投注赔率": "odds"}
+
+
+def _translate_keys(d: dict, alias: dict) -> dict:
+    """将中文 key 映射为英文 key; 未知 key 保持不变。"""
+    return {alias.get(k, k): v for k, v in d.items()}
 
 
 def build_from_json(path: str) -> tuple[MatchState, OddsSnapshot]:
     raw = Path(path).read_text(encoding="utf-8")
     data = json.loads(_strip_json_comments(raw))
-    s = data.get("state", {})
-    o = data.get("odds", {})
+    data = _translate_keys(data, _TOP_KEY_ALIASES)
+    s = _translate_keys(data.get("state", {}), _STATE_KEY_ALIASES)
+    o = _translate_keys(data.get("odds", {}), _ODDS_KEY_ALIASES)
 
-    # If home_team/away_team are given, auto-fill prior lambdas from trained model
+    # 若提供了 home_team/away_team, 自动从训练模型填充赛前 lambda
     _apply_trained_lambdas(s)
 
     state = MatchState(match_id=s.get("match_id", "LIVE"), minute=s.get("minute", 45),
@@ -243,7 +295,7 @@ def write_template(path: str = "match.example.json") -> None:
 
 
 # ---------------------------------------------------------------------------
-# output
+# 结果输出
 # ---------------------------------------------------------------------------
 def report(state: MatchState, odds: OddsSnapshot) -> None:
     probs = outcome_probabilities(state)

@@ -1,53 +1,113 @@
-# Football Live Betting Predictor
+# 足球实时预测与投注推荐系统
 
-A Python framework that consumes **live match state** (score, minute, shots, corners, fouls, red cards, xG …) plus **live market odds**, and produces:
+一个 Python 框架，输入**实时比赛状态**（比分、分钟、射门、角球、犯规、红牌、xG 等）
+和**实时市场赔率**，输出：
 
-1. Real-time score / outcome probabilities (time-varying Poisson + Dixon-Coles correction)
-2. Positive-EV bet recommendations
-3. Fractional-Kelly stake sizing with risk caps
+1. 实时比分 / 胜平负概率（时变泊松模型 + Dixon-Coles 修正）
+2. 正期望值（EV）的投注推荐
+3. 带风险上限的分数凯利（Kelly）仓位建议
 
-> ⚠️ This is an **educational / research** framework. Gambling is illegal in mainland China and long-term profitability against efficient bookmakers is very hard. Use for simulation only.
+> ⚠️ 本项目为**学习 / 研究**框架。中国大陆赌博违法，且长期战胜高效博彩公司极其困难，请仅用于模拟研究。
 
-## Structure
+## 项目结构
 
 ```
 football_betting/
-├── core/state.py           # dataclasses: MatchState, OddsSnapshot, BetRecommendation
-├── models/poisson_live.py  # time-varying Poisson + DC score/outcome distribution
-├── strategy/decision.py    # EV filter + fractional-Kelly stake sizing
-├── feeds/simulated.py      # synthetic in-play feed (for demo & backtest)
-├── backtest/paper_trader.py# simple paper-trading engine
-└── main.py                 # end-to-end runnable demo
+├── core/state.py            # 数据类：MatchState、OddsSnapshot、BetRecommendation
+├── models/poisson_live.py   # 时变泊松 + DC 比分/胜平负分布、FEATURE_WEIGHTS
+├── strategy/decision.py     # EV 过滤 + 分数凯利仓位
+├── feeds/simulated.py       # 模拟实时数据源（用于演示与回测）
+├── backtest/paper_trader.py # 简易纸面交易引擎
+├── data/                    # 数据加载、训练、验证、队名映射（详见下方）
+│   ├── csl_loader.py            # openfootball 中超赛果加载
+│   ├── train_strength.py        # Dixon-Coles/泊松 MLE 训练攻防强度
+│   ├── validate.py              # walk-forward 验证
+│   ├── team_names.py            # 中文队名 / 别名映射
+│   ├── api_football_loader.py   # API-Football 拉取分钟级事件+场面统计
+│   ├── analyze_apifootball.py   # 进球分布/相关性/权重校准分析
+│   ├── csl_strength.json        # 训练产出的强度模型
+│   ├── csl_raw/                 # openfootball 原始赛果（按赛季 txt）
+│   └── apifootball_raw/         # API-Football 数据
+│       ├── cache/                   # 单场缓存 fixture_<id>.json（不入库）
+│       └── seasons/                 # 赛季汇总 csl_<season>_details.json
+├── predict.py               # 交互式 / JSON 文件预测入口
+└── main.py                  # 端到端可运行演示
 ```
 
-## Install
+## 数据来源与分工
+
+本项目使用两个互补的数据源，**分工明确、不混用**：
+
+| 数据源 | 内容 | 用途 |
+|--------|------|------|
+| **openfootball**（`csl_raw/`） | 8 赛季完整赛果、队名统一 | 训练**攻防强度模型**（赛前 λ） |
+| **API-Football**（`apifootball_raw/`） | 分钟级事件 + 射正/角球/xG 等场面统计 | 校准**实时特征权重** `FEATURE_WEIGHTS` |
+
+> ⚠️ 两个数据源队名风格不同（如 `Shanghai Port FC` vs `SHANGHAI SIPG`），**不能直接合并训练强度**，否则同队会被拆成两个实体。详见 [USAGE.md](USAGE.md)。
+
+## 安装
 
 ```bash
 pip install -r football_betting/requirements.txt
 ```
 
-## Run demo (single simulated match)
+## 运行演示（单场模拟比赛）
 
 ```bash
 python -m football_betting.main
 ```
 
-## Monte-Carlo over 500 matches
+## 蒙特卡洛回测（500 场）
 
 ```bash
 python -m football_betting.main mc 500
 ```
 
-## Wiring a real data source
+## 预测真实比赛
 
-Implement a class exposing the same interface as `SimulatedFeed`:
+详见 [USAGE.md](USAGE.md)，涵盖训练中超模型、赛前预测、实时预测、中文队名 / 中文字段等完整用法。
+
+```bash
+# 生成带中文注释的 JSON 输入模板
+python -m football_betting.predict -t
+
+# 编辑后运行预测
+python -m football_betting.predict match.example.json
+```
+
+## 拉取真实中超数据（API-Football）
+
+除了 openfootball 赛果，还可用 API-Football 拉取**分钟级事件 + 场面统计（射正/角球/xG）**：
+
+```bash
+# 设置 API key（免费档约 100 请求/天、10 请求/分钟）
+export API_FOOTBALL_KEY=你的key
+
+# 拉取 2024 赛季最新 10 场（自动倒序、本地缓存、遇限速自动重试）
+python3 -m football_betting.data.api_football_loader 2024 --limit 10
+```
+
+- 缓存写入 `data/apifootball_raw/cache/`，汇总写入 `data/apifootball_raw/seasons/`
+- 重复运行命中缓存、零配额消耗；免费档实际可拉赛季为 **2022–2024**
+
+分析这些数据（不消耗配额），校准特征权重：
+
+```bash
+python3 -m football_betting.data.analyze_apifootball 2024
+```
+
+输出：进球分钟分布、各特征与进球的相关性、泊松回归对 `FEATURE_WEIGHTS` 的校准建议。
+
+## 接入真实数据源
+
+实现一个与 `SimulatedFeed` 接口一致的类：
 
 ```python
 class MyLiveFeed:
     def step(self) -> tuple[MatchState, OddsSnapshot]: ...
 ```
 
-then feed it into the same evaluation pipeline:
+然后接入同一套评估流程：
 
 ```python
 from football_betting.strategy.decision import evaluate
@@ -56,25 +116,26 @@ for rec in evaluate(state, odds):
     print(rec)
 ```
 
-Recommended real sources:
-- **Match stats**: API-Football, SportMonks, Understat
-- **Odds**: Betfair Exchange API (best), Pinnacle, OddsPortal
+推荐的真实数据源：
+- **比赛统计**：API-Football、SportMonks、Understat
+- **赔率**：Betfair 交易所 API（最佳）、Pinnacle、OddsPortal
 
-## Tuning knobs
+## 可调参数
 
-`strategy/decision.py`:
-- `MIN_EDGE`     – minimum EV required to place a bet (default 3%)
-- `KELLY_FRACTION` – fraction of full Kelly (default 1/4)
-- `MAX_STAKE_PER_BET` – hard cap per bet (default 2%)
-- `MIN_ODDS`, `MAX_ODDS` – filter extreme odds
+`strategy/decision.py`：
+- `MIN_EDGE` — 下注所需的最小 EV（默认 3%）
+- `KELLY_FRACTION` — 凯利比例（默认 1/4）
+- `MAX_STAKE_PER_BET` — 单注硬上限（默认 2%）
+- `MIN_ODDS`、`MAX_ODDS` — 过滤极端赔率
 
-`models/poisson_live.py`:
-- `FEATURE_WEIGHTS`  – how each in-play stat pushes λ up/down
-- `RED_CARD_PENALTY` – multiplier when a team goes down to 10 men
+`models/poisson_live.py`：
+- `FEATURE_WEIGHTS` — 各项场面统计对 λ 的推动权重
+- `RED_CARD_PENALTY` — 一方减员至 10 人时的 λ 乘数
 
-## Next steps
+## 后续方向
 
-- Replace `SimulatedFeed` with a real websocket / REST feed
-- Learn `FEATURE_WEIGHTS` from historical minute-by-minute data (LightGBM)
-- Add walk-forward backtesting on a full season
-- Add persistence (SQLite) + a Telegram/企业微信 notifier
+- 用真实的 websocket / REST 数据源替换 `SimulatedFeed`
+- 扩大 API-Football 样本量（80+ 场）后重跑 `analyze_apifootball`，稳健校准 `FEATURE_WEIGHTS`
+- 用历史逐分钟数据学习时变强度曲线（LightGBM）
+- 增加整赛季的 walk-forward 回测
+- 增加持久化（SQLite）+ Telegram / 企业微信 通知

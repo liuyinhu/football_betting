@@ -1,10 +1,10 @@
-"""Simple backtester / paper-trading simulator.
+"""简易回测 / 纸面模拟下注器。
 
-For each tick from a feed:
-- pick the *best* recommended bet (if any)
-- place it with the recommended stake fraction
-- settle at the end of match using observed final score
-- track bankroll, ROI, hit rate
+对数据流的每个 tick：
+- 选出最优的推荐投注(如果有)
+- 按推荐仓位下注
+- 终场时用实际最终比分结算
+- 跟踪本金、ROI、命中率
 """
 from __future__ import annotations
 from dataclasses import dataclass, field
@@ -18,13 +18,13 @@ from ..strategy.decision import evaluate
 class OpenBet:
     minute_placed: int
     rec: BetRecommendation
-    stake: float          # in bankroll units
+    stake: float          # 以本金单位计
 
     def settle(self, final_state: MatchState) -> float:
-        """Return profit (positive = win, negative = loss)."""
+        """返回盈亏(正=赢, 负=输)。"""
         win = _did_win(self.rec.market, final_state)
         if win is None:
-            return 0.0  # unresolved
+            return 0.0  # 无法结算
         return self.stake * (self.rec.odds - 1) if win else -self.stake
 
 
@@ -35,7 +35,7 @@ def _did_win(market: str, s: MatchState) -> bool | None:
         if sel == "draw": return s.score_h == s.score_a
         if sel == "away": return s.score_h < s.score_a
     if kind == "OU":
-        # sel like "over2.5" / "under2.5"
+        # sel 形如 "over2.5" / "under2.5"
         side = "over" if sel.startswith("over") else "under"
         line = float(sel.replace("over", "").replace("under", ""))
         total = s.score_h + s.score_a
@@ -50,7 +50,7 @@ def _did_win(market: str, s: MatchState) -> bool | None:
 class PaperTrader:
     bankroll: float = 1.0
     max_open_per_match: int = 3
-    dedupe: bool = True                # don't repeat same market twice
+    dedupe: bool = True                # 不重复下同一市场
     open_bets: List[OpenBet] = field(default_factory=list)
     placed_markets: set = field(default_factory=set)
     history: list = field(default_factory=list)

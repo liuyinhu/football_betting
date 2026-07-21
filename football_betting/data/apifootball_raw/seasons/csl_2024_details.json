@@ -1,0 +1,5813 @@
+[
+  {
+    "fixture_id": 1173272,
+    "season": 2024,
+    "date": "2024-11-02T07:30:00+00:00",
+    "home": "Beijing Guoan",
+    "away": "Henan Jianye",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": 17,
+      "shots_on": 7,
+      "corners": 10,
+      "possession": 58.0,
+      "fouls": 11,
+      "yellow": 2,
+      "red": null,
+      "xg": 1.65
+    },
+    "away_stats": {
+      "shots": 20,
+      "shots_on": 4,
+      "corners": 4,
+      "possession": 42.0,
+      "fouls": 16,
+      "yellow": 3,
+      "red": null,
+      "xg": 1.75
+    },
+    "events": [
+      {
+        "minute": 27,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Var",
+        "detail": "Goal cancelled",
+        "player": "Hao Fang"
+      },
+      {
+        "minute": 33,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Hao Fang"
+      },
+      {
+        "minute": 41,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Guga"
+      },
+      {
+        "minute": 45,
+        "extra": 1,
+        "team": "Henan Jianye",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Iago Maidana"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Fang Hao"
+      },
+      {
+        "minute": 69,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Yang Yilin"
+      },
+      {
+        "minute": 69,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Ding Haifeng"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Zhang Yuan"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Chi Zhongguo"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Đ. Denić"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Lin Liangming"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Iago Maidana"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Yeljan Shinar"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "F. Acheampong"
+      },
+      {
+        "minute": 90,
+        "extra": 3,
+        "team": "Beijing Guoan",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Fabio Abreu"
+      },
+      {
+        "minute": 90,
+        "extra": 4,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Cao Gu"
+      },
+      {
+        "minute": 90,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Huang Ruifeng"
+      },
+      {
+        "minute": 90,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Guga"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173274,
+    "season": 2024,
+    "date": "2024-11-02T07:30:00+00:00",
+    "home": "Changchun Yatai",
+    "away": "Hangzhou Greentown",
+    "hg": 2,
+    "ag": 2,
+    "home_stats": {
+      "shots": 12,
+      "shots_on": 6,
+      "corners": 2,
+      "possession": 29.0,
+      "fouls": 11,
+      "yellow": 0,
+      "red": null,
+      "xg": 1.17
+    },
+    "away_stats": {
+      "shots": 25,
+      "shots_on": 8,
+      "corners": 10,
+      "possession": 71.0,
+      "fouls": 14,
+      "yellow": 1,
+      "red": null,
+      "xg": 3.31
+    },
+    "events": [
+      {
+        "minute": 3,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Wang Yaopeng"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Wang Yu"
+      },
+      {
+        "minute": 55,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "R. Berić"
+      },
+      {
+        "minute": 57,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Var",
+        "detail": "Goal confirmed",
+        "player": "Robert Berić"
+      },
+      {
+        "minute": 58,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Tan Long"
+      },
+      {
+        "minute": 62,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Nok Hang Leung"
+      },
+      {
+        "minute": 64,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Dilumut Tudi"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Wu Wei"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Yao Junsheng"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Zhang Jiaqi"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Var",
+        "detail": "Penalty cancelled",
+        "player": "Jean Evrard Kouassi"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "F. Andrijašević"
+      },
+      {
+        "minute": 88,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Gao Di"
+      },
+      {
+        "minute": 90,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Li Shenyuan"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173269,
+    "season": 2024,
+    "date": "2024-11-02T07:30:00+00:00",
+    "home": "SHANGHAI SIPG",
+    "away": "Tianjin Teda",
+    "hg": 5,
+    "ag": 0,
+    "home_stats": {
+      "shots": 26,
+      "shots_on": 11,
+      "corners": 7,
+      "possession": 52.0,
+      "fouls": 12,
+      "yellow": 1,
+      "red": null,
+      "xg": 3.91
+    },
+    "away_stats": {
+      "shots": 4,
+      "shots_on": 2,
+      "corners": 1,
+      "possession": 48.0,
+      "fouls": 15,
+      "yellow": 0,
+      "red": null,
+      "xg": 0.98
+    },
+    "events": [
+      {
+        "minute": 4,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Léo Cittadini"
+      },
+      {
+        "minute": 34,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "M. Vargas"
+      },
+      {
+        "minute": 35,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Var",
+        "detail": "Goal confirmed",
+        "player": "Oscar"
+      },
+      {
+        "minute": 45,
+        "extra": 1,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Xie Weijun"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Yang Zihao"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Ming Tian"
+      },
+      {
+        "minute": 55,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Goal",
+        "detail": "Penalty",
+        "player": "Oscar"
+      },
+      {
+        "minute": 56,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Wu Lei"
+      },
+      {
+        "minute": 69,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "M. Škorić"
+      },
+      {
+        "minute": 70,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Wu Lei"
+      },
+      {
+        "minute": 78,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Li Shuai"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Gustavo"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Ba Dun"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Wu Lei"
+      },
+      {
+        "minute": 84,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Léo Cittadini"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Li Ang"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "M. Vargas"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173270,
+    "season": 2024,
+    "date": "2024-11-02T07:30:00+00:00",
+    "home": "Shandong Luneng",
+    "away": "Meizhou Kejia",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": 23,
+      "shots_on": 7,
+      "corners": 4,
+      "possession": 56.0,
+      "fouls": 21,
+      "yellow": 2,
+      "red": 0,
+      "xg": 3.22
+    },
+    "away_stats": {
+      "shots": 13,
+      "shots_on": 4,
+      "corners": 2,
+      "possession": 44.0,
+      "fouls": 11,
+      "yellow": 4,
+      "red": 2,
+      "xg": 1.95
+    },
+    "events": [
+      {
+        "minute": 16,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "V. Qazaishvili"
+      },
+      {
+        "minute": 21,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Liao Junjian"
+      },
+      {
+        "minute": 39,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Wenneng Xie"
+      },
+      {
+        "minute": 41,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Yuanyi Li"
+      },
+      {
+        "minute": 43,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "J. Uzuegbunam"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Xie Wenneng"
+      },
+      {
+        "minute": 60,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Zeca"
+      },
+      {
+        "minute": 66,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Rodrigo Henrique"
+      },
+      {
+        "minute": 68,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Li Yuanyi"
+      },
+      {
+        "minute": 68,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Zheng Zheng"
+      },
+      {
+        "minute": 68,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Yang Chaosheng"
+      },
+      {
+        "minute": 68,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Shi Liang"
+      },
+      {
+        "minute": 69,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Red Card",
+        "player": "Tze-Nam Yue"
+      },
+      {
+        "minute": 72,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Var",
+        "detail": "Card reviewed",
+        "player": "Tze-Nam Yue"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "V. Qazaishvili"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Zeca"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Rao Weihui"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Nebojša Kosović"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Nebojša Kosović"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Red Card",
+        "player": "Nebojša Kosović"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Ye Chugui"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173275,
+    "season": 2024,
+    "date": "2024-11-02T07:30:00+00:00",
+    "home": "Qingdao Jonoon",
+    "away": "Shijiazhuang Y. J.",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": 13,
+      "shots_on": 3,
+      "corners": 5,
+      "possession": 42.0,
+      "fouls": 8,
+      "yellow": null,
+      "red": null,
+      "xg": 1.48
+    },
+    "away_stats": {
+      "shots": 2,
+      "shots_on": 1,
+      "corners": 2,
+      "possession": 58.0,
+      "fouls": 7,
+      "yellow": null,
+      "red": null,
+      "xg": 0.16
+    },
+    "events": [
+      {
+        "minute": 37,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "Goal",
+        "detail": "Penalty",
+        "player": "E. Sarić"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Jin Yonghao"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Diego Lopes"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Liu Xinyu"
+      },
+      {
+        "minute": 86,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "M. Boakye"
+      },
+      {
+        "minute": 90,
+        "extra": 4,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Long Wei"
+      },
+      {
+        "minute": 90,
+        "extra": 4,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "E. Kangwa"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173271,
+    "season": 2024,
+    "date": "2024-11-02T07:30:00+00:00",
+    "home": "Chengdu Better City",
+    "away": "Shanghai Shenhua",
+    "hg": 1,
+    "ag": 2,
+    "home_stats": {
+      "shots": 6,
+      "shots_on": 3,
+      "corners": 9,
+      "possession": 48.0,
+      "fouls": 14,
+      "yellow": 5,
+      "red": 0,
+      "xg": 1.1
+    },
+    "away_stats": {
+      "shots": 13,
+      "shots_on": 5,
+      "corners": 7,
+      "possession": 52.0,
+      "fouls": 13,
+      "yellow": 5,
+      "red": 1,
+      "xg": 1.68
+    },
+    "events": [
+      {
+        "minute": 24,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Zexiang Yang"
+      },
+      {
+        "minute": 41,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Shenglong Jiang"
+      },
+      {
+        "minute": 42,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Dong Yanfeng"
+      },
+      {
+        "minute": 45,
+        "extra": 4,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Manuel Palacios"
+      },
+      {
+        "minute": 45,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Yanfeng Dong"
+      },
+      {
+        "minute": 45,
+        "extra": 6,
+        "team": "Shanghai Shenhua",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Wu Xi"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Yang Zexiang"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Fei Nanduo"
+      },
+      {
+        "minute": 49,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Gan Chao"
+      },
+      {
+        "minute": 49,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Dong Yanfeng"
+      },
+      {
+        "minute": 62,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Yang Li"
+      },
+      {
+        "minute": 71,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "João Carlos Teixeira"
+      },
+      {
+        "minute": 72,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "C. Malele"
+      },
+      {
+        "minute": 73,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "M. Palacios"
+      },
+      {
+        "minute": 78,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "I. Amadou"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Yu Hanchao"
+      },
+      {
+        "minute": 87,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Zhuoyi Feng"
+      },
+      {
+        "minute": 87,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Hu Hetao"
+      },
+      {
+        "minute": 87,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Yang Shuai"
+      },
+      {
+        "minute": 90,
+        "extra": 6,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Felipe Silva"
+      },
+      {
+        "minute": 90,
+        "extra": 7,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Aidi Fulang Xisi"
+      },
+      {
+        "minute": 90,
+        "extra": 5,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Shenglong Jiang"
+      },
+      {
+        "minute": 90,
+        "extra": 5,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Red Card",
+        "player": "Shenglong Jiang"
+      },
+      {
+        "minute": 90,
+        "extra": 7,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "João Teixeira"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173276,
+    "season": 2024,
+    "date": "2024-11-02T07:30:00+00:00",
+    "home": "Sichuan Jiuniu",
+    "away": "Nantong Zhiyun",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": 12,
+      "shots_on": 6,
+      "corners": 4,
+      "possession": 38.0,
+      "fouls": 10,
+      "yellow": 5,
+      "red": 0,
+      "xg": 1.5
+    },
+    "away_stats": {
+      "shots": 13,
+      "shots_on": 4,
+      "corners": 10,
+      "possession": 62.0,
+      "fouls": 11,
+      "yellow": 4,
+      "red": 1,
+      "xg": 0.6
+    },
+    "events": [
+      {
+        "minute": -5,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Jesús Godínez"
+      },
+      {
+        "minute": -5,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Red Card",
+        "player": "Jie Wang"
+      },
+      {
+        "minute": 22,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Jia Boyan"
+      },
+      {
+        "minute": 28,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Kang Cao"
+      },
+      {
+        "minute": 29,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Eden Karzev"
+      },
+      {
+        "minute": 32,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Matt Orr"
+      },
+      {
+        "minute": 45,
+        "extra": 5,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Shi Zhao"
+      },
+      {
+        "minute": 45,
+        "extra": 3,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Yue Song"
+      },
+      {
+        "minute": 45,
+        "extra": 2,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Wei Liu"
+      },
+      {
+        "minute": 45,
+        "extra": 4,
+        "team": "Sichuan Jiuniu",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "E. Kartsev"
+      },
+      {
+        "minute": 51,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Song Yue"
+      },
+      {
+        "minute": 57,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Song Nan"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Jiang Zilei"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Jia Boyan"
+      },
+      {
+        "minute": 65,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Nan Song"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Dai Wai-Tsun"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Matt Orr"
+      },
+      {
+        "minute": 82,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Cao Kang"
+      },
+      {
+        "minute": 90,
+        "extra": 5,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Rui Yu"
+      },
+      {
+        "minute": 90,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Issa Kallon"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173273,
+    "season": 2024,
+    "date": "2024-11-02T07:30:00+00:00",
+    "home": "Wuhan Three Towns",
+    "away": "Qingdao Youth Island",
+    "hg": 1,
+    "ag": 3,
+    "home_stats": {
+      "shots": 21,
+      "shots_on": 6,
+      "corners": 12,
+      "possession": 57.0,
+      "fouls": 7,
+      "yellow": 0,
+      "red": null,
+      "xg": 1.72
+    },
+    "away_stats": {
+      "shots": 11,
+      "shots_on": 3,
+      "corners": 2,
+      "possession": 43.0,
+      "fouls": 10,
+      "yellow": 1,
+      "red": null,
+      "xg": 0.78
+    },
+    "events": [
+      {
+        "minute": 32,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "J. Beauguel"
+      },
+      {
+        "minute": 33,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Feng Gang"
+      },
+      {
+        "minute": 44,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Matheus Índio"
+      },
+      {
+        "minute": 51,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "J. Beauguel"
+      },
+      {
+        "minute": 57,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Ablahan Haliq"
+      },
+      {
+        "minute": 60,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Nelson da Luz"
+      },
+      {
+        "minute": 66,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Liu Yiheng"
+      },
+      {
+        "minute": 69,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "B. Riascos"
+      },
+      {
+        "minute": 69,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Song Bowei"
+      },
+      {
+        "minute": 86,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Denny Wang Yi"
+      },
+      {
+        "minute": 86,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Romário Baldé"
+      },
+      {
+        "minute": 86,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Darlan"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Park Ji-Soo"
+      },
+      {
+        "minute": 90,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Jean-David Beauguel"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173262,
+    "season": 2024,
+    "date": "2024-10-27T07:30:00+00:00",
+    "home": "Shanghai Shenhua",
+    "away": "Sichuan Jiuniu",
+    "hg": 2,
+    "ag": 2,
+    "home_stats": {
+      "shots": 20,
+      "shots_on": 6,
+      "corners": 12,
+      "possession": 69.0,
+      "fouls": 15,
+      "yellow": 2,
+      "red": null,
+      "xg": 2.92
+    },
+    "away_stats": {
+      "shots": 13,
+      "shots_on": 3,
+      "corners": 3,
+      "possession": 31.0,
+      "fouls": 10,
+      "yellow": 4,
+      "red": null,
+      "xg": 1.21
+    },
+    "events": [
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Wang Haijian"
+      },
+      {
+        "minute": 47,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Var",
+        "detail": "Goal confirmed",
+        "player": "Xi Wu"
+      },
+      {
+        "minute": 47,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "André Luís"
+      },
+      {
+        "minute": 59,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Edu García"
+      },
+      {
+        "minute": 68,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Nan Song"
+      },
+      {
+        "minute": 70,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "E. Kartsev"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Yang Zexiang"
+      },
+      {
+        "minute": 77,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Yudong Zhang"
+      },
+      {
+        "minute": 78,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Matt Orr"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Matthew Orr"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "I. Amadou"
+      },
+      {
+        "minute": 82,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "João Carlos Teixeira"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Zhang Yudong"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Wang Qiao"
+      },
+      {
+        "minute": 90,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "André Luis"
+      },
+      {
+        "minute": 90,
+        "extra": 5,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Shi Zhao"
+      },
+      {
+        "minute": 90,
+        "extra": 2,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Li Zhi"
+      },
+      {
+        "minute": 90,
+        "extra": 1,
+        "team": "Shanghai Shenhua",
+        "type": "Goal",
+        "detail": "Penalty",
+        "player": "C. Malele"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173263,
+    "season": 2024,
+    "date": "2024-10-27T07:30:00+00:00",
+    "home": "Tianjin Teda",
+    "away": "Qingdao Jonoon",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": 17,
+      "shots_on": 8,
+      "corners": 6,
+      "possession": 64.0,
+      "fouls": 16,
+      "yellow": null,
+      "red": null,
+      "xg": 1.14
+    },
+    "away_stats": {
+      "shots": 7,
+      "shots_on": 2,
+      "corners": 3,
+      "possession": 36.0,
+      "fouls": 9,
+      "yellow": null,
+      "red": null,
+      "xg": 0.78
+    },
+    "events": [
+      {
+        "minute": 28,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Bruno Xadas"
+      },
+      {
+        "minute": 60,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Zhong Jinbao"
+      },
+      {
+        "minute": 66,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Song Long"
+      },
+      {
+        "minute": 76,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Ba Dun"
+      },
+      {
+        "minute": 76,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Wang Qiuming"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "E. Kangwa"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Yang Zihao"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "A. Compagno"
+      },
+      {
+        "minute": 90,
+        "extra": 4,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Bruno Xadas"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173264,
+    "season": 2024,
+    "date": "2024-10-27T07:30:00+00:00",
+    "home": "Henan Jianye",
+    "away": "Changchun Yatai",
+    "hg": 0,
+    "ag": 0,
+    "home_stats": {
+      "shots": 16,
+      "shots_on": 6,
+      "corners": 8,
+      "possession": 52.0,
+      "fouls": 16,
+      "yellow": 1,
+      "red": null,
+      "xg": 2.79
+    },
+    "away_stats": {
+      "shots": 6,
+      "shots_on": 2,
+      "corners": 5,
+      "possession": 48.0,
+      "fouls": 13,
+      "yellow": 3,
+      "red": null,
+      "xg": 0.39
+    },
+    "events": [
+      {
+        "minute": 32,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Haifeng Ding"
+      },
+      {
+        "minute": 33,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Zhang Yufeng"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Tan Long"
+      },
+      {
+        "minute": 61,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Lazar Rosić"
+      },
+      {
+        "minute": 73,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Yang Yilin"
+      },
+      {
+        "minute": 73,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Zhang Yufeng"
+      },
+      {
+        "minute": 77,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Stoppila Sunzu"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "F. Acheampong"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Ding Haifeng"
+      },
+      {
+        "minute": 90,
+        "extra": 3,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Serginho"
+      },
+      {
+        "minute": 90,
+        "extra": 3,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "P. Žulj"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173261,
+    "season": 2024,
+    "date": "2024-10-27T07:30:00+00:00",
+    "home": "Hangzhou Greentown",
+    "away": "Shandong Luneng",
+    "hg": 3,
+    "ag": 3,
+    "home_stats": {
+      "shots": 28,
+      "shots_on": 9,
+      "corners": 10,
+      "possession": 63.0,
+      "fouls": 10,
+      "yellow": 1,
+      "red": null,
+      "xg": 2.28
+    },
+    "away_stats": {
+      "shots": 18,
+      "shots_on": 6,
+      "corners": 6,
+      "possession": 37.0,
+      "fouls": 13,
+      "yellow": 3,
+      "red": null,
+      "xg": 2.48
+    },
+    "events": [
+      {
+        "minute": 16,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Xie Wenneng"
+      },
+      {
+        "minute": 32,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "J. Kouassi"
+      },
+      {
+        "minute": 45,
+        "extra": 2,
+        "team": "Hangzhou Greentown",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Leonardo"
+      },
+      {
+        "minute": 45,
+        "extra": 4,
+        "team": "Hangzhou Greentown",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Wang Yang"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Sun Guowen"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Zheng Zheng"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Maiwulang Mijiti"
+      },
+      {
+        "minute": 47,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Peng Xinli"
+      },
+      {
+        "minute": 57,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Xie Wenneng"
+      },
+      {
+        "minute": 60,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Cheng Jin"
+      },
+      {
+        "minute": 60,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Gu Bin"
+      },
+      {
+        "minute": 62,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Tong Lei"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Tong Lei"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Xie Wenneng"
+      },
+      {
+        "minute": 72,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Qian Jiegei"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Zeca"
+      },
+      {
+        "minute": 77,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Xinli Peng"
+      },
+      {
+        "minute": 86,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Xinghan Wu"
+      },
+      {
+        "minute": 87,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Wang Yang"
+      },
+      {
+        "minute": 90,
+        "extra": 4,
+        "team": "Hangzhou Greentown",
+        "type": "Goal",
+        "detail": "Own Goal",
+        "player": "Huang Zhengyu"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173266,
+    "season": 2024,
+    "date": "2024-10-27T07:30:00+00:00",
+    "home": "Shijiazhuang Y. J.",
+    "away": "SHANGHAI SIPG",
+    "hg": 0,
+    "ag": 1,
+    "home_stats": {
+      "shots": 4,
+      "shots_on": 1,
+      "corners": 3,
+      "possession": 34.0,
+      "fouls": 6,
+      "yellow": 1,
+      "red": null,
+      "xg": 0.12
+    },
+    "away_stats": {
+      "shots": 30,
+      "shots_on": 9,
+      "corners": 12,
+      "possession": 66.0,
+      "fouls": 7,
+      "yellow": 0,
+      "red": null,
+      "xg": 3.16
+    },
+    "events": [
+      {
+        "minute": 14,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Wu Lei"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Zheng Dalun"
+      },
+      {
+        "minute": 55,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Liu Xinyu"
+      },
+      {
+        "minute": 62,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Georgy Zhukov"
+      },
+      {
+        "minute": 69,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Léo Cittadini"
+      },
+      {
+        "minute": 69,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Fu Huan"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Wen Da"
+      },
+      {
+        "minute": 88,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Wu Lei"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173265,
+    "season": 2024,
+    "date": "2024-10-27T07:30:00+00:00",
+    "home": "Meizhou Kejia",
+    "away": "Wuhan Three Towns",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": 17,
+      "shots_on": 8,
+      "corners": 6,
+      "possession": 40.0,
+      "fouls": 8,
+      "yellow": 2,
+      "red": null,
+      "xg": 2.81
+    },
+    "away_stats": {
+      "shots": 10,
+      "shots_on": 3,
+      "corners": 5,
+      "possession": 60.0,
+      "fouls": 18,
+      "yellow": 4,
+      "red": null,
+      "xg": 0.41
+    },
+    "events": [
+      {
+        "minute": 30,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Rodrigo Henrique"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Chen Jie"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Zhang Tao"
+      },
+      {
+        "minute": 58,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Zhipeng Jiang"
+      },
+      {
+        "minute": 61,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Ziyi Tian"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Romário Baldé"
+      },
+      {
+        "minute": 75,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Tian Ziyi"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Rodrigo Henrique"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Zhang Hui"
+      },
+      {
+        "minute": 87,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Ye Chugui"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "He Chao"
+      },
+      {
+        "minute": 90,
+        "extra": 6,
+        "team": "Wuhan Three Towns",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Dianzuo Liu"
+      },
+      {
+        "minute": 90,
+        "extra": 5,
+        "team": "Wuhan Three Towns",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Denny Wang Yi"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173267,
+    "season": 2024,
+    "date": "2024-10-27T07:30:00+00:00",
+    "home": "Nantong Zhiyun",
+    "away": "Beijing Guoan",
+    "hg": 1,
+    "ag": 3,
+    "home_stats": {
+      "shots": 20,
+      "shots_on": 6,
+      "corners": 8,
+      "possession": 56.0,
+      "fouls": 4,
+      "yellow": 2,
+      "red": null,
+      "xg": 0.82
+    },
+    "away_stats": {
+      "shots": 13,
+      "shots_on": 7,
+      "corners": 7,
+      "possession": 44.0,
+      "fouls": 10,
+      "yellow": 1,
+      "red": null,
+      "xg": 1.93
+    },
+    "events": [
+      {
+        "minute": 4,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Lin Liangming"
+      },
+      {
+        "minute": 14,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "David Puclin"
+      },
+      {
+        "minute": 45,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "M. Ngadeu"
+      },
+      {
+        "minute": 49,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "I. Kallon"
+      },
+      {
+        "minute": 51,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Yuan Zhang"
+      },
+      {
+        "minute": 59,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Ma Sheng"
+      },
+      {
+        "minute": 59,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Jiang Zilei"
+      },
+      {
+        "minute": 61,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Zhang Yuan"
+      },
+      {
+        "minute": 69,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Fábio Abreu"
+      },
+      {
+        "minute": 70,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Lu Yongtao"
+      },
+      {
+        "minute": 70,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Fang Hao"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Zheng Haoqian"
+      },
+      {
+        "minute": 87,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Lin Liangming"
+      },
+      {
+        "minute": 87,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Fábio Abreu"
+      },
+      {
+        "minute": 88,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Farley Rosa"
+      },
+      {
+        "minute": 88,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Chi Zhongguo"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173268,
+    "season": 2024,
+    "date": "2024-10-27T07:30:00+00:00",
+    "home": "Qingdao Youth Island",
+    "away": "Chengdu Better City",
+    "hg": 1,
+    "ag": 1,
+    "home_stats": {
+      "shots": 3,
+      "shots_on": 1,
+      "corners": 3,
+      "possession": 57.0,
+      "fouls": 14,
+      "yellow": 0,
+      "red": null,
+      "xg": 0.21
+    },
+    "away_stats": {
+      "shots": 10,
+      "shots_on": 6,
+      "corners": 4,
+      "possession": 43.0,
+      "fouls": 16,
+      "yellow": 1,
+      "red": null,
+      "xg": 2.09
+    },
+    "events": [
+      {
+        "minute": 25,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Nelson da Luz"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Tang Miao"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Wei Shihao"
+      },
+      {
+        "minute": 60,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Hu Hetao"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Nelson da Luz"
+      },
+      {
+        "minute": 82,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Yiming Yang"
+      },
+      {
+        "minute": 88,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Felipe"
+      },
+      {
+        "minute": 90,
+        "extra": 4,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Zhang Xiuwei"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173260,
+    "season": 2024,
+    "date": "2024-10-20T11:35:00+00:00",
+    "home": "Sichuan Jiuniu",
+    "away": "Meizhou Kejia",
+    "hg": 0,
+    "ag": 0,
+    "home_stats": {
+      "shots": 13,
+      "shots_on": 4,
+      "corners": 8,
+      "possession": 52.0,
+      "fouls": 20,
+      "yellow": 3,
+      "red": null,
+      "xg": 1.14
+    },
+    "away_stats": {
+      "shots": 9,
+      "shots_on": 3,
+      "corners": 5,
+      "possession": 48.0,
+      "fouls": 19,
+      "yellow": 3,
+      "red": null,
+      "xg": 0.9
+    },
+    "events": [
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Li Zhi"
+      },
+      {
+        "minute": 55,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "John Mary"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Tiago Leonço"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Liang Shi"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Ye Chugui"
+      },
+      {
+        "minute": 70,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Li Zhi"
+      },
+      {
+        "minute": 70,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Behram Abduweli"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Shi Liang"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Yang Chaosheng"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Song Nan"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Edu García"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Rodrigo Henrique"
+      },
+      {
+        "minute": 90,
+        "extra": 1,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Li Yongjia"
+      },
+      {
+        "minute": 90,
+        "extra": 5,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "E. Kartsev"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173259,
+    "season": 2024,
+    "date": "2024-10-20T10:00:00+00:00",
+    "home": "Shijiazhuang Y. J.",
+    "away": "Nantong Zhiyun",
+    "hg": 0,
+    "ag": 0,
+    "home_stats": {
+      "shots": 6,
+      "shots_on": 2,
+      "corners": 2,
+      "possession": 46.0,
+      "fouls": 13,
+      "yellow": 1,
+      "red": null,
+      "xg": 0.48
+    },
+    "away_stats": {
+      "shots": 9,
+      "shots_on": 1,
+      "corners": 1,
+      "possession": 54.0,
+      "fouls": 14,
+      "yellow": 1,
+      "red": null,
+      "xg": 0.35
+    },
+    "events": [
+      {
+        "minute": 21,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Var",
+        "detail": "Goal cancelled",
+        "player": "Ming Yang Yang"
+      },
+      {
+        "minute": 53,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Yingjie Zhao"
+      },
+      {
+        "minute": 61,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Shaowen Liang"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Lu Yongtao"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Jiang Zilei"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Var",
+        "detail": "Penalty cancelled",
+        "player": "Farley Rosa"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "V. Solomon-Otabor"
+      },
+      {
+        "minute": 90,
+        "extra": 2,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Zheng Haoqian"
+      },
+      {
+        "minute": 90,
+        "extra": 2,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Liang Shaowen"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173258,
+    "season": 2024,
+    "date": "2024-10-19T11:35:00+00:00",
+    "home": "Beijing Guoan",
+    "away": "Qingdao Jonoon",
+    "hg": 6,
+    "ag": 0,
+    "home_stats": {
+      "shots": 16,
+      "shots_on": 8,
+      "corners": 2,
+      "possession": 61.0,
+      "fouls": 8,
+      "yellow": 1,
+      "red": null,
+      "xg": 2.34
+    },
+    "away_stats": {
+      "shots": 19,
+      "shots_on": 4,
+      "corners": 5,
+      "possession": 39.0,
+      "fouls": 9,
+      "yellow": 0,
+      "red": null,
+      "xg": 1.86
+    },
+    "events": [
+      {
+        "minute": 12,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "M. Traoré"
+      },
+      {
+        "minute": 18,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Cao Yongjing"
+      },
+      {
+        "minute": 26,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Fábio Abreu"
+      },
+      {
+        "minute": 47,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Lin Liangming"
+      },
+      {
+        "minute": 60,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Cao Yongjing"
+      },
+      {
+        "minute": 61,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Var",
+        "detail": "Goal confirmed",
+        "player": "Yongjing Cao"
+      },
+      {
+        "minute": 64,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "N. Radmanovac"
+      },
+      {
+        "minute": 64,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Diego Lopes"
+      },
+      {
+        "minute": 66,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Lin Liangming"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Fábio Abreu"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Chi Zhongguo"
+      },
+      {
+        "minute": 70,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Wang Zihao"
+      },
+      {
+        "minute": 77,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Lin Liangming"
+      },
+      {
+        "minute": 77,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Li Lei"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "M. Boakye"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "E. Sarić"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Own Goal",
+        "player": "Liu Jiashen"
+      },
+      {
+        "minute": 90,
+        "extra": 3,
+        "team": "Beijing Guoan",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Liyu Yang"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173257,
+    "season": 2024,
+    "date": "2024-10-19T07:30:00+00:00",
+    "home": "Changchun Yatai",
+    "away": "Qingdao Youth Island",
+    "hg": 4,
+    "ag": 0,
+    "home_stats": {
+      "shots": 17,
+      "shots_on": 5,
+      "corners": 3,
+      "possession": 48.0,
+      "fouls": 18,
+      "yellow": 1,
+      "red": null,
+      "xg": 3.29
+    },
+    "away_stats": {
+      "shots": 3,
+      "shots_on": 1,
+      "corners": 3,
+      "possession": 52.0,
+      "fouls": 17,
+      "yellow": 4,
+      "red": null,
+      "xg": 0.22
+    },
+    "events": [
+      {
+        "minute": 37,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Honglüe Zhao"
+      },
+      {
+        "minute": 43,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "S. Sunzu"
+      },
+      {
+        "minute": 44,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Var",
+        "detail": "Goal confirmed",
+        "player": "Stoppila Sunzu"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "He Longhai"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Jin Yangyang"
+      },
+      {
+        "minute": 56,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "R. Berić"
+      },
+      {
+        "minute": 61,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Serginho"
+      },
+      {
+        "minute": 70,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Zhang Xiuwei"
+      },
+      {
+        "minute": 75,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Zhao Honglüe"
+      },
+      {
+        "minute": 77,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Wenjie Lei"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Tan Long"
+      },
+      {
+        "minute": 82,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Wang Yu"
+      },
+      {
+        "minute": 82,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Indio"
+      },
+      {
+        "minute": 82,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "J. Beauguel"
+      },
+      {
+        "minute": 87,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Boyu Yang"
+      },
+      {
+        "minute": 90,
+        "extra": 2,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "L. Rosić"
+      },
+      {
+        "minute": 90,
+        "extra": 3,
+        "team": "Changchun Yatai",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "R. Berić"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173256,
+    "season": 2024,
+    "date": "2024-10-18T12:00:00+00:00",
+    "home": "Chengdu Better City",
+    "away": "SHANGHAI SIPG",
+    "hg": 3,
+    "ag": 1,
+    "home_stats": {
+      "shots": 14,
+      "shots_on": 5,
+      "corners": 7,
+      "possession": 37.0,
+      "fouls": 17,
+      "yellow": 2,
+      "red": null,
+      "xg": 1.49
+    },
+    "away_stats": {
+      "shots": 14,
+      "shots_on": 5,
+      "corners": 12,
+      "possession": 63.0,
+      "fouls": 13,
+      "yellow": 0,
+      "red": null,
+      "xg": 1.17
+    },
+    "events": [
+      {
+        "minute": 21,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Tang Chuang"
+      },
+      {
+        "minute": 28,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Chow Tim"
+      },
+      {
+        "minute": 31,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Matheus Jussa"
+      },
+      {
+        "minute": 43,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Tang Chuang"
+      },
+      {
+        "minute": 56,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Feng Jin"
+      },
+      {
+        "minute": 57,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Zhuoyi Feng"
+      },
+      {
+        "minute": 61,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Tang Miao"
+      },
+      {
+        "minute": 61,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Tang Chuang"
+      },
+      {
+        "minute": 61,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Feng Zhuoyi"
+      },
+      {
+        "minute": 73,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Yahav Gurfinkel"
+      },
+      {
+        "minute": 75,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "M. Palacios"
+      },
+      {
+        "minute": 78,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Léo Cittadini"
+      },
+      {
+        "minute": 78,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Fu Huan"
+      },
+      {
+        "minute": 86,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Rômulo"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173255,
+    "season": 2024,
+    "date": "2024-10-18T11:35:00+00:00",
+    "home": "Shanghai Shenhua",
+    "away": "Henan Jianye",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": 31,
+      "shots_on": 9,
+      "corners": 11,
+      "possession": 66.0,
+      "fouls": 8,
+      "yellow": 1,
+      "red": null,
+      "xg": 3.63
+    },
+    "away_stats": {
+      "shots": 8,
+      "shots_on": 2,
+      "corners": 5,
+      "possession": 34.0,
+      "fouls": 9,
+      "yellow": 2,
+      "red": null,
+      "xg": 0.25
+    },
+    "events": [
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Du Zhixuan"
+      },
+      {
+        "minute": 62,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "N. Čović"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Fei Nanduo"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Gao Tianyi"
+      },
+      {
+        "minute": 64,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "João Teixeira"
+      },
+      {
+        "minute": 70,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "F. Acheampong"
+      },
+      {
+        "minute": 76,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Huang Ruifeng"
+      },
+      {
+        "minute": 78,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Huang Ruifeng"
+      },
+      {
+        "minute": 78,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Bruno Nazário"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Guan He"
+      },
+      {
+        "minute": 82,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Li Songyi"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Chan Shinichi"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Wu Xi"
+      },
+      {
+        "minute": 90,
+        "extra": 5,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Aidi Fulang Xisi"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173254,
+    "season": 2024,
+    "date": "2024-10-18T11:35:00+00:00",
+    "home": "Shandong Luneng",
+    "away": "Tianjin Teda",
+    "hg": 4,
+    "ag": 1,
+    "home_stats": {
+      "shots": 19,
+      "shots_on": 11,
+      "corners": 7,
+      "possession": 43.0,
+      "fouls": 12,
+      "yellow": 1,
+      "red": null,
+      "xg": 2.57
+    },
+    "away_stats": {
+      "shots": 10,
+      "shots_on": 2,
+      "corners": 6,
+      "possession": 57.0,
+      "fouls": 15,
+      "yellow": 1,
+      "red": null,
+      "xg": 1.26
+    },
+    "events": [
+      {
+        "minute": 17,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Liu Binbin"
+      },
+      {
+        "minute": 37,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "V. Qazaishvili"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Liu Binbin"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Su Yuanjie"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Bruno Xadas"
+      },
+      {
+        "minute": 47,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Cryzan"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Cryzan"
+      },
+      {
+        "minute": 64,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Peng Xinli"
+      },
+      {
+        "minute": 64,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Zheng Zheng"
+      },
+      {
+        "minute": 71,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Yang Zihao"
+      },
+      {
+        "minute": 71,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Han Pengfei"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Tong Lei"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Chen Pu"
+      },
+      {
+        "minute": 78,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "A. Compagno"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Ba Dun"
+      },
+      {
+        "minute": 84,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Diogo Silva"
+      },
+      {
+        "minute": 87,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Zhunyi Gao"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173253,
+    "season": 2024,
+    "date": "2024-10-18T11:35:00+00:00",
+    "home": "Wuhan Three Towns",
+    "away": "Hangzhou Greentown",
+    "hg": 0,
+    "ag": 2,
+    "home_stats": {
+      "shots": 20,
+      "shots_on": 3,
+      "corners": 7,
+      "possession": 58.0,
+      "fouls": 11,
+      "yellow": 3,
+      "red": null,
+      "xg": 0.88
+    },
+    "away_stats": {
+      "shots": 11,
+      "shots_on": 5,
+      "corners": 5,
+      "possession": 42.0,
+      "fouls": 10,
+      "yellow": 1,
+      "red": null,
+      "xg": 0.94
+    },
+    "events": [
+      {
+        "minute": 20,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Leonardo"
+      },
+      {
+        "minute": 41,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Hanwen Deng"
+      },
+      {
+        "minute": 45,
+        "extra": 6,
+        "team": "Wuhan Three Towns",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Hang Ren"
+      },
+      {
+        "minute": 45,
+        "extra": 4,
+        "team": "Wuhan Three Towns",
+        "type": "Var",
+        "detail": "Card upgrade",
+        "player": "Hang Ren"
+      },
+      {
+        "minute": 54,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Park Ji-soo"
+      },
+      {
+        "minute": 55,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Leonardo"
+      },
+      {
+        "minute": 59,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Zhang Hui"
+      },
+      {
+        "minute": 73,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Denny Wang Yi"
+      },
+      {
+        "minute": 73,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Wu Wei"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Cheng Jin"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Wang Yang"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Zhang Xiaobin"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Darlan"
+      },
+      {
+        "minute": 87,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Junsheng Yao"
+      },
+      {
+        "minute": 90,
+        "extra": 5,
+        "team": "Hangzhou Greentown",
+        "type": "Var",
+        "detail": "Goal confirmed",
+        "player": "Junsheng Yao"
+      },
+      {
+        "minute": 90,
+        "extra": 3,
+        "team": "Hangzhou Greentown",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Yao Junsheng"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173252,
+    "season": 2024,
+    "date": "2024-09-29T12:00:00+00:00",
+    "home": "Wuhan Three Towns",
+    "away": "Henan Jianye",
+    "hg": 1,
+    "ag": 0,
+    "home_stats": {
+      "shots": 21,
+      "shots_on": 8,
+      "corners": 6,
+      "possession": 70.0,
+      "fouls": 7,
+      "yellow": 3,
+      "red": 0,
+      "xg": 2.61
+    },
+    "away_stats": {
+      "shots": 3,
+      "shots_on": 2,
+      "corners": 1,
+      "possession": 30.0,
+      "fouls": 17,
+      "yellow": 2,
+      "red": 1,
+      "xg": 0.22
+    },
+    "events": [
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Chen Keqiang"
+      },
+      {
+        "minute": 56,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Liu Ruofan"
+      },
+      {
+        "minute": 64,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Yeljan Shinar"
+      },
+      {
+        "minute": 64,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Huang Zichang"
+      },
+      {
+        "minute": 66,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Xiaobing Zhang"
+      },
+      {
+        "minute": 68,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Xu Haofeng"
+      },
+      {
+        "minute": 73,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Xu Haofeng"
+      },
+      {
+        "minute": 73,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Red Card",
+        "player": "Xu Haofeng"
+      },
+      {
+        "minute": 78,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Liu Yixin"
+      },
+      {
+        "minute": 84,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Denny Wang Yi"
+      },
+      {
+        "minute": 84,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Du Zhixuan"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Yiheng Liu"
+      },
+      {
+        "minute": 90,
+        "extra": 1,
+        "team": "Wuhan Three Towns",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Joca Fernandes"
+      },
+      {
+        "minute": 90,
+        "extra": 4,
+        "team": "Wuhan Three Towns",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Tao Qianglong"
+      },
+      {
+        "minute": 90,
+        "extra": null,
+        "team": "Wuhan Three Towns",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Joca"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173250,
+    "season": 2024,
+    "date": "2024-09-29T11:35:00+00:00",
+    "home": "Tianjin Teda",
+    "away": "Shijiazhuang Y. J.",
+    "hg": 3,
+    "ag": 2,
+    "home_stats": {
+      "shots": 36,
+      "shots_on": 12,
+      "corners": 13,
+      "possession": 56.0,
+      "fouls": 17,
+      "yellow": 1,
+      "red": null,
+      "xg": 3.19
+    },
+    "away_stats": {
+      "shots": 8,
+      "shots_on": 4,
+      "corners": 2,
+      "possession": 44.0,
+      "fouls": 4,
+      "yellow": 0,
+      "red": null,
+      "xg": 0.78
+    },
+    "events": [
+      {
+        "minute": 8,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Liu Xinyu"
+      },
+      {
+        "minute": 36,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Wang Qiuming"
+      },
+      {
+        "minute": 53,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "A. Obileye"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Wang Zhenghao"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Yang Zihao"
+      },
+      {
+        "minute": 70,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Zhao Yingjie"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Xie Weijun"
+      },
+      {
+        "minute": 75,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "Var",
+        "detail": "Goal confirmed",
+        "player": "Xie Weijun"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Zheng Dalun"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Liu Xinyu"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Bruno Xadas"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "V. Solomon-Otabor"
+      },
+      {
+        "minute": 90,
+        "extra": 4,
+        "team": "Tianjin Teda",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Xie Weijun"
+      },
+      {
+        "minute": 90,
+        "extra": 5,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Wang Qiuming"
+      },
+      {
+        "minute": 90,
+        "extra": 5,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "A. Ademi"
+      },
+      {
+        "minute": 90,
+        "extra": 1,
+        "team": "Tianjin Teda",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Wang Qiuming"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173251,
+    "season": 2024,
+    "date": "2024-09-29T11:35:00+00:00",
+    "home": "Chengdu Better City",
+    "away": "Meizhou Kejia",
+    "hg": 2,
+    "ag": 0,
+    "home_stats": {
+      "shots": 15,
+      "shots_on": 4,
+      "corners": 8,
+      "possession": 53.0,
+      "fouls": 16,
+      "yellow": 2,
+      "red": null,
+      "xg": 1.43
+    },
+    "away_stats": {
+      "shots": 8,
+      "shots_on": 3,
+      "corners": 3,
+      "possession": 47.0,
+      "fouls": 13,
+      "yellow": 2,
+      "red": null,
+      "xg": 1.15
+    },
+    "events": [
+      {
+        "minute": 13,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "M. Palacios"
+      },
+      {
+        "minute": 15,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Var",
+        "detail": "Goal confirmed",
+        "player": "Manuel Palacios"
+      },
+      {
+        "minute": 39,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Liao Junjian"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Feng Zhuoyi"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Wei Zhiwei"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Tian Ziyi"
+      },
+      {
+        "minute": 71,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Mirahmetjan Muzepper"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Wei Shihao"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Yang Yihu"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Ye Chugui"
+      },
+      {
+        "minute": 77,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Tim Chow"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Shi Liang"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Mutellip Iminqari"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Li Yang"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "M. Palacios"
+      },
+      {
+        "minute": 88,
+        "extra": null,
+        "team": "Meizhou Kejia",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Ximing Pan"
+      },
+      {
+        "minute": 90,
+        "extra": 1,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "T. Letschert"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173249,
+    "season": 2024,
+    "date": "2024-09-28T12:00:00+00:00",
+    "home": "Sichuan Jiuniu",
+    "away": "Shandong Luneng",
+    "hg": 1,
+    "ag": 4,
+    "home_stats": {
+      "shots": 15,
+      "shots_on": 3,
+      "corners": 6,
+      "possession": 52.0,
+      "fouls": 12,
+      "yellow": 1,
+      "red": null,
+      "xg": 1.16
+    },
+    "away_stats": {
+      "shots": 12,
+      "shots_on": 6,
+      "corners": 5,
+      "possession": 48.0,
+      "fouls": 22,
+      "yellow": 2,
+      "red": null,
+      "xg": 2.45
+    },
+    "events": [
+      {
+        "minute": 43,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "He Xiaoke"
+      },
+      {
+        "minute": 43,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Marcel Scalese"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Wu Xinghan"
+      },
+      {
+        "minute": 54,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Maiwulang Mijiti"
+      },
+      {
+        "minute": 55,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Eden Karzev"
+      },
+      {
+        "minute": 56,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Peng Xinli"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Ke Shi"
+      },
+      {
+        "minute": 64,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Hu Ruibao"
+      },
+      {
+        "minute": 69,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Behram Abduweli"
+      },
+      {
+        "minute": 76,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "E. Kartsev"
+      },
+      {
+        "minute": 77,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Penalty",
+        "player": "Pedro Delgado"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Maiwulang Mijiti"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Edu García"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Dai Wai-Tsun"
+      },
+      {
+        "minute": 88,
+        "extra": null,
+        "team": "Shandong Luneng",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Lisheng Liao"
+      },
+      {
+        "minute": 90,
+        "extra": 2,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Pedro Delgado"
+      },
+      {
+        "minute": 90,
+        "extra": 6,
+        "team": "Shandong Luneng",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Chen Pu"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173248,
+    "season": 2024,
+    "date": "2024-09-28T11:35:00+00:00",
+    "home": "Beijing Guoan",
+    "away": "Changchun Yatai",
+    "hg": 8,
+    "ag": 1,
+    "home_stats": {
+      "shots": 12,
+      "shots_on": 9,
+      "corners": 1,
+      "possession": 44.0,
+      "fouls": 13,
+      "yellow": 0,
+      "red": null,
+      "xg": 4.26
+    },
+    "away_stats": {
+      "shots": 21,
+      "shots_on": 6,
+      "corners": 8,
+      "possession": 56.0,
+      "fouls": 9,
+      "yellow": 3,
+      "red": null,
+      "xg": 1.15
+    },
+    "events": [
+      {
+        "minute": 8,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Cao Yongjing"
+      },
+      {
+        "minute": 13,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Lazar Rosić"
+      },
+      {
+        "minute": 17,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Mincheng Yuan"
+      },
+      {
+        "minute": 20,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Var",
+        "detail": "Goal cancelled",
+        "player": "Fabio Abreu"
+      },
+      {
+        "minute": 25,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Lin Liangming"
+      },
+      {
+        "minute": 26,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Var",
+        "detail": "Goal confirmed",
+        "player": "Liangming Lin"
+      },
+      {
+        "minute": 33,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Penalty",
+        "player": "Fábio Abreu"
+      },
+      {
+        "minute": 41,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Fábio Abreu"
+      },
+      {
+        "minute": 43,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "R. Berić"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "M. Traoré"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Wang Zhifeng"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "L. Rosić"
+      },
+      {
+        "minute": 51,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Penalty",
+        "player": "Fábio Abreu"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Cao Yongjing"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Lin Liangming"
+      },
+      {
+        "minute": 71,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Abduhamit Abdugheni"
+      },
+      {
+        "minute": 72,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Li Lei"
+      },
+      {
+        "minute": 72,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Fang Hao"
+      },
+      {
+        "minute": 73,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Dilumut Tudi"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Chi Zhongguo"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Zhang Huachen"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Var",
+        "detail": "Goal cancelled",
+        "player": "Liyu Yang"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Changchun Yatai",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Serginho"
+      },
+      {
+        "minute": 88,
+        "extra": null,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Wang Ziming"
+      },
+      {
+        "minute": 90,
+        "extra": 4,
+        "team": "Beijing Guoan",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Wang Ziming"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173247,
+    "season": 2024,
+    "date": "2024-09-28T11:35:00+00:00",
+    "home": "Nantong Zhiyun",
+    "away": "Hangzhou Greentown",
+    "hg": 3,
+    "ag": 2,
+    "home_stats": {
+      "shots": 20,
+      "shots_on": 6,
+      "corners": 7,
+      "possession": 38.0,
+      "fouls": 11,
+      "yellow": 0,
+      "red": 0,
+      "xg": 1.7
+    },
+    "away_stats": {
+      "shots": 12,
+      "shots_on": 2,
+      "corners": 6,
+      "possession": 62.0,
+      "fouls": 10,
+      "yellow": 5,
+      "red": 1,
+      "xg": 0.64
+    },
+    "events": [
+      {
+        "minute": 1,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Leonardo"
+      },
+      {
+        "minute": 8,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Cheng Jin"
+      },
+      {
+        "minute": 10,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Farley Rosa"
+      },
+      {
+        "minute": 19,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "I. Anthony"
+      },
+      {
+        "minute": 28,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Jean Evrard Kouassi"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Wei Lai"
+      },
+      {
+        "minute": 59,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Lu Yongtao"
+      },
+      {
+        "minute": 62,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Sun Zheng'ao"
+      },
+      {
+        "minute": 65,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Alexander N'Doumbou"
+      },
+      {
+        "minute": 65,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Qian Jiegei"
+      },
+      {
+        "minute": 71,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Lu Yongtao"
+      },
+      {
+        "minute": 76,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Farley Rosa"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Sun Zheng'ao"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Card",
+        "detail": "Red Card",
+        "player": "Sun Zheng'ao"
+      },
+      {
+        "minute": 86,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Wang Dongsheng"
+      },
+      {
+        "minute": 86,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Cheng Jin"
+      },
+      {
+        "minute": 88,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "I. Kallon"
+      },
+      {
+        "minute": 88,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Liang Shaowen"
+      },
+      {
+        "minute": 90,
+        "extra": 1,
+        "team": "Hangzhou Greentown",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Wei Wu"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173246,
+    "season": 2024,
+    "date": "2024-09-28T10:00:00+00:00",
+    "home": "SHANGHAI SIPG",
+    "away": "Qingdao Youth Island",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": 21,
+      "shots_on": 11,
+      "corners": 7,
+      "possession": 57.0,
+      "fouls": 13,
+      "yellow": 2,
+      "red": null,
+      "xg": 2.01
+    },
+    "away_stats": {
+      "shots": 17,
+      "shots_on": 4,
+      "corners": 7,
+      "possession": 43.0,
+      "fouls": 14,
+      "yellow": 3,
+      "red": null,
+      "xg": 1.99
+    },
+    "events": [
+      {
+        "minute": 22,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Piao Shihao"
+      },
+      {
+        "minute": 35,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Wu Lei"
+      },
+      {
+        "minute": 37,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Piao Shihao"
+      },
+      {
+        "minute": 41,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Xin Xu"
+      },
+      {
+        "minute": 43,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Oscar"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Wang Shenchao"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Feng Gang"
+      },
+      {
+        "minute": 53,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Oscar"
+      },
+      {
+        "minute": 68,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Xu Xin"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Zhang Xiuwei"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Feng Jin"
+      },
+      {
+        "minute": 79,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Fu Huan"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "SHANGHAI SIPG",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Shimeng Bao"
+      },
+      {
+        "minute": 83,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Zhang Xiuwei"
+      },
+      {
+        "minute": 90,
+        "extra": 3,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Honglüe Zhao"
+      },
+      {
+        "minute": 90,
+        "extra": 1,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Jean-David Beauguel"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173245,
+    "season": 2024,
+    "date": "2024-09-28T07:30:00+00:00",
+    "home": "Qingdao Jonoon",
+    "away": "Shanghai Shenhua",
+    "hg": 0,
+    "ag": 1,
+    "home_stats": {
+      "shots": 14,
+      "shots_on": 5,
+      "corners": 5,
+      "possession": 67.0,
+      "fouls": 13,
+      "yellow": 1,
+      "red": 0,
+      "xg": 0.94
+    },
+    "away_stats": {
+      "shots": 12,
+      "shots_on": 3,
+      "corners": 5,
+      "possession": 33.0,
+      "fouls": 11,
+      "yellow": 3,
+      "red": 1,
+      "xg": 0.66
+    },
+    "events": [
+      {
+        "minute": 3,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "André Luís"
+      },
+      {
+        "minute": 21,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Red Card",
+        "player": "Haijian Wang"
+      },
+      {
+        "minute": 23,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "João Carlos Teixeira"
+      },
+      {
+        "minute": 32,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Fei Nanduo"
+      },
+      {
+        "minute": 55,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Evans Kangwa"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Diego Lopes"
+      },
+      {
+        "minute": 72,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Jin Yonghao"
+      },
+      {
+        "minute": 72,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Wang Chien-Ming"
+      },
+      {
+        "minute": 77,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "André Luís"
+      },
+      {
+        "minute": 82,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Jin Shunkai"
+      },
+      {
+        "minute": 86,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Long Wei"
+      },
+      {
+        "minute": 88,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Xi Wu"
+      },
+      {
+        "minute": 90,
+        "extra": 4,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Cephas Malele"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173244,
+    "season": 2024,
+    "date": "2024-09-22T12:00:00+00:00",
+    "home": "Hangzhou Greentown",
+    "away": "Shijiazhuang Y. J.",
+    "hg": 2,
+    "ag": 2,
+    "home_stats": {
+      "shots": 40,
+      "shots_on": 9,
+      "corners": 8,
+      "possession": 68.0,
+      "fouls": 11,
+      "yellow": 1,
+      "red": null,
+      "xg": 5.26
+    },
+    "away_stats": {
+      "shots": 7,
+      "shots_on": 4,
+      "corners": 1,
+      "possession": 32.0,
+      "fouls": 8,
+      "yellow": 5,
+      "red": null,
+      "xg": 1.37
+    },
+    "events": [
+      {
+        "minute": -5,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Héber"
+      },
+      {
+        "minute": 7,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "V. Solomon-Otabor"
+      },
+      {
+        "minute": 24,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "Goal",
+        "detail": "Penalty",
+        "player": "V. Solomon-Otabor"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Yao Junsheng"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Shao Puliang"
+      },
+      {
+        "minute": 53,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Liu Xinyu"
+      },
+      {
+        "minute": 58,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Kaimu Zheng"
+      },
+      {
+        "minute": 59,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Rongze Han"
+      },
+      {
+        "minute": 64,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Var",
+        "detail": "Goal cancelled",
+        "player": "Leonardo"
+      },
+      {
+        "minute": 66,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Goal",
+        "detail": "Own Goal",
+        "player": "Sun Ming Him"
+      },
+      {
+        "minute": 68,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Wang Yudong"
+      },
+      {
+        "minute": 68,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Liu Haofan"
+      },
+      {
+        "minute": 69,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Zhao Yingjie"
+      },
+      {
+        "minute": 75,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Leonardo"
+      },
+      {
+        "minute": 76,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "Var",
+        "detail": "Goal confirmed",
+        "player": "Leonardo"
+      },
+      {
+        "minute": 80,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Da Wen"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "Hangzhou Greentown",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Gu Bin"
+      },
+      {
+        "minute": 87,
+        "extra": null,
+        "team": "Shijiazhuang Y. J.",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "V. Solomon-Otabor"
+      },
+      {
+        "minute": 90,
+        "extra": 9,
+        "team": "Hangzhou Greentown",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Sun Zheng'ao"
+      },
+      {
+        "minute": 90,
+        "extra": 6,
+        "team": "Shijiazhuang Y. J.",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Xuchen Yao"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173243,
+    "season": 2024,
+    "date": "2024-09-22T11:00:00+00:00",
+    "home": "Nantong Zhiyun",
+    "away": "Qingdao Jonoon",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": 21,
+      "shots_on": 8,
+      "corners": 6,
+      "possession": 68.0,
+      "fouls": 13,
+      "yellow": 4,
+      "red": 0,
+      "xg": 1.9
+    },
+    "away_stats": {
+      "shots": 13,
+      "shots_on": 4,
+      "corners": 1,
+      "possession": 32.0,
+      "fouls": 17,
+      "yellow": 1,
+      "red": 1,
+      "xg": 2.56
+    },
+    "events": [
+      {
+        "minute": 26,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Zheng Haoqian"
+      },
+      {
+        "minute": 35,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Wei Liu"
+      },
+      {
+        "minute": 39,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Pengfei Mou"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Sha Yibo"
+      },
+      {
+        "minute": 52,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "Var",
+        "detail": "Penalty confirmed",
+        "player": "Martin Boakye"
+      },
+      {
+        "minute": 53,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Izuchukwu Jude Anthony"
+      },
+      {
+        "minute": 54,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "Goal",
+        "detail": "Penalty",
+        "player": "E. Kangwa"
+      },
+      {
+        "minute": 56,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Jiang Zilei"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "Card",
+        "detail": "Red Card",
+        "player": "Liu Jiashen"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "Var",
+        "detail": "Card upgrade",
+        "player": "Liu Jiashen"
+      },
+      {
+        "minute": 65,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Diego Lopes"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Lu Yongtao"
+      },
+      {
+        "minute": 74,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Liu Wei"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Zheng Haoqian"
+      },
+      {
+        "minute": 84,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Long Wei"
+      },
+      {
+        "minute": 84,
+        "extra": null,
+        "team": "Qingdao Jonoon",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "E. Kangwa"
+      },
+      {
+        "minute": 86,
+        "extra": null,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Shengpan Ji"
+      },
+      {
+        "minute": 90,
+        "extra": 7,
+        "team": "Nantong Zhiyun",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Issa Kallon"
+      },
+      {
+        "minute": 90,
+        "extra": 3,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Zheng Haoqian"
+      },
+      {
+        "minute": 90,
+        "extra": 3,
+        "team": "Nantong Zhiyun",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Yang Mingyang"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173242,
+    "season": 2024,
+    "date": "2024-09-22T07:30:00+00:00",
+    "home": "Qingdao Youth Island",
+    "away": "Sichuan Jiuniu",
+    "hg": 3,
+    "ag": 2,
+    "home_stats": {
+      "shots": 10,
+      "shots_on": 5,
+      "corners": 2,
+      "possession": 58.0,
+      "fouls": 12,
+      "yellow": 4,
+      "red": null,
+      "xg": 0.67
+    },
+    "away_stats": {
+      "shots": 17,
+      "shots_on": 6,
+      "corners": 1,
+      "possession": 42.0,
+      "fouls": 19,
+      "yellow": 2,
+      "red": null,
+      "xg": 2.43
+    },
+    "events": [
+      {
+        "minute": 5,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Baihelamu Abuduwaili"
+      },
+      {
+        "minute": 7,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "R. Dugalić"
+      },
+      {
+        "minute": 13,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Edu García"
+      },
+      {
+        "minute": 20,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Yue Song"
+      },
+      {
+        "minute": 21,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Matheus Índio"
+      },
+      {
+        "minute": 23,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Zhang Xiuwei"
+      },
+      {
+        "minute": 26,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Varazdat Haroyan"
+      },
+      {
+        "minute": 45,
+        "extra": 4,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Xiuwei Zhang"
+      },
+      {
+        "minute": 45,
+        "extra": 4,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Chen Yuhao"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Song Yue"
+      },
+      {
+        "minute": 63,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Matheus Índio"
+      },
+      {
+        "minute": 71,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Zhang Xiuwei"
+      },
+      {
+        "minute": 73,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Gang Feng"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Feng Gang"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Alan"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Qingdao Youth Island",
+        "type": "Goal",
+        "detail": "Own Goal",
+        "player": "R. Dugalić"
+      },
+      {
+        "minute": 90,
+        "extra": 2,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Dai Wai-Tsun"
+      },
+      {
+        "minute": 90,
+        "extra": 2,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Li Zhi"
+      },
+      {
+        "minute": 90,
+        "extra": 2,
+        "team": "Sichuan Jiuniu",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Zhang Wei"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173241,
+    "season": 2024,
+    "date": "2024-09-21T12:00:00+00:00",
+    "home": "Shanghai Shenhua",
+    "away": "Tianjin Teda",
+    "hg": 2,
+    "ag": 1,
+    "home_stats": {
+      "shots": 26,
+      "shots_on": 8,
+      "corners": 13,
+      "possession": 55.0,
+      "fouls": 13,
+      "yellow": 1,
+      "red": null,
+      "xg": 2.48
+    },
+    "away_stats": {
+      "shots": 8,
+      "shots_on": 4,
+      "corners": 4,
+      "possession": 45.0,
+      "fouls": 17,
+      "yellow": 0,
+      "red": null,
+      "xg": 0.34
+    },
+    "events": [
+      {
+        "minute": 3,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "A. Ademi"
+      },
+      {
+        "minute": 10,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "João Teixeira"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Yang Zihao"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Guo Hao"
+      },
+      {
+        "minute": 57,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Aidi Fulang Xisi"
+      },
+      {
+        "minute": 67,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Xu Haoyang"
+      },
+      {
+        "minute": 68,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Fei Nanduo"
+      },
+      {
+        "minute": 68,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Yang Zexiang"
+      },
+      {
+        "minute": 76,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Ba Dun"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "A. Ademi"
+      },
+      {
+        "minute": 82,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Gao Tianyi"
+      },
+      {
+        "minute": 89,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Yu Hanchao"
+      },
+      {
+        "minute": 90,
+        "extra": 5,
+        "team": "Tianjin Teda",
+        "type": "subst",
+        "detail": "Substitution 5",
+        "player": "Bruno Xadas"
+      },
+      {
+        "minute": 90,
+        "extra": null,
+        "team": "Shanghai Shenhua",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Yu Hanchao"
+      }
+    ]
+  },
+  {
+    "fixture_id": 1173240,
+    "season": 2024,
+    "date": "2024-09-21T11:35:00+00:00",
+    "home": "Henan Jianye",
+    "away": "Chengdu Better City",
+    "hg": 2,
+    "ag": 0,
+    "home_stats": {
+      "shots": 5,
+      "shots_on": 2,
+      "corners": 3,
+      "possession": 36.0,
+      "fouls": 21,
+      "yellow": 3,
+      "red": null,
+      "xg": 0.64
+    },
+    "away_stats": {
+      "shots": 9,
+      "shots_on": 2,
+      "corners": 2,
+      "possession": 64.0,
+      "fouls": 16,
+      "yellow": 2,
+      "red": null,
+      "xg": 1.85
+    },
+    "events": [
+      {
+        "minute": 25,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "N. Čović"
+      },
+      {
+        "minute": 41,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Miao Tang"
+      },
+      {
+        "minute": 45,
+        "extra": 7,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Đorđe Denić"
+      },
+      {
+        "minute": 45,
+        "extra": 5,
+        "team": "Henan Jianye",
+        "type": "Var",
+        "detail": "Goal cancelled",
+        "player": "Zichang Huang"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Tang Miao"
+      },
+      {
+        "minute": 46,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Mirahmetjan Muzepper"
+      },
+      {
+        "minute": 56,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Timo Letschert"
+      },
+      {
+        "minute": 60,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Shangyuan Wang"
+      },
+      {
+        "minute": 62,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Yang Shuai"
+      },
+      {
+        "minute": 72,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Card",
+        "detail": "Yellow Card",
+        "player": "Nemanja Čović"
+      },
+      {
+        "minute": 73,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 1",
+        "player": "Huang Zichang"
+      },
+      {
+        "minute": 77,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "Goal",
+        "detail": "Normal Goal",
+        "player": "Bruno Nazário"
+      },
+      {
+        "minute": 78,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 2",
+        "player": "Yeljan Shinar"
+      },
+      {
+        "minute": 81,
+        "extra": null,
+        "team": "Chengdu Better City",
+        "type": "subst",
+        "detail": "Substitution 4",
+        "player": "Wei Shihao"
+      },
+      {
+        "minute": 85,
+        "extra": null,
+        "team": "Henan Jianye",
+        "type": "subst",
+        "detail": "Substitution 3",
+        "player": "Bruno Nazário"
+      }
+    ]
+  }
+]

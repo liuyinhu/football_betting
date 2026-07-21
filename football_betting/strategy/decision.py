@@ -1,4 +1,4 @@
-"""Betting decision engine: EV filter + fractional Kelly staking + risk caps."""
+"""投注决策引擎：EV 过滤 + 分数凯利仓位 + 风险上限。"""
 from __future__ import annotations
 from typing import Dict, List, Tuple
 
@@ -6,12 +6,12 @@ from ..core.state import MatchState, OddsSnapshot, BetRecommendation
 from ..models.poisson_live import outcome_probabilities, final_score_distribution
 
 
-# ---------- config ----------
-MIN_EDGE = 0.03          # need ≥ 3% EV to place a bet
-KELLY_FRACTION = 0.25    # 1/4 Kelly
-MAX_STAKE_PER_BET = 0.02 # cap: 2% of bankroll per bet
-MIN_ODDS = 1.20          # avoid low-liquidity extreme favorites
-MAX_ODDS = 15.0          # avoid long-shot variance
+# ---------- 配置 ----------
+MIN_EDGE = 0.03          # EV 需 ≥ 3% 才下注
+KELLY_FRACTION = 0.25    # 1/4 凯利
+MAX_STAKE_PER_BET = 0.02 # 单注上限: 总资金的 2%
+MIN_ODDS = 1.20          # 避开赔率过低的超级热门
+MAX_ODDS = 15.0          # 避开赔率过高的冷门(方差大)
 
 
 def _kelly(p: float, odds: float) -> float:
@@ -23,17 +23,17 @@ def _kelly(p: float, odds: float) -> float:
 
 
 def _ev(p: float, odds: float) -> float:
-    """Expected profit per 1 unit stake."""
+    """每 1 单位投注的期望利润。"""
     return p * (odds - 1.0) - (1 - p)
 
 
 def evaluate(state: MatchState, odds: OddsSnapshot) -> List[BetRecommendation]:
-    """Evaluate all supported markets, return list of positive-EV bets."""
+    """评估所有支持的市场, 返回正期望值(EV)的投注列表。"""
     recs: List[BetRecommendation] = []
 
     probs = outcome_probabilities(state)
 
-    # ---- 1X2 ----
+    # ---- 胜平负 1X2 ----
     market_map: List[Tuple[str, str, float | None]] = [
         ("1X2:home", "home", odds.home),
         ("1X2:draw", "draw", odds.draw),
@@ -43,7 +43,7 @@ def evaluate(state: MatchState, odds: OddsSnapshot) -> List[BetRecommendation]:
         rec = _make_rec(name, probs[key], o)
         if rec: recs.append(rec)
 
-    # ---- Over/Under ----
+    # ---- 大小球 ----
     for line, o in odds.over.items():
         key = f"over_{line}"
         if key in probs:
@@ -55,7 +55,7 @@ def evaluate(state: MatchState, odds: OddsSnapshot) -> List[BetRecommendation]:
             rec = _make_rec(f"OU:under{line}", probs[key], o)
             if rec: recs.append(rec)
 
-    # ---- Correct score ----
+    # ---- 精确比分 ----
     if odds.exact:
         dist = final_score_distribution(state)
         for score, o in odds.exact.items():
@@ -63,7 +63,7 @@ def evaluate(state: MatchState, odds: OddsSnapshot) -> List[BetRecommendation]:
             rec = _make_rec(f"CS:{score[0]}-{score[1]}", p, o)
             if rec: recs.append(rec)
 
-    # sort by edge desc
+    # 按 EV 降序排列
     recs.sort(key=lambda r: r.edge, reverse=True)
     return recs
 
@@ -78,5 +78,5 @@ def _make_rec(name: str, p: float, o: float | None) -> BetRecommendation | None:
     stake = min(kelly * KELLY_FRACTION, MAX_STAKE_PER_BET)
     if stake <= 0:
         return None
-    reason = f"model_p={p:.3f} vs implied={1/o:.3f}"
+    reason = f"模型概率={p:.3f} vs 赔率隐含概率={1/o:.3f}"
     return BetRecommendation(name, o, p, edge, stake, reason)

@@ -1,7 +1,7 @@
-"""End-to-end demo: run a simulated match, print predictions & bet recommendations,
-then settle and show P&L.
+"""端到端演示：跑一场模拟比赛, 打印预测与投注推荐,
+然后结算并展示盈亏。
 
-Run:
+运行:
     python -m football_betting.main
 """
 from __future__ import annotations
@@ -49,7 +49,7 @@ def run_one_match(verbose: bool = True) -> dict:
 
 
 def run_many(n: int = 200) -> None:
-    """Quick Monte-Carlo of the strategy over many simulated matches."""
+    """对多场模拟比赛快速进行策略的蒙特卡罗回测。"""
     total_pnl = 0.0
     total_bets = 0
     total_wins = 0

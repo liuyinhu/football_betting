@@ -1,12 +1,11 @@
-"""Validate the trained strength model with walk-forward evaluation.
+"""用 walk-forward(逐步前推)方式验证训练好的强度模型。
 
-For each match in the test seasons, predict outcome probabilities using a
-model trained ONLY on prior seasons, then measure:
-  - accuracy (did the highest-prob outcome happen?)
-  - log-loss / Brier-style score
-  - compare to naive baseline (always predict home win)
+对测试赛季的每场比赛, 只用之前赛季的数据训练模型来预测胜平负, 然后衡量：
+  - 准确率(概率最高的结果是否发生)
+  - 对数损失 log-loss
+  - 与朴素基线(永远猜主胜)对比
 
-Run:
+运行:
     python3 -m football_betting.data.validate
 """
 from __future__ import annotations
@@ -45,7 +44,7 @@ def walk_forward(train_years, test_years):
         try:
             lam_h, lam_a = expected_lambdas(model, m.home, m.away)
         except KeyError:
-            continue  # team not seen in training
+            continue  # 该队未在训练集中出现
         ph, pd, pa = outcome_probs(lam_h, lam_a)
 
         actual = "H" if m.hg > m.ag else ("D" if m.hg == m.ag else "A")
@@ -75,7 +74,7 @@ if __name__ == "__main__":
     import sys
     # 默认: 近几年训练(2023-2024) 测试(2025)
     if len(sys.argv) >= 3:
-        # e.g. python -m football_betting.data.validate 2023,2024 2025
+        # 例如 python -m football_betting.data.validate 2023,2024 2025
         train_years = [int(x) for x in sys.argv[1].split(",")]
         test_years = [int(x) for x in sys.argv[2].split(",")]
     else:

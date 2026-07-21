@@ -1,12 +1,11 @@
-"""Download & parse Chinese Super League (中超) historical results
-from the openfootball/world repository (public domain data).
+"""从 openfootball/world 仓库(公有领域数据)下载并解析中超历史赛果。
 
-Data URL pattern:
+数据 URL 格式：
     https://raw.githubusercontent.com/openfootball/world/master/asia/china/{year}_cn1.txt
 
-Line example we care about:
+我们关心的行示例：
     18:00  Shandong Taishan   v Changchun Yatai   4-2 (3-0)
-    (time may be missing; halftime score in parens is optional)
+    (开场时间可能缺失；括号内的半场比分也是可选的)
 """
 from __future__ import annotations
 import re
@@ -19,22 +18,22 @@ from typing import List
 BASE_URL = "https://raw.githubusercontent.com/openfootball/world/master/asia/china/{year}_cn1.txt"
 CACHE_DIR = Path(__file__).resolve().parent.parent / "data" / "csl_raw"
 
-# matches a played fixture line ending with a final score like "4-2" or "4-2 (3-0)"
+# 匹配一行已完赛的赛事, 结尾带最终比分如 "4-2" 或 "4-2 (3-0)"
 _MATCH_RE = re.compile(
-    r"^\s*(?:\d{1,2}:\d{2}\s+)?"          # optional kickoff time
-    r"(.+?)\s+v\s+(.+?)\s+"               # home v away
-    r"(\d+)-(\d+)"                        # full-time score
-    r"(?:\s*\(\d+-\d+\))?\s*$"            # optional halftime score
+    r"^\s*(?:\d{1,2}:\d{2}\s+)?"          # 可选的开场时间
+    r"(.+?)\s+v\s+(.+?)\s+"               # 主队 v 客队
+    r"(\d+)-(\d+)"                        # 全场比分
+    r"(?:\s*\(\d+-\d+\))?\s*$"            # 可选的半场比分
 )
 
 
 @dataclass
 class Match:
-    season: int
-    home: str
-    away: str
-    hg: int          # home goals
-    ag: int          # away goals
+    season: int      # 赛季
+    home: str        # 主队
+    away: str        # 客队
+    hg: int          # 主队进球
+    ag: int          # 客队进球
 
 
 def _fetch(year: int, force: bool = False) -> str:
@@ -43,8 +42,8 @@ def _fetch(year: int, force: bool = False) -> str:
     if cache.exists() and not force:
         return cache.read_text(encoding="utf-8")
     url = BASE_URL.format(year=year)
-    # macOS system Python often lacks CA certs; try normal first, fall back to
-    # certifi, then to an unverified context as a last resort.
+    # macOS 自带 Python 常缺失 CA 证书；先尝试正常方式, 再回退到 certifi,
+    # 最后回退到不验证证书的上下文。
     ctx = None
     try:
         import certifi
@@ -66,7 +65,7 @@ def parse_season(year: int, force: bool = False) -> List[Match]:
     text = _fetch(year, force)
     matches: List[Match] = []
     for line in text.splitlines():
-        # skip headers / comments / matchday markers
+        # 跳过表头 / 注释 / 比赛日标记行
         if not line.strip() or line.lstrip().startswith(("#", "=", "▪", "»")):
             continue
         m = _MATCH_RE.match(line)

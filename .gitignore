@@ -1,0 +1,9 @@
+.codeflicker
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# API-Football 单场缓存（可随时重新拉取，无需入库）
+football_betting/data/apifootball_raw/cache/

@@ -1,12 +1,12 @@
-"""Live in-play score probability predictor based on time-varying Poisson model.
+"""基于时变泊松模型的实时比分概率预测器。
 
-Idea:
-1. Each team has a *residual* goal rate lambda for the remaining minutes.
-2. lambda is derived from pre-match prior + in-play adjustments driven by
-   shots on target, corners, dangerous attacks, xG, red-card difference, etc.
-3. Residual goals ~ Poisson(lambda_remaining). Final score distribution =
-   current score + independent Poisson draws for both teams.
-4. Small correction for low-score correlation (Dixon-Coles rho).
+核心思路：
+1. 每支球队在剩余时间内有一个「剩余」进球率 lambda。
+2. lambda 由赛前先验值 + 实时场面修正得到，场面因素包括：
+   射正、角球、危险进攻、xG、红牌差等。
+3. 剩余进球数 ~ Poisson(lambda_remaining)。最终比分分布 =
+   当前比分 + 两队各自独立的泊松抽样。
+4. 对低比分相关性做小幅修正(Dixon-Coles rho)。
 """
 from __future__ import annotations
 import math
@@ -17,16 +17,16 @@ from scipy.stats import poisson
 from ..core.state import MatchState
 
 
-# ---- weights of in-play features on residual lambda (tunable / learnable) ----
+# ---- 场面特征对剩余 lambda 的权重(可调节/可学习) ----
 FEATURE_WEIGHTS = {
-    "sot":       0.045,   # each extra shot-on-target above opponent adds
-    "corner":    0.012,
-    "danger":    0.004,
-    "xg":        0.30,    # xG diff is very informative
-    "possession":0.004,   # per % above 50
+    "sot":       0.045,   # 每多一个领先对手的射正, 提升进球率
+    "corner":    0.012,   # 角球差
+    "danger":    0.004,   # 危险进攻差
+    "xg":        0.30,    # xG 差信息量最大
+    "possession":0.004,   # 控球率每高出 50% 的部分
 }
 
-# red card penalty (multiplicative on lambda of the reduced side)
+# 红牌惩罚(对减员一方的 lambda 做乘法衰减)
 RED_CARD_PENALTY = 0.65
 
 
@@ -35,22 +35,22 @@ def _adjust_lambda(base_lambda: float,
                    opp_feats: Dict[str, float],
                    red_own: int,
                    red_opp: int) -> float:
-    """Adjust a team's per-90 lambda based on live tempo & xG differences."""
+    """根据实时节奏与 xG 差值, 调整球队的全场(per-90) lambda。"""
     delta = 0.0
     for k, w in FEATURE_WEIGHTS.items():
         delta += w * (own_feats.get(k, 0.0) - opp_feats.get(k, 0.0))
 
-    # exponential adjustment so lambda stays > 0
+    # 用指数调整, 保证 lambda 永远 > 0
     lam = base_lambda * math.exp(delta)
 
-    # red card penalties compound
+    # 红牌惩罚叠加
     lam *= RED_CARD_PENALTY ** red_own
-    lam /= RED_CARD_PENALTY ** red_opp   # opp weakened → we score more
+    lam /= RED_CARD_PENALTY ** red_opp   # 对手减员 → 本队更容易进球
     return max(lam, 0.01)
 
 
 def compute_residual_lambdas(state: MatchState) -> Tuple[float, float]:
-    """Compute expected residual goals for each side for the rest of the match."""
+    """计算两队在比赛剩余时间内的预期进球数。"""
     frac_left = state.remaining / 90.0
     if frac_left <= 0:
         return 0.0, 0.0
@@ -81,7 +81,7 @@ def compute_residual_lambdas(state: MatchState) -> Tuple[float, float]:
 
 
 def _dc_tau(i: int, j: int, lam_h: float, lam_a: float, rho: float = -0.10) -> float:
-    """Dixon-Coles low-score correction."""
+    """Dixon-Coles 低比分修正系数。"""
     if i == 0 and j == 0:
         return 1 - lam_h * lam_a * rho
     if i == 0 and j == 1:
@@ -95,7 +95,7 @@ def _dc_tau(i: int, j: int, lam_h: float, lam_a: float, rho: float = -0.10) -> f
 
 def final_score_distribution(state: MatchState,
                              max_extra_goals: int = 6) -> Dict[Tuple[int, int], float]:
-    """Return P(final_score = (H, A)) as a dict."""
+    """返回最终比分的概率分布 P(final_score = (主, 客))。"""
     lam_h, lam_a = compute_residual_lambdas(state)
 
     dist: Dict[Tuple[int, int], float] = {}
@@ -107,7 +107,7 @@ def final_score_distribution(state: MatchState,
             dist[(state.score_h + i, state.score_a + j)] = p
             total += p
 
-    # normalize (tail truncation + DC correction can shift mass slightly)
+    # 归一化(尾部截断 + DC 修正会使总概率略有偏移)
     if total > 0:
         for k in dist:
             dist[k] /= total
@@ -115,7 +115,7 @@ def final_score_distribution(state: MatchState,
 
 
 def outcome_probabilities(state: MatchState) -> Dict[str, float]:
-    """Return P(home win), P(draw), P(away win) and useful market probs."""
+    """返回主胜/平/客胜概率, 以及大小球、双方进球等常用市场概率。"""
     dist = final_score_distribution(state)
     p_home = p_draw = p_away = 0.0
     over_probs = {1.5: 0.0, 2.5: 0.0, 3.5: 0.0}
