@@ -1,332 +1,289 @@
-# 足球实时预测与投注推荐系统
+# 中超足球赛前预测与投注推荐系统
 
-一个 Python 框架，输入**实时比赛状态**（比分、分钟、射门、角球、犯规、红牌、xG 等）
-和**实时市场赔率**，输出：
+一个用 Python 写的中超（中国足球超级联赛）比赛预测工具。你只要告诉它**两支球队**，它就能算出：
 
-1. 实时比分 / 胜平负概率（时变泊松模型 + Dixon-Coles 修正）
-2. 正期望值（EV）的投注推荐
-3. 带风险上限的分数凯利（Kelly）仓位建议
+- 这场比赛**谁赢的概率**（主胜 / 平局 / 客胜）
+- **最可能的比分**（如 2:0、1:1）
+- 大小球、双方是否都进球等各种玩法的概率
+- 如果你再输入**赔率**，它会告诉你**哪些投注"长期看有利可图"**，并建议下多少注
 
-> ⚠️ 本项目为**学习 / 研究**框架。中国大陆赌博违法，且长期战胜高效博彩公司极其困难，请仅用于模拟研究。
+它有两种用法：**网页版**（点点鼠标，推荐新手）和**命令行版**（敲命令，更灵活）。
 
-## 项目结构
+> ⚠️ **重要提示**：本项目仅供**学习和研究**。在中国大陆参与赌博是违法的；而且长期战胜博彩公司极其困难，本模型**不保证盈利**，请勿用于真实赌博。
 
-```
-qqq/                        # 项目根目录（在此运行所有命令）
-├── core/state.py            # 数据类：MatchState、OddsSnapshot、BetRecommendation
-├── models/poisson_live.py   # 时变泊松 + DC 比分/胜平负分布、FEATURE_WEIGHTS
-├── models/nn_predictor.py   # 纯 NumPy MLP 三分类器(神经网络版, 零新增依赖)
-├── strategy/decision.py     # EV 过滤 + 分数凯利仓位
-├── feeds/simulated.py       # 模拟实时数据源（用于演示与回测）
-├── backtest/paper_trader.py # 简易纸面交易引擎
-├── data/                    # 数据加载、训练、验证、队名映射（详见下方）
-│   ├── csl_loader.py            # Match 数据类 + openfootball 赛果加载（备用）
-│   ├── train_strength.py        # Dixon-Coles/泊松 MLE 训练攻防强度
-│   ├── train_nn.py              # 神经网络版训练/验证(含 --recent 日期切分+时间权重)
-│   ├── experiment_time_weight.py # 时间权重对比实验(多档半衰期 × 多种子平均)
-│   ├── validate.py              # walk-forward 验证
-│   ├── team_names.py            # 中文队名 / 别名映射（含辽宁铁人等新队）
-│   ├── api_football_loader.py   # API-Football 拉取 + 合并去重加载器
-│   ├── cfa_loader.py            # 中国足协官方 API 拉取（当前赛季赛果，队名权威）
-│   ├── analyze_apifootball.py   # 进球分布/相关性/权重校准分析
-│   ├── csl_strength.json        # 训练产出的强度模型
-│   └── apifootball_raw/         # API-Football 数据（唯一训练数据源）
-│       ├── cache/                   # 单场缓存 fixture_<id>.json（不入库）
-│       └── seasons/                 # 赛季汇总 csl_<season>_details.json
-├── predict.py               # 交互式 / JSON 文件预测入口
-└── main.py                  # 端到端可运行演示
-```
+---
 
-## 数据来源
+## 一、准备工作（只需做一次）
 
-本项目用**两个互补数据源**，统一汇入 `data/apifootball_raw/seasons/`，经 `load_all_details()` 按 `fixture_id` 合并去重后训练：
+### 1. 确认电脑装了 Python
 
-| 数据源 | 负责赛季 | 提供内容 | 优势 |
-|--------|---------|---------|------|
-| **中国足协官方 API**（`cfa_loader.py`） | 当前赛季（2026） | 赛程赛果 + 比分 | 官方、免费、队名/升降级永远最新准确 |
-| **API-Football**（`api_football_loader.py`） | 历史赛季（2023/2024/2025） | 赛果 + 射正/角球/xG + 分钟级事件 | 场面统计丰富，用于校准 `FEATURE_WEIGHTS` |
-
-两源队名经归一化对齐（如 `SHANGHAI SIPG`=上海海港、`Shandong Luneng`=山东泰山），同一支队跨赛季自洽，中文映射见 `team_names.py`。
-
-> 为什么引入官方源：API-Football 的 **2026 中超参赛名单滞后**（缺辽宁铁人、青岛西海岸、深圳新鹏城，却混入已降级的队）；中国足协官方 API 名单准确，故当前赛季改用官方数据。早期版本曾用 openfootball（`csl_loader.py` 仅保留 `Match` 数据类）。
-
-## 安装
+打开终端（Mac 的"终端"、Windows 的"命令提示符"），输入：
 
 ```bash
+python3 --version
+```
+
+能看到 `Python 3.x.x` 就说明装好了。没有的话请先去 [python.org](https://www.python.org/) 下载安装。
+
+### 2. 下载本项目并安装依赖
+
+```bash
+# 进入项目文件夹（下面命令都要在这个文件夹里运行）
+cd qqq
+
+# 安装依赖（只需要 numpy 和 scipy 两个库）
 pip install -r requirements.txt
 ```
 
-> 所有命令都在**项目根目录**（`qqq/`）下运行。
+### 3. 训练模型（第一次使用必做）
 
-## 运行演示（单场模拟比赛）
-
-```bash
-python3 main.py
-```
-
-## Web 应用（前后端分离：Vue + Flask）
-
-用网页展示**接下来 10 场中超**的预测概率，并支持手动输入赔率获取投注建议。
-架构：**前端 (Vue 3) → 后端 (Flask) → 预测模型**。详见 [webapp/README.md](webapp/README.md)。
+模型需要"学习"历史比赛数据才能预测。运行下面这条命令，它会自动完成学习并保存结果：
 
 ```bash
-# 一键启动前后端（前端 :5173 / 后端 :5001）
-./start_web.sh
-# 浏览器打开 http://127.0.0.1:5173/
-```
-
-
-## 蒙特卡洛回测（500 场）
-
-```bash
-python3 main.py mc 500
-```
-
-## 预测真实比赛
-
-详见 [USAGE.md](USAGE.md)，涵盖训练中超模型、赛前预测、实时预测、中文队名 / 中文字段等完整用法。
-
-```bash
-# 用全部已拉取的 API-Football 数据训练强度模型
 python3 -m data.train_strength
+```
 
-# walk-forward 验证（默认：2024+2025 训练、2026 测试）
-python3 -m data.validate
+看到类似 `converged: true` 就成功了，会生成一个 `data/csl_strength.json` 文件。
 
-# ★ 最简单：只给两个队名做赛前胜率预测
+> 📌 **小知识**：这一步是让程序根据每支球队过去的战绩，算出它们的"进攻能力"和"防守能力"。之后所有预测都基于它。
+
+---
+
+## 二、网页版（推荐新手）
+
+网页版最简单：一个页面列出**接下来 10 场中超比赛**，每场都有预测概率；想看投注建议就输入赔率。
+
+### 启动
+
+```bash
+./start_web.sh
+```
+
+这条命令会自动启动前端和后端，然后你在浏览器里打开：
+
+**http://127.0.0.1:5173/**
+
+按 `Ctrl + C` 可以停止。
+
+> ⚠️ 网页前端需要 **Node.js 18 或更高版本**（一个运行网页程序的工具，需另行安装）。
+> 脚本会自动帮你安装网页依赖，首次启动会稍慢，请耐心等待。
+
+### 怎么用
+
+1. 打开页面，能看到接下来 10 场比赛，每场都显示了**胜平负概率条**、大小球、最可能比分、半全场矩阵等。
+2. 想要投注建议？点某场比赛下方的输入框，填入你在博彩网站看到的**赔率**。
+3. 可以只填主胜/平局/客胜，也可以展开填**大小球 / 半全场 / 比分**赔率（都是可选的）。
+4. 点"获取投注建议"，程序会列出**值得下注**（长期期望为正）的选项和建议仓位。
+
+### 遇到问题？
+
+- 页面打不开：确认 `./start_web.sh` 那个终端窗口没有关，且没有报错。
+- 后端 / 前端日志分别在 `/tmp/csl_backend.log` 和 `/tmp/csl_frontend.log`，出错时可以查看。
+
+---
+
+## 三、命令行版
+
+不想开网页、想快速查一场，或者想做更多定制，可以用命令行。
+
+### 最简单：给两个队名，看谁赢
+
+```bash
 python3 predict.py 辽宁铁人 北京国安
-
-# 赛前预测时并排显示「神经网络」概率(需先训练 NN 模型)
-python3 predict.py 辽宁铁人 北京国安 --nn
-
-# 生成带中文注释的 JSON 输入模板，编辑后预测（可填实时比分/赔率）
-python3 predict.py -t
-python3 predict.py match.example.json
 ```
 
-## 神经网络版本（可选）
+程序会输出双方胜率、最可能比分、大小球等。队名支持中文和常见别名（如"山东泰山"也可写"鲁能"），会自动模糊匹配。
 
-除默认的 Dixon-Coles/泊松解析模型外，项目还提供一个**纯 NumPy 实现的多层感知机(MLP)三分类器**作为对比/替代方案（零新增依赖，不引入 PyTorch/TensorFlow）。
-
-它与 Dixon-Coles **共享同一份信息**：特征全部由已训练的攻防强度推导得到（主客攻防、主场优势、以及泊松式给出的赛前 λ），因此对比公平——差异只在「解析式」vs「神经网络拟合」。
+### 看详细比分预测
 
 ```bash
-# 训练并保存神经网络模型 (data/nn_strength.json)
-# 默认走「按日期切分 + 温和时间权重」最优配置
-python3 -m data.train_nn
-
-# 按赛季 walk-forward 验证：神经网络 与 Dixon-Coles 并排对比
-python3 -m data.train_nn --validate
-python3 -m data.train_nn --validate 2024,2025 2026
-```
-
-### 按比赛日期切分 + 时间权重（推荐，最优配置）
-
-用**测试集之前的全部数据**训练（2023/2024/2025 全年 + 2026 早期场次），
-并对比赛按日期做**指数时间权重**（越近的比赛权重越大），预测 **2026 最近 N 场**：
-
-```bash
-# 训练"2026 最近 30 场之前"的全部数据(半衰期365天时间权重), 预测最近 30 场
-python3 -m data.train_nn --recent
-python3 -m data.train_nn --recent 30
-
-# 调整时间权重半衰期(天): 越小越偏重近期; 0=等权(无时间权重)
-python3 -m data.train_nn --recent 30 --half-life 450
-python3 -m data.train_nn --recent 30 --half-life 0
-```
-
-在 838 场训练 / 2026 最近 30 场测试下的验证参考值（30 种子平均）：
-
-| 方案 | 准确率 | log-loss |
-|------|------|------|
-| 无时间权重（等权） | 62.00% | 0.9753 |
-| **时间衰减 半衰期 450 天（默认，最优）** | **63.00%** | **0.9733** |
-| 时间衰减 半衰期 365 天 | 62.22% | 0.9748 |
-| 时间衰减 半衰期 180 天 | 55.00% | 0.9921 |
-| 时间衰减 半衰期 90 天 | 46.33% | 1.0480 |
-
-> **关键结论**：时间权重要「温和」才有增益（半衰期≈**450 天**最优，比等权 +1%）；
-> 经 15/30 种子细扫，最优点在 450~500 天区间，比初版的 365 天略好且更稳；
-> 一旦衰减过强（半衰期 ≤180 天），会把历史赛季权重压到接近 0、等于只用极少近期数据，
-> 准确率反而急剧下滑。**样本量比新鲜度更重要**。
-
-早期在小数据（480～630 场，2024+2025 训练、2026 全季测试）下的参考值：
-
-| 指标 | 神经网络(MLP) | Dixon-Coles |
-|------|--------------|-------------|
-| 准确率 | ~50.6% | ~51.9% |
-| log-loss | ~1.06 | ~1.05 |
-
-> 数据翻倍（加入 2023）后 NN 准确率从 ~51% 提升到 **~63%**，印证了「加数据是提升关键」。
-> NN 通过 **early stopping + L2 正则** 抑制过拟合，样本量越大发挥空间越大。
-
-### 进球数预测（泊松回归）
-
-除了「胜平负三分类」，还提供一个**直接预测主客队进球数**的泊松回归模型
-（`MLPPoissonRegressor`）：网络输出 log(λ_home)、log(λ_away)，用**泊松负对数似然**
-做损失。由 λ 可反推胜平负、大小球、精确比分等所有盘口，评估维度更丰富。
-
-```bash
-# 验证进球数预测(默认最近50场/等权), 与 Dixon-Coles 并排
-python3 -m data.train_nn --goals
-python3 -m data.train_nn --goals 50 --half-life 450
-
-# ★ 用【全部已有数据】训练并保存, 用于预测未来比赛
-python3 -m data.train_nn --goals --save
-```
-
-在 818 场训练 / 2026 最近 50 场测试下的参考值（10 种子平均）：
-
-| 指标 | 神经网络(泊松) | Dixon-Coles |
-|------|--------------|-------------|
-| 进球 MAE ↓ | **1.033** | 1.069 |
-| 进球 RMSE ↓ | **1.288** | 1.368 |
-| 胜平负准确率 ↑ | **44.0%** | 42.0% |
-| 大小球 2.5 准确率 ↑ | **59.6%** | 46.0% |
-| 胜平负 log-loss ↓ | **1.161** | 1.220 |
-
-> 用「进球数」作训练目标后，NN 泊松回归在**所有指标上都优于** Dixon-Coles 解析式，
-> 尤其大小球命中率显著领先（59.6% vs 46.0%）——因为它直接优化进球期望，
-> 比只优化胜平负方向能更好地捕捉比分尺度。
-
-### 预测未来比赛比分
-
-训练好模型后（`--goals --save`，会用**全部已有数据**训练并同时保存攻防强度模型），
-直接用 `predict_score.py` 预测任意两队的赛前比分：
-
-```bash
-# 只需给主队、客队名(支持中文/英文, 自动模糊匹配)
 python3 predict_score.py 北京国安 长春亚泰
-python3 predict_score.py "Shanghai Shenhua" "Wuhan Three Towns" --top 12
-
-# 实时(滚球)预测: 给当前分钟+比分, 预测最终比分
-python3 predict_score.py 北京国安 长春亚泰 --minute 60 --score 1-0
-
-# 指定赔率文件 -> 额外输出价值投注推荐(EV + 凯利仓位)
-python3 predict_score.py --odds-template            # 先生成赔率模板
-python3 predict_score.py 北京国安 长春亚泰 --odds odds.example.json
-
-# 从 JSON 文件读全部输入(队名/分钟/比分/赔率), 兼容 predict.py 的中文字段格式
-python3 predict_score.py match_cn.json
 ```
 
 输出示例：
 
 ```
   赛前比分预测   北京国安 (主)  vs  长春亚泰 (客)
-预期进球 λ:   主队 2.54   -   客队 0.88
+预期进球:     主队 2.54   -   客队 0.88
 最可能比分:   2 - 0   (概率 10.6%)
 【比分概率 TOP 8】  2-0 10.6% / 2-1 9.3% / 3-0 9.0% / 1-0 8.3% ...
 【胜平负】         主胜 73.2%   平局 15.9%   客胜 10.9%
-【进球盘口】       大2.5 66.1%   双方进球 是 53.8%   总进球期望 3.43
-【价值投注建议】   ✅ 大球2.5 赔率2.40 EV +58.6% 仓位2.00%  (需 --odds)
+【进球盘口】       大2.5 66.1%   双方进球 是 53.8%
 ```
 
-> 模型会输出主/客队**预期进球 λ**，再用泊松分布组合出完整比分矩阵，
-> 从而给出最可能比分、TOP 比分榜及各类盘口概率。
-> 传入 `--odds 文件` 后，会用模型概率对比赔率隐含概率，筛出 **EV≥3%** 的
-> 价值投注并按 1/4 凯利给出建议仓位（封顶 2%）。赔率文件支持 `home/draw/away`、
-> `over/under`、`btts_yes/no`、`exact`（精确比分）等盘口，只填关心的即可。
->
-> **实时预测**（`--minute N --score H-A`）：把整场 λ 按剩余时间比例折算
-> （`λ_剩余 = λ × (90-分钟)/90`），再叠加当前已进球数得到**最终比分**分布。
-> 例如第 60 分钟 1-0 时，主胜概率会因领先+时间不多而显著上升。
->
-> **JSON 文件模式**（`predict_score.py match_cn.json`）：一次性从文件读入队名、
-> 分钟、比分、赔率，兼容 `predict.py` 的嵌套中文字段格式
-> （`比赛状态`/`赔率`）。大小球支持**任意盘口线**（如 3.0），自动从比分矩阵计算。
->
-> **整数盘口线退款(push)**：如大小球 3.0、精确让分等整数线，当总进球恰好等于该
-> 线时按规则**退还本金**（不赢不输）。程序会正确扣除这部分概率，EV 更准确
-> （例：小球 3 会显示「净胜 45% / 退 22%」而非虚高的 67%）。
->
-> **精确比分对比**：填了 `exact` 后，除价值投注推荐外，还会额外列出所有精确比分的
-> **模型概率 vs 赔率隐含概率 vs EV** 明细，方便对比（即便未达 3% 门槛也显示）。
->
-> **重复键检测**：JSON 默认对重复键静默保留最后一个，极易埋坑。程序解析时会逐层
-> 检查，一旦发现重复键（如同一比分写了多个赔率）立即醒目报警，指出被忽略的值。
+### 加上赔率，得到投注建议
 
-## 拉取真实中超数据
-
-### 方式一：中国足协官方 API（推荐，当前赛季）
-
-官方、免费、无需鉴权，队名/升降级永远最新准确（含辽宁铁人等新升班马）：
+先生成一个赔率模板文件，填好后再预测：
 
 ```bash
-# 抓取当前赛季（2026）全部已完赛场次，保存到 seasons/csl_2026_details.json
+python3 predict_score.py --odds-template                       # 生成 odds.example.json 模板
+python3 predict_score.py 北京国安 长春亚泰 --odds odds.example.json
+```
+
+带 `--odds` 后会多出**价值投注建议**：程序对比"模型算的概率"和"赔率隐含的概率"，
+筛出期望收益 ≥ 3% 的选项，并按 1/4 凯利公式建议下注比例（最多押总资金的 2%）。
+
+### 比赛进行中的实时预测
+
+比赛踢到一半，输入当前分钟和比分，预测最终结果：
+
+```bash
+python3 predict_score.py 北京国安 长春亚泰 --minute 60 --score 1-0
+```
+
+（原理：把整场进球预期按剩余时间折算，再加上已经进的球。）
+
+---
+
+## 四、用文件输入更复杂的信息（进阶）
+
+如果想输入射正、角球、xG、红牌等更详细的场面数据，可以写一个 JSON 文件。
+所有字段和队名**都支持中文**：
+
+```jsonc
+{
+  "比赛状态": {
+    "主队": "上海海港", "客队": "北京国安",
+    "分钟": 60, "主队进球": 1, "客队进球": 0,
+    "主队射正": 4, "客队射正": 2,      // 射正对进球影响最大
+    "主队角球": 5, "客队角球": 3,
+    "主队红牌": 0, "客队红牌": 0        // 每张红牌使该队进球预期 ×0.65
+  },
+  "赔率": {                            // 可选，填了才给投注建议
+    "主胜": 1.35, "平局": 4.50, "客胜": 9.00,
+    "大球": { "2.5": 2.40 }, "小球": { "2.5": 1.60 },
+    "精确比分": { "1-1": 7.10 }        // 键为「主-客」
+  }
+}
+```
+
+保存为 `my_match.json` 后运行：
+
+```bash
+python3 predict.py my_match.json
+```
+
+> 💡 项目自带示例 `match_cn.json`，可直接 `python3 predict.py match_cn.json` 试跑。
+> 想要空白模板：`python3 predict.py -t`。文件里支持 `//` 注释。
+
+**xG 是什么？** xG（预期进球）衡量射门机会的质量——把每次射门按"进球可能性"累加。
+xG=1.3 表示按机会质量估算约该进 1.3 球，比单纯数"射门数"更能反映威胁，所以权重最高。
+
+---
+
+## 五、更新比赛数据
+
+程序自带的数据可能不是最新的。想拉最新赛果：
+
+```bash
+# 推荐：中国足协官方 API，免费、无需注册，当前赛季队名最准（含新升班马）
 python3 -m data.cfa_loader
 ```
 
-- 数据源：`https://api.cfl-china.cn`（中超 CSL / 中甲 CFL1 / 中乙 CFL2）
-- 只提供赛程赛果 + 比分，**无**射正/角球/xG，故仅用于训练强度模型
-- 只能取当前赛季（服务端忽略历史赛季参数）
+拉完记得**重新训练**：`python3 -m data.train_strength`。
 
-### 方式二：API-Football（历史赛季 + 场面统计）
+> 还有一个数据源 API-Football（提供射正/角球/xG 等更细的历史数据），需要注册 API key，
+> 用于校准模型。新手一般用不到，进阶说明见下方。
 
-提供**分钟级事件 + 射正/角球/xG**，用于校准 `FEATURE_WEIGHTS`：
+---
+
+## 六、进阶内容
+
+<details>
+<summary>点击展开：模型验证、神经网络版、参数调整、数据源细节</summary>
+
+### 验证模型准确率
 
 ```bash
-# 设置 API key
+python3 -m data.validate               # 默认 2024+2025 训练、2026 测试
+python3 -m data.validate 2024,2025 2026
+```
+
+参考：准确率约 **49.6%** / log-loss 约 **1.04**，优于「永远猜主胜」基线（48.7% / 1.10）。
+
+### 神经网络版本（可选）
+
+除默认的 Dixon-Coles 解析模型外，还有一个纯 NumPy 实现的神经网络（MLP），零新增依赖：
+
+```bash
+python3 -m data.train_nn                       # 训练胜平负三分类器
+python3 -m data.train_nn --validate            # 与 Dixon-Coles 并排对比
+python3 -m data.train_nn --recent 30 --half-life 450   # 日期切分 + 时间权重
+python3 -m data.train_nn --goals --save        # 进球数泊松回归，训练并保存
+```
+
+结论：**样本量比数据新鲜度更重要**。加入更多历史赛季后准确率从 ~51% 升到 **~63%**。
+
+### API-Football 数据源
+
+```bash
 export API_FOOTBALL_KEY=你的key
-
-# 单赛季：拉 2025 赛季最新 10 场（自动倒序、本地缓存、遇限速自动重试）
-python3 -m data.api_football_loader 2025 --limit 10
-
-# 单赛季：拉整个赛季
-python3 -m data.api_football_loader 2025 --all
+python3 -m data.api_football_loader 2024 --limit 10   # 拉最新 10 场
+python3 -m data.api_football_loader 2024 --all        # 拉整季
+python3 -m data.analyze_apifootball 2024              # 分析、校准特征权重
 ```
 
-- 缓存写入 `data/apifootball_raw/cache/`，汇总写入 `data/apifootball_raw/seasons/`
-- 免费档约 100 请求/天、仅可拉 2022–2024；Pro 档 7500 请求/天、可拉当前赛季
-- 提速：`export API_FOOTBALL_DELAY=0.3`（Pro 档限速 300/分钟）
-- ⚠️ 其当前赛季参赛名单可能滞后，**当前赛季请优先用方式一（官方 API）**
+两个数据源统一汇入 `data/apifootball_raw/seasons/`，按比赛 ID 合并去重后训练，队名已对齐。
+**当前赛季用官方 API**（API-Football 的 2026 参赛名单滞后）。免费档约 100 请求/天，已内置缓存与重试。
 
-分析这些数据（不消耗配额），校准特征权重：
+### 可调参数
+
+| 位置 | 参数 | 说明 |
+|------|------|------|
+| `strategy/decision.py` | `MIN_EDGE` | 下注最小期望收益（默认 3%） |
+| | `KELLY_FRACTION` | 凯利比例（默认 1/4） |
+| | `MAX_STAKE_PER_BET` | 单注上限（默认总资金 2%） |
+| | `MIN_ODDS` / `MAX_ODDS` | 过滤过低 / 过高的赔率 |
+| `models/poisson_live.py` | `FEATURE_WEIGHTS` | 各场面统计对进球预期的权重 |
+| | `RED_CARD_PENALTY` | 减员至 10 人时的进球预期乘数 |
+
+### 模拟回测
 
 ```bash
-python3 -m data.analyze_apifootball 2024
+python3 main.py              # 单场模拟演示
+python3 main.py mc 500       # 500 场蒙特卡洛回测
 ```
 
-输出：进球分钟分布、各特征与进球的相关性、泊松回归对 `FEATURE_WEIGHTS` 的校准建议。
+</details>
 
-## 接入真实数据源
+---
 
-实现一个与 `SimulatedFeed` 接口一致的类：
+## 七、常见问题
 
-```python
-class MyLiveFeed:
-    def step(self) -> tuple[MatchState, OddsSnapshot]: ...
+**Q：运行时报 `ModuleNotFoundError: No module named 'core'` / `data`？**
+A：必须在**项目根目录**（`qqq/`）里运行。顶层脚本用 `python3 predict.py`，子模块用 `python3 -m data.xxx`。
+
+**Q：提示"球队未在训练数据中找到"？**
+A：这支队不在你训练用的赛季里。跑 `python3 -m data.cfa_loader` 拉最新数据后重新训练。
+
+**Q：网页版启动失败 / 打不开？**
+A：确认装了 Node.js 18+；查看 `/tmp/csl_frontend.log` 和 `/tmp/csl_backend.log` 里的报错信息。
+
+**Q：投注建议为什么经常是空的？**
+A：只有当模型认为"某个赔率明显偏高、长期有利可图"（期望收益 ≥ 3%）时才推荐。多数赔率被博彩公司定得很准，没有价值属正常。
+
+---
+
+## 项目结构（给想读代码的人）
+
+```
+qqq/
+├── core/state.py             # 数据结构：比赛状态 / 赔率 / 投注建议
+├── models/poisson_live.py    # 核心模型：时变泊松 + Dixon-Coles（比分/胜平负/半全场）
+├── models/nn_predictor.py    # 神经网络版（纯 NumPy）
+├── strategy/decision.py      # 投注决策：EV 过滤 + 凯利仓位
+├── data/                     # 数据加载 / 训练 / 验证 / 队名映射
+│   ├── train_strength.py         # 训练攻防强度 → csl_strength.json
+│   ├── cfa_loader.py             # 中国足协官方 API（当前赛季）
+│   ├── api_football_loader.py    # API-Football（历史赛季 + 场面统计）
+│   └── upcoming.py               # 拉未开赛赛程（网页版用）
+├── predict.py                # 通用预测入口
+├── predict_score.py          # 比分预测入口
+├── main.py                   # 演示 + 蒙特卡洛回测
+├── webapp/                   # 网页后端（Flask，端口 5001）
+├── frontend/                 # 网页前端（Vue 3 + Vite，端口 5173）
+└── start_web.sh              # 一键启动前后端
 ```
 
-然后接入同一套评估流程：
-
-```python
-from strategy.decision import evaluate
-state, odds = feed.step()
-for rec in evaluate(state, odds):
-    print(rec)
-```
-
-推荐的真实数据源：
-- **比赛统计**：API-Football、SportMonks、Understat
-- **赔率**：Betfair 交易所 API（最佳）、Pinnacle、OddsPortal
-
-## 可调参数
-
-`strategy/decision.py`：
-- `MIN_EDGE` — 下注所需的最小 EV（默认 3%）
-- `KELLY_FRACTION` — 凯利比例（默认 1/4）
-- `MAX_STAKE_PER_BET` — 单注硬上限（默认 2%）
-- `MIN_ODDS`、`MAX_ODDS` — 过滤极端赔率
-
-`models/poisson_live.py`：
-- `FEATURE_WEIGHTS` — 各项场面统计对 λ 的推动权重
-- `RED_CARD_PENALTY` — 一方减员至 10 人时的 λ 乘数
-
-## 后续方向
-
-- 用真实的 websocket / REST 数据源替换 `SimulatedFeed`
-- 扩大 API-Football 样本量（80+ 场）后重跑 `analyze_apifootball`，稳健校准 `FEATURE_WEIGHTS`
-- 用历史逐分钟数据学习时变强度曲线（LightGBM）
-- 增加整赛季的 walk-forward 回测
-- 增加持久化（SQLite）+ Telegram / 企业微信 通知
+**网页版技术架构**：浏览器 → Vite 前端(:5173) →（`/api` 代理）→ Flask 后端(:5001) → 预测模型。
+后端主要接口：`GET /api/matches?limit=10`（返回赛程+预测）、`POST /api/predict`（传赔率、返回投注建议）。
