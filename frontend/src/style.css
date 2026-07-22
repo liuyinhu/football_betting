@@ -162,22 +162,20 @@ header.app-header p {
 .scores .chip b { color: var(--gold); }
 
 /* 半全场 HT/FT */
-.hf-toggle {
+.hf-title {
   margin-top: 10px;
-  background: none;
-  border: none;
-  color: var(--home);
-  cursor: pointer;
+  color: var(--text);
   font-size: 13px;
-  padding: 0;
+  font-weight: 600;
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
-.hf-toggle .hf-best {
+.hf-title .hf-best {
   color: var(--gold);
   font-size: 12px;
+  font-weight: 400;
 }
 .hf-panel { margin-top: 10px; }
 .hf-table {
@@ -222,15 +220,48 @@ header.app-header p {
   gap: 6px;
 }
 
-/* 赔率输入区 */
-.odds-toggle {
-  margin-top: 12px;
-  background: none;
-  border: none;
-  color: var(--home);
-  cursor: pointer;
+/* 比分（正确比分）赔率输入 */
+.cs-odds { margin-top: 8px; }
+.cs-group { margin-bottom: 10px; }
+.cs-group-title {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.cs-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+@media (max-width: 560px) {
+  .cs-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.cs-grid .field label,
+.htft-odds-col .field label {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.cs-grid .field input,
+.htft-odds-col .field input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 6px 8px;
   font-size: 13px;
-  padding: 0;
+}
+.cs-grid .field input:focus,
+.htft-odds-col .field input:focus { outline: none; border-color: var(--home); }
+
+/* 赔率输入区 */
+.odds-title {
+  margin-top: 12px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
 }
 .odds-panel {
   margin-top: 12px;

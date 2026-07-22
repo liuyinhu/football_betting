@@ -8,7 +8,6 @@ const props = defineProps({
 
 // 概率初始值来自列表接口（无赔率），提交赔率后用返回值覆盖
 const prediction = ref(props.match.prediction)
-const showOdds = ref(false)
 const loading = ref(false)
 const errorMsg = ref('')
 const recommendations = ref(null)   // null=未提交, []=提交但无建议
@@ -29,6 +28,17 @@ const htftOdds = reactive({
 })
 const showHtftOdds = ref(false)
 
+// 比分（正确比分）赔率输入，key = "主-客"，按主胜/平局/客胜分组
+const CS_HOME = ['1-0', '2-0', '2-1', '3-0', '3-1', '3-2']
+const CS_DRAW = ['0-0', '1-1', '2-2', '3-3']
+const CS_AWAY = ['0-1', '0-2', '1-2', '0-3', '1-3', '2-3']
+const CS_SCORES = [...CS_HOME, ...CS_DRAW, ...CS_AWAY]
+const csOdds = reactive(Object.fromEntries(CS_SCORES.map((s) => [s, ''])))
+const showCsOdds = ref(false)
+
+// 大小球赔率默认隐藏，可选填
+const showOuOdds = ref(false)
+
 const pct = (v) => (v == null ? '-' : (v * 100).toFixed(1) + '%')
 
 const outcome = computed(() => prediction.value?.outcome || {})
@@ -37,7 +47,6 @@ const btts = computed(() => prediction.value?.btts || {})
 const topScores = computed(() => prediction.value?.top_scores || [])
 
 // 半全场：整理成 3x3 网格 + 找出概率最高的一格
-const showHalfFull = ref(false)
 const SIGN_ZH = { home: '主', draw: '平', away: '客' }
 const halfFull = computed(() => prediction.value?.half_full || [])
 const hfGrid = computed(() => {
@@ -84,6 +93,12 @@ function buildOddsPayload() {
     if (o) htft[k] = o
   }
   if (Object.keys(htft).length) payload.htft = htft
+  const exact = {}
+  for (const s in csOdds) {
+    const o = num(csOdds[s])
+    if (o) exact[s] = o
+  }
+  if (Object.keys(exact).length) payload.exact = exact
   return payload
 }
 
@@ -110,6 +125,7 @@ async function submitOdds() {
 function clearOdds() {
   Object.keys(odds).forEach((k) => (odds[k] = ''))
   Object.keys(htftOdds).forEach((k) => (htftOdds[k] = ''))
+  Object.keys(csOdds).forEach((k) => (csOdds[k] = ''))
   recommendations.value = null
   hasOdds.value = false
 }
@@ -166,13 +182,7 @@ function clearOdds() {
       </div>
 
       <!-- 半全场 (HT/FT) -->
-      <button class="hf-toggle" @click="showHalfFull = !showHalfFull" v-if="halfFull.length">
-        {{ showHalfFull ? '▲ 收起半全场' : '▼ 半全场胜负预测' }}
-        <span class="hf-best" v-if="hfBest">
-          最可能 {{ SIGN_ZH[hfBest.ht] }}/{{ SIGN_ZH[hfBest.ft] }} {{ pct(hfBest.prob) }}
-        </span>
-      </button>
-      <div class="hf-panel" v-show="showHalfFull" v-if="halfFull.length">
+      <div class="hf-panel" v-if="halfFull.length">
         <table class="hf-table">
           <thead>
             <tr>
@@ -194,12 +204,8 @@ function clearOdds() {
       </div>
     </template>
 
-    <!-- 赔率输入切换 -->
-    <button class="odds-toggle" @click="showOdds = !showOdds">
-      {{ showOdds ? '▲ 收起赔率' : '▼ 输入赔率获取投注建议' }}
-    </button>
-
-    <div class="odds-panel" v-show="showOdds">
+    <!-- 赔率输入 -->
+    <div class="odds-panel">
       <div class="odds-row">
         <div class="field">
           <label>主胜</label>
@@ -214,7 +220,11 @@ function clearOdds() {
           <input v-model="odds.away" type="number" step="0.01" placeholder="4.20" />
         </div>
       </div>
-      <div class="odds-row">
+      <!-- 大小球赔率（可选，默认隐藏） -->
+      <button class="htft-odds-toggle" @click="showOuOdds = !showOuOdds">
+        {{ showOuOdds ? '▲ 收起大小球赔率' : '＋ 大小球赔率（可选）' }}
+      </button>
+      <div class="odds-row" v-show="showOuOdds">
         <div class="field">
           <label>大 1.5</label>
           <input v-model="odds.over15" type="number" step="0.01" placeholder="-" />
@@ -243,6 +253,40 @@ function clearOdds() {
             <div class="field" v-for="ft in signs" :key="ft">
               <label>{{ SIGN_ZH[ht] }}/{{ SIGN_ZH[ft] }}</label>
               <input v-model="htftOdds[ht + '/' + ft]" type="number" step="0.01" placeholder="-" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 比分（正确比分）赔率（可选） -->
+      <button class="htft-odds-toggle" @click="showCsOdds = !showCsOdds">
+        {{ showCsOdds ? '▲ 收起比分赔率' : '＋ 比分赔率（可选）' }}
+      </button>
+      <div class="cs-odds" v-show="showCsOdds">
+        <div class="cs-group">
+          <div class="cs-group-title">主胜比分</div>
+          <div class="cs-grid">
+            <div class="field" v-for="s in CS_HOME" :key="s">
+              <label>{{ s }}</label>
+              <input v-model="csOdds[s]" type="number" step="0.01" placeholder="-" />
+            </div>
+          </div>
+        </div>
+        <div class="cs-group">
+          <div class="cs-group-title">平局比分</div>
+          <div class="cs-grid">
+            <div class="field" v-for="s in CS_DRAW" :key="s">
+              <label>{{ s }}</label>
+              <input v-model="csOdds[s]" type="number" step="0.01" placeholder="-" />
+            </div>
+          </div>
+        </div>
+        <div class="cs-group">
+          <div class="cs-group-title">客胜比分</div>
+          <div class="cs-grid">
+            <div class="field" v-for="s in CS_AWAY" :key="s">
+              <label>{{ s }}</label>
+              <input v-model="csOdds[s]" type="number" step="0.01" placeholder="-" />
             </div>
           </div>
         </div>
