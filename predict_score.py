@@ -70,6 +70,35 @@ def _poisson_pmf(k: int, lam: float) -> float:
     return math.exp(-lam) * lam ** k / math.factorial(k)
 
 
+def _parse_json_checked(raw: str, path: str) -> dict:
+    """解析 JSON, 并检测重复键(json 默认静默保留最后一个, 易致输入错误)。
+
+    发现任一层级有重复键时, 打印醒目警告(指出键名+被丢弃的值)。
+    """
+    dup_warnings: list = []
+
+    def hook(pairs):
+        seen = {}
+        for k, v in pairs:
+            if k in seen:
+                dup_warnings.append((k, seen[k], v))
+            seen[k] = v
+        return seen
+
+    try:
+        from predict import _strip_json_comments
+        raw = _strip_json_comments(raw)
+    except Exception:
+        pass
+    data = json.loads(raw, object_pairs_hook=hook)
+    if dup_warnings:
+        print("⚠️  检测到赔率文件中有重复的键 (JSON 只会保留最后一个, 前面的被忽略):")
+        for k, old, new in dup_warnings:
+            print(f"    键 \"{k}\" 重复 → 已忽略 {old}, 实际生效 {new}")
+        print(f"    请检查 {path} 是否输入错误。\n")
+    return data
+
+
 def predict(home: str, away: str, top_n: int = 8, max_goals: int = 8,
             odds_path: str | None = None, minute: int = 0,
             cur_h: int = 0, cur_a: int = 0,
@@ -188,13 +217,7 @@ def predict(home: str, away: str, top_n: int = 8, max_goals: int = 8,
 def _load_odds(path: str) -> dict:
     """读取赔率 JSON 文件。支持中英文键和 // 注释。"""
     raw = Path(path).read_text(encoding="utf-8")
-    # 复用 predict.py 的注释剥离
-    try:
-        from predict import _strip_json_comments
-        raw = _strip_json_comments(raw)
-    except Exception:
-        pass
-    d = json.loads(raw)
+    d = _parse_json_checked(raw, path)
     # 中文键映射
     alias = {"主胜": "home", "平局": "draw", "平": "draw", "客胜": "away",
              "大球": "over", "小球": "under", "大": "over", "小": "under",
@@ -224,27 +247,69 @@ def _report_value_bets(probs: dict, cs_probs: dict,
         if stake > 0:
             recs.append((name, o, p, edge, stake))
 
+    def consider_push(name: str, p_win: float, p_push: float, o):
+        """处理带 push(和局退款) 的盘口, 如整数大小球线 3.0。
+        EV = p_win*(o-1) - p_lose;  仓位按「排除退款后」的条件概率算凯利。"""
+        if o is None:
+            return
+        o = float(o)
+        if o < MIN_ODDS or o > MAX_ODDS:
+            return
+        p_lose = 1 - p_win - p_push
+        edge = p_win * (o - 1) - p_lose
+        if edge < MIN_EDGE:
+            return
+        active = p_win + p_lose  # 非退款概率
+        p_cond = p_win / active if active > 0 else 0.0
+        stake = min(_kelly(p_cond, o) * KELLY_FRACTION, MAX_STAKE_PER_BET)
+        if stake > 0:
+            note = f"{name}(净胜{p_win:.0%}/退{p_push:.0%})"
+            recs.append((note, o, p_win, edge, stake))
+
     # 胜平负
     consider("胜平负:主胜", probs["home"], odds.get("home"))
     consider("胜平负:平局", probs["draw"], odds.get("draw"))
     consider("胜平负:客胜", probs["away"], odds.get("away"))
-    # 大小球(从最终比分矩阵实时计算, 支持任意盘口线如 3.0)
+
+    # 大小球(从最终比分矩阵实时计算, 支持任意盘口线)
     def over_prob(line: float) -> float:
         return sum(p for (i, j), p in cs_probs.items() if i + j > line)
+
+    def exact_total(line: float) -> float:
+        return sum(p for (i, j), p in cs_probs.items() if i + j == line)
+
+    def is_integer_line(line: float) -> bool:
+        return abs(line - round(line)) < 1e-9
+
     for line, o in (odds.get("over") or {}).items():
-        consider(f"大球 {line}", over_prob(float(line)), o)
+        ln = float(line)
+        pv = over_prob(ln)
+        if is_integer_line(ln):
+            # 整数线: 总进球==line 时退款(push)
+            consider_push(f"大球 {line}", pv, exact_total(ln), o)
+        else:
+            consider(f"大球 {line}", pv, o)
     for line, o in (odds.get("under") or {}).items():
-        consider(f"小球 {line}", 1 - over_prob(float(line)), o)
+        ln = float(line)
+        pv_under = 1 - over_prob(ln) - (exact_total(ln) if is_integer_line(ln) else 0.0)
+        if is_integer_line(ln):
+            consider_push(f"小球 {line}", pv_under, exact_total(ln), o)
+        else:
+            consider(f"小球 {line}", 1 - over_prob(ln), o)
     # 双方进球
     consider("双方进球:是", probs["btts_yes"], odds.get("btts_yes"))
     consider("双方进球:否", probs["btts_no"], odds.get("btts_no"))
     # 精确比分
-    for k, o in (odds.get("exact") or {}).items():
+    exact_odds = odds.get("exact") or {}
+    exact_rows = []
+    for k, o in exact_odds.items():
         try:
             sc = tuple(map(int, str(k).split("-")))
         except ValueError:
             continue
-        consider(f"精确比分 {k}", cs_probs.get(sc, 0.0), o)
+        pm = cs_probs.get(sc, 0.0)
+        exact_rows.append((str(k), float(o), pm))
+        consider(f"精确比分 {k}", pm, o)
 
     recs.sort(key=lambda r: r[3], reverse=True)
     print("\n【价值投注建议 (仅列出 EV≥3% 的)】")
@@ -255,6 +320,16 @@ def _report_value_bets(probs: dict, cs_probs: dict,
             print(f"  ✅ {name:14s} 赔率 {o:5.2f}  模型概率 {p:.1%}  "
                   f"EV {edge:+.1%}  建议仓位 {stake:.2%}")
         print("  (仓位=占总资金比例, 已用 1/4 凯利并封顶 2%)")
+
+    # 精确比分明细(即便未达 EV 门槛也列出, 方便对比)
+    if exact_rows:
+        print("\n【精确比分对比 (模型概率 vs 赔率隐含)】")
+        for k, o, pm in sorted(exact_rows, key=lambda r: r[2], reverse=True):
+            imp = 1 / o if o > 0 else 0.0
+            ev = pm * (o - 1) - (1 - pm)
+            flag = " ✅" if ev >= MIN_EDGE else ""
+            print(f"  {k:>5s}  赔率 {o:5.2f}  模型 {pm:5.1%}  "
+                  f"隐含 {imp:5.1%}  EV {ev:+6.1%}{flag}")
 
 
 def write_odds_template(path: str = "odds.example.json") -> None:
@@ -294,12 +369,7 @@ def build_from_json(path: str) -> dict:
       2) 扁平: {"主队":..., "分钟":..., "主胜":...}
     """
     raw = Path(path).read_text(encoding="utf-8")
-    try:
-        from predict import _strip_json_comments
-        raw = _strip_json_comments(raw)
-    except Exception:
-        pass
-    data = json.loads(raw)
+    data = _parse_json_checked(raw, path)
 
     # 顶层键归一: 比赛状态/场面 -> state, 赔率 -> odds
     top = {}
