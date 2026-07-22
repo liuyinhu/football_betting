@@ -297,7 +297,8 @@ def write_template(path: str = "match.example.json") -> None:
 # ---------------------------------------------------------------------------
 # 结果输出
 # ---------------------------------------------------------------------------
-def report(state: MatchState, odds: OddsSnapshot) -> None:
+def report(state: MatchState, odds: OddsSnapshot,
+           nn_probs: tuple[float, float, float] | None = None) -> None:
     probs = outcome_probabilities(state)
     dist = final_score_distribution(state)
     top = sorted(dist.items(), key=lambda x: x[1], reverse=True)[:8]
@@ -314,6 +315,9 @@ def report(state: MatchState, odds: OddsSnapshot) -> None:
 
     print("\n【胜平负 / 大小球 / 双方进球】")
     print(f"  主胜 {probs['home']:.2%}   平局 {probs['draw']:.2%}   客胜 {probs['away']:.2%}")
+    if nn_probs is not None:
+        nh, nd, na = nn_probs
+        print(f"  [神经网络] 主胜 {nh:.2%}   平局 {nd:.2%}   客胜 {na:.2%}")
     print(f"  大2.5 {probs['over_2.5']:.2%}   小2.5 {probs['under_2.5']:.2%}")
     print(f"  大1.5 {probs['over_1.5']:.2%}   大3.5 {probs['over_3.5']:.2%}")
     print(f"  双方进球 是 {probs['btts_yes']:.2%}   否 {probs['btts_no']:.2%}")
@@ -329,6 +333,31 @@ def report(state: MatchState, odds: OddsSnapshot) -> None:
                   f"EV {r.edge:+.1%}  建议仓位 {r.stake_fraction:.2%}")
         print("\n  仓位 = 占总资金比例 (已用 1/4 凯利并封顶 2%)。")
     print("\n⚠️ 仅供学习研究，模型不保证盈利，请勿用于真实赌博。")
+
+
+def _nn_prematch_probs(home: str, away: str):
+    """若存在神经网络模型, 返回其(主胜,平,客胜)概率, 否则 None。"""
+    try:
+        import numpy as np
+        from models.nn_predictor import MLPClassifier, MODEL_PATH as NN_PATH
+        from data.train_strength import load as load_strength, MODEL_PATH
+        from data.train_nn import _features_for
+        if not NN_PATH.exists() or not MODEL_PATH.exists():
+            return None
+        strength = load_strength()
+        h = _fuzzy_find_team(home, strength["teams"])
+        a = _fuzzy_find_team(away, strength["teams"])
+        if not h or not a:
+            return None
+        feats = _features_for(strength, h, a)
+        if feats is None:
+            return None
+        clf = MLPClassifier.load()
+        p = clf.predict_proba(np.array([feats], dtype=float))[0]
+        return float(p[0]), float(p[1]), float(p[2])
+    except Exception as e:
+        print(f"⚠️ 神经网络预测失败: {e}")
+        return None
 
 
 def build_from_teams(home: str, away: str) -> tuple[MatchState, OddsSnapshot]:
@@ -349,15 +378,21 @@ def build_from_teams(home: str, away: str) -> tuple[MatchState, OddsSnapshot]:
 
 def main() -> None:
     args = sys.argv[1:]
+    # --nn: 赛前预测时并排显示神经网络概率
+    use_nn = "--nn" in args
+    args = [a for a in args if a != "--nn"]
     if args and args[0] in ("-t", "--template"):
         write_template()
         return
+    nn_probs = None
     if len(args) == 1 and Path(args[0]).exists():
         # 单个已存在的文件 -> JSON 模式
         state, odds = build_from_json(args[0])
     elif len(args) >= 2:
         # 两个参数 -> 只按队名做赛前预测:  python3 predict.py 主队 客队
         state, odds = build_from_teams(args[0], args[1])
+        if use_nn:
+            nn_probs = _nn_prematch_probs(args[0], args[1])
     elif args:
         # 单个参数但不是文件 -> 提示用法
         raise SystemExit(
@@ -367,7 +402,7 @@ def main() -> None:
             f"  交互式:              python3 predict.py")
     else:
         state, odds = build_from_prompts()
-    report(state, odds)
+    report(state, odds, nn_probs=nn_probs)
 
 
 if __name__ == "__main__":
