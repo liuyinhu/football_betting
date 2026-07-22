@@ -28,19 +28,34 @@ else
 fi
 
 # ---- 启动后端 ----
-echo "== 启动后端 (Flask, :5001) =="
-PORT=5001 python3 -m webapp.app > /tmp/csl_backend.log 2>&1 &
+# 默认用 Flask 开发服务器（方便调试）；设 PROD=1 时用 gunicorn 生产服务器
+# （多进程/多线程，更稳更快，无「development server」警告）。
+#   PROD=1 ./start_web.sh
+if [ "$PROD" = "1" ]; then
+  echo "== 启动后端 (Gunicorn 生产模式, :${PORT:-5001}) =="
+  PORT="${PORT:-5001}" gunicorn -c gunicorn_conf.py webapp.app:app \
+    > /tmp/csl_backend.log 2>&1 &
+else
+  echo "== 启动后端 (Flask 开发模式, :5001) =="
+  PORT=5001 python3 -m webapp.app > /tmp/csl_backend.log 2>&1 &
+fi
 BACKEND_PID=$!
 echo "   后端 PID=$BACKEND_PID  日志: /tmp/csl_backend.log"
 
 # ---- 启动前端 ----
-echo "== 启动前端 (Vite, :5173) =="
 cd "$ROOT/frontend"
 if [ ! -d node_modules ]; then
   echo "   首次运行，安装前端依赖…"
   npm install
 fi
-npm run dev > /tmp/csl_frontend.log 2>&1 &
+if [ "$PROD" = "1" ]; then
+  echo "== 构建并启动前端 (Vite 生产预览, :5173) =="
+  npm run build
+  npm run preview -- --host 0.0.0.0 --port 5173 > /tmp/csl_frontend.log 2>&1 &
+else
+  echo "== 启动前端 (Vite 开发模式, :5173) =="
+  npm run dev > /tmp/csl_frontend.log 2>&1 &
+fi
 FRONTEND_PID=$!
 echo "   前端 PID=$FRONTEND_PID  日志: /tmp/csl_frontend.log"
 

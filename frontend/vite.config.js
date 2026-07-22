@@ -17,4 +17,16 @@ export default defineConfig({
       },
     },
   },
+  // 生产预览服务器 (npm run preview)：同样放行域名并把 /api 代理到后端
+  preview: {
+    host: '0.0.0.0',
+    port: 5173,
+    allowedHosts: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5001',
+        changeOrigin: true,
+      },
+    },
+  },
 })
