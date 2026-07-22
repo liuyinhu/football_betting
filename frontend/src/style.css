@@ -1,0 +1,256 @@
+:root {
+  --bg: #0f1420;
+  --card: #1a2131;
+  --card2: #212a3d;
+  --line: #2c374d;
+  --text: #e6ebf5;
+  --muted: #8b96ab;
+  --home: #4f8cff;
+  --draw: #b7b7b7;
+  --away: #ff7a59;
+  --green: #2ecc71;
+  --gold: #f5c451;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+header.app-header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+header.app-header h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+}
+header.app-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0 24px;
+  flex-wrap: wrap;
+}
+.toolbar label { color: var(--muted); font-size: 14px; }
+.toolbar select, .toolbar button {
+  background: var(--card2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.toolbar button:hover { border-color: var(--home); }
+
+.status-line { text-align: center; color: var(--muted); padding: 40px; }
+.status-line.error { color: var(--away); }
+
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 16px;
+}
+@media (max-width: 560px) {
+  .match-grid { grid-template-columns: 1fr; }
+}
+
+.match-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+  transition: border-color .2s;
+}
+.match-card:hover { border-color: #3a4560; }
+
+.match-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.match-teams {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.match-teams .vs { color: var(--muted); font-size: 13px; font-weight: 400; }
+.lambda-line {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+/* 胜平负概率条 */
+.prob-bar {
+  display: flex;
+  height: 30px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+.prob-bar .seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b0e16;
+  font-weight: 600;
+  min-width: 26px;
+}
+.seg.home { background: var(--home); }
+.seg.draw { background: var(--draw); }
+.seg.away { background: var(--away); }
+.prob-legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 18px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.sub-grid .kv { display: flex; justify-content: space-between; }
+.sub-grid .kv span:last-child { color: var(--home); font-weight: 600; }
+
+.scores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.scores .chip {
+  background: var(--card2);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+}
+.scores .chip b { color: var(--gold); }
+
+/* 赔率输入区 */
+.odds-toggle {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: var(--home);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0;
+}
+.odds-panel {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+.odds-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.odds-row .field {
+  flex: 1;
+  min-width: 78px;
+}
+.odds-row .field label {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.odds-row .field input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 6px 8px;
+  font-size: 13px;
+}
+.odds-row .field input:focus { outline: none; border-color: var(--home); }
+
+.btn-primary {
+  background: var(--home);
+  color: #061024;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-clear {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+/* 投注建议 */
+.recs {
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.recs h4 { margin: 0 0 8px; font-size: 14px; }
+.rec-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(46, 204, 113, .08);
+  border: 1px solid rgba(46, 204, 113, .35);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+.rec-item .mkt { font-weight: 600; }
+.rec-item .tag { color: var(--green); font-weight: 600; }
+.rec-empty { color: var(--muted); font-size: 13px; }
+
+footer.app-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 40px;
+  line-height: 1.8;
+}

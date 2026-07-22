@@ -64,6 +64,18 @@ pip install -r requirements.txt
 python3 main.py
 ```
 
+## Web 应用（前后端分离：Vue + Flask）
+
+用网页展示**接下来 10 场中超**的预测概率，并支持手动输入赔率获取投注建议。
+架构：**前端 (Vue 3) → 后端 (Flask) → 预测模型**。详见 [webapp/README.md](webapp/README.md)。
+
+```bash
+# 一键启动前后端（前端 :5173 / 后端 :5001）
+./start_web.sh
+# 浏览器打开 http://127.0.0.1:5173/
+```
+
+
 ## 蒙特卡洛回测（500 场）
 
 ```bash
