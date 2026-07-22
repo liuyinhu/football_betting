@@ -11,7 +11,9 @@ from __future__ import annotations
 from typing import Dict, List, Optional
 
 from core.state import MatchState, OddsSnapshot
-from models.poisson_live import outcome_probabilities, final_score_distribution
+from models.poisson_live import (
+    outcome_probabilities, final_score_distribution, half_full_distribution,
+)
 from strategy.decision import evaluate
 from data.train_strength import load as load_strength, expected_lambdas, MODEL_PATH
 
@@ -45,6 +47,13 @@ def prematch_probabilities(home_en: str, away_en: str) -> Dict:
     probs = outcome_probabilities(state)
     dist = final_score_distribution(state)
     top = sorted(dist.items(), key=lambda x: x[1], reverse=True)[:6]
+    hf = half_full_distribution(state)
+
+    signs = ("home", "draw", "away")
+    half_full = [
+        {"ht": ht, "ft": ft, "prob": hf[f"{ht}/{ft}"]}
+        for ht in signs for ft in signs
+    ]
 
     return {
         "lambda_home": round(state.prior_lambda_h, 3),
@@ -63,6 +72,10 @@ def prematch_probabilities(home_en: str, away_en: str) -> Dict:
         "top_scores": [
             {"score": f"{h}-{a}", "prob": p} for (h, a), p in top
         ],
+        "half_full": half_full,
+        "ht_outcome": {
+            "home": hf["ht_home"], "draw": hf["ht_draw"], "away": hf["ht_away"],
+        },
     }
 
 

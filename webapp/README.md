@@ -113,12 +113,20 @@ python3 -m data.train_strength
         "outcome": { "home": 0.403, "draw": 0.274, "away": 0.323 },
         "over_under": { "over_2.5": 0.55, "under_2.5": 0.45, "...": 0 },
         "btts": { "yes": 0.58, "no": 0.42 },
-        "top_scores": [ { "score": "1-1", "prob": 0.13 } ]
+        "top_scores": [ { "score": "1-1", "prob": 0.13 } ],
+        "ht_outcome": { "home": 0.37, "draw": 0.39, "away": 0.24 },
+        "half_full": [
+          { "ht": "home", "ft": "home", "prob": 0.297 },
+          { "ht": "draw", "ft": "home", "prob": 0.158 }
+        ]
       }
     }
   ]
 }
 ```
+
+> `half_full` 为**半全场 (HT/FT)** 9 种组合概率，`ht`=半场结果、`ft`=全场结果
+> （`home`/`draw`/`away`）；`ht_outcome` 为半场胜平负边际概率。
 
 ### `POST /api/predict`
 给定一场比赛 + 赔率，返回预测概率与投注建议。
@@ -161,6 +169,17 @@ python3 -m data.train_strength
 - **EV ≥ 3%** 才推荐（`MIN_EDGE`）
 - 仓位 = **1/4 凯利**，并封顶为总资金 **2%**（`KELLY_FRACTION` / `MAX_STAKE_PER_BET`）
 - 过滤赔率 < 1.20 或 > 15 的市场
+
+## 半全场 (HT/FT) 预测（见 `models/poisson_live.py`）
+
+前端每张比赛卡片可展开「半全场胜负预测」，展示 **半场结果 × 全场结果** 的 9 格概率矩阵。
+
+原理：把整场进球率 λ 按上/下半场占比拆成两段**独立泊松**过程，
+联合求和得到 9 种组合。上半场进球占比 `FIRST_HALF_GOAL_FRACTION = 0.43`
+由 `data/apifootball_raw` 全部分钟级进球事件校准（868 场 / 2652 球，上半场 43.0%、下半场 57.0%）。
+低比分相关性仍施加 Dixon-Coles 修正。
+
+> 交叉验证：由 HT/FT 反推的全场胜平负边际，与原单段模型结果高度一致（差异 < 1.5%）。
 
 ## 说明
 

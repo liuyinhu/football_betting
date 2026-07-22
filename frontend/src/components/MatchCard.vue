@@ -28,6 +28,21 @@ const ou = computed(() => prediction.value?.over_under || {})
 const btts = computed(() => prediction.value?.btts || {})
 const topScores = computed(() => prediction.value?.top_scores || [])
 
+// 半全场：整理成 3x3 网格 + 找出概率最高的一格
+const showHalfFull = ref(false)
+const SIGN_ZH = { home: '主', draw: '平', away: '客' }
+const halfFull = computed(() => prediction.value?.half_full || [])
+const hfGrid = computed(() => {
+  const map = {}
+  halfFull.value.forEach((c) => { map[`${c.ht}/${c.ft}`] = c.prob })
+  return map
+})
+const hfBest = computed(() => {
+  if (!halfFull.value.length) return null
+  return halfFull.value.reduce((a, b) => (b.prob > a.prob ? b : a))
+})
+const signs = ['home', 'draw', 'away']
+
 // 胜平负条的三段宽度
 const barSegs = computed(() => {
   const o = outcome.value
@@ -133,6 +148,34 @@ function clearOdds() {
         <span class="chip" v-for="s in topScores" :key="s.score">
           {{ s.score }} <b>{{ pct(s.prob) }}</b>
         </span>
+      </div>
+
+      <!-- 半全场 (HT/FT) -->
+      <button class="hf-toggle" @click="showHalfFull = !showHalfFull" v-if="halfFull.length">
+        {{ showHalfFull ? '▲ 收起半全场' : '▼ 半全场胜负预测' }}
+        <span class="hf-best" v-if="hfBest">
+          最可能 {{ SIGN_ZH[hfBest.ht] }}/{{ SIGN_ZH[hfBest.ft] }} {{ pct(hfBest.prob) }}
+        </span>
+      </button>
+      <div class="hf-panel" v-show="showHalfFull" v-if="halfFull.length">
+        <table class="hf-table">
+          <thead>
+            <tr>
+              <th>半场＼全场</th>
+              <th>全主</th><th>全平</th><th>全客</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="ht in signs" :key="ht">
+              <th>半{{ SIGN_ZH[ht] }}</th>
+              <td v-for="ft in signs" :key="ft"
+                  :class="{ hi: hfBest && hfBest.ht === ht && hfBest.ft === ft }">
+                {{ pct(hfGrid[ht + '/' + ft]) }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="hf-note">行=半场结果，列=全场结果；高亮为最可能组合。</p>
       </div>
     </template>
 

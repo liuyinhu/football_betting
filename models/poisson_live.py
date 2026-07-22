@@ -7,6 +7,7 @@
 3. 剩余进球数 ~ Poisson(lambda_remaining)。最终比分分布 =
    当前比分 + 两队各自独立的泊松抽样。
 4. 对低比分相关性做小幅修正(Dixon-Coles rho)。
+5. 半全场(HT/FT)预测：把整场进球率按上/下半场占比拆成两段独立泊松过程。
 """
 from __future__ import annotations
 import math
@@ -47,6 +48,34 @@ def _adjust_lambda(base_lambda: float,
     lam *= RED_CARD_PENALTY ** red_own
     lam /= RED_CARD_PENALTY ** red_opp   # 对手减员 → 本队更容易进球
     return max(lam, 0.01)
+
+
+def adjusted_lambdas_90(state: MatchState) -> Tuple[float, float]:
+    """返回两队经场面修正后的**全场(per-90)** 进球率 lambda。
+
+    与 compute_residual_lambdas 的区别：这里不乘剩余时间比例，
+    是「若整场按当前节奏踢满 90 分钟」的期望进球率。
+    半全场预测按上下半场拆分时需要它。
+    """
+    home_feats = {
+        "sot": state.sot_h,
+        "corner": state.corners_h,
+        "danger": state.dangerous_attacks_h,
+        "xg": state.xg_h,
+        "possession": state.possession_h - 50.0,
+    }
+    away_feats = {
+        "sot": state.sot_a,
+        "corner": state.corners_a,
+        "danger": state.dangerous_attacks_a,
+        "xg": state.xg_a,
+        "possession": (100 - state.possession_h) - 50.0,
+    }
+    lam_h_90 = _adjust_lambda(state.prior_lambda_h, home_feats, away_feats,
+                              state.red_h, state.red_a)
+    lam_a_90 = _adjust_lambda(state.prior_lambda_a, away_feats, home_feats,
+                              state.red_a, state.red_h)
+    return lam_h_90, lam_a_90
 
 
 def compute_residual_lambdas(state: MatchState) -> Tuple[float, float]:
@@ -148,3 +177,75 @@ def outcome_probabilities(state: MatchState) -> Dict[str, float]:
         "btts_yes": btts_yes,
         "btts_no": 1 - btts_yes,
     }
+
+
+# ---------------------------------------------------------------------------
+# 半全场 (HT/FT) 预测
+# ---------------------------------------------------------------------------
+# 上半场进球占比：由 data/apifootball_raw 全部分钟级进球事件校准
+#   (868 场 / 2652 球：上半场 43.0%、下半场 57.0%)
+FIRST_HALF_GOAL_FRACTION = 0.43
+
+
+def _half_score_distribution(lam_h: float, lam_a: float,
+                             max_goals: int = 6) -> Dict[Tuple[int, int], float]:
+    """给定某半场两队的进球率, 返回该半场比分 (主, 客) 的概率分布。"""
+    dist: Dict[Tuple[int, int], float] = {}
+    total = 0.0
+    for i in range(max_goals + 1):
+        for j in range(max_goals + 1):
+            p = poisson.pmf(i, lam_h) * poisson.pmf(j, lam_a)
+            p *= _dc_tau(i, j, lam_h, lam_a)
+            dist[(i, j)] = p
+            total += p
+    if total > 0:
+        for k in dist:
+            dist[k] /= total
+    return dist
+
+
+def _sign(h: int, a: int) -> str:
+    """比分 -> 胜平负标识: 'home' / 'draw' / 'away'。"""
+    if h > a:
+        return "home"
+    if h < a:
+        return "away"
+    return "draw"
+
+
+def half_full_distribution(state: MatchState,
+                           max_goals: int = 6) -> Dict[str, float]:
+    """返回半全场 (HT/FT) 9 种组合的概率。
+
+    仅支持**赛前**预测 (minute=0, 比分 0-0)；把整场进球率按
+    上/下半场占比拆成两段独立泊松过程, 联合求和得到:
+        - 半场比分  = 上半场比分
+        - 全场比分  = 上半场 + 下半场比分
+
+    返回 key 形如 "home/home"、"draw/away" (前=半场, 后=全场), 共 9 项;
+    另附 3 个边际: "ht_home"/"ht_draw"/"ht_away" (半场胜平负边际概率)。
+    """
+    lam_h_90, lam_a_90 = adjusted_lambdas_90(state)
+
+    f1 = FIRST_HALF_GOAL_FRACTION
+    f2 = 1.0 - f1
+    # 上半场 / 下半场各自的进球率
+    d1 = _half_score_distribution(lam_h_90 * f1, lam_a_90 * f1, max_goals)
+    d2 = _half_score_distribution(lam_h_90 * f2, lam_a_90 * f2, max_goals)
+
+    signs = ("home", "draw", "away")
+    combo: Dict[str, float] = {f"{ht}/{ft}": 0.0 for ht in signs for ft in signs}
+    ht_marg: Dict[str, float] = {s: 0.0 for s in signs}
+
+    for (h1, a1), p1 in d1.items():
+        ht = _sign(h1, a1)
+        ht_marg[ht] += p1
+        for (h2, a2), p2 in d2.items():
+            ft = _sign(h1 + h2, a1 + a2)
+            combo[f"{ht}/{ft}"] += p1 * p2
+
+    result = dict(combo)
+    result["ht_home"] = ht_marg["home"]
+    result["ht_draw"] = ht_marg["draw"]
+    result["ht_away"] = ht_marg["away"]
+    return result

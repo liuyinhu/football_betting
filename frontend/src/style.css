@@ -161,6 +161,45 @@ header.app-header p {
 }
 .scores .chip b { color: var(--gold); }
 
+/* 半全场 HT/FT */
+.hf-toggle {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color: var(--home);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hf-toggle .hf-best {
+  color: var(--gold);
+  font-size: 12px;
+}
+.hf-panel { margin-top: 10px; }
+.hf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  text-align: center;
+}
+.hf-table th, .hf-table td {
+  border: 1px solid var(--line);
+  padding: 5px 4px;
+}
+.hf-table thead th { color: var(--muted); font-weight: 500; }
+.hf-table tbody th { color: var(--muted); font-weight: 500; }
+.hf-table td { color: var(--text); }
+.hf-table td.hi {
+  background: rgba(245, 196, 81, .18);
+  color: var(--gold);
+  font-weight: 700;
+}
+.hf-note { color: var(--muted); font-size: 11px; margin: 6px 0 0; }
+
 /* 赔率输入区 */
 .odds-toggle {
   margin-top: 12px;
