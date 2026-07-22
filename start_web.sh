@@ -16,6 +16,17 @@ fi
 
 echo "== 使用 Node: $(node -v 2>/dev/null || echo '未找到 node') =="
 
+# ---- 实时数据源提示 ----
+# 若设置了 API_FOOTBALL_KEY 环境变量，实时预测页将拉取真实进行中的中超比赛；
+# 否则实时页会提示「未启用实时更新」。用法：
+#   API_FOOTBALL_KEY=你的key ./start_web.sh
+if [ -n "$API_FOOTBALL_KEY" ]; then
+  echo "== 实时数据源: API-Football (已检测到 API_FOOTBALL_KEY) =="
+else
+  echo "== 实时数据源: 未启用 (未设置 API_FOOTBALL_KEY，实时页将提示未启用) =="
+  echo "   如需开启实时预测: API_FOOTBALL_KEY=你的key ./start_web.sh"
+fi
+
 # ---- 启动后端 ----
 echo "== 启动后端 (Flask, :5001) =="
 PORT=5001 python3 -m webapp.app > /tmp/csl_backend.log 2>&1 &

@@ -15,6 +15,11 @@ export function fetchMatches(limit = 10) {
   return request(`/api/matches?limit=${limit}`)
 }
 
+// 获取当前「进行中」比赛的实时状态 + 实时预测（演示：模拟数据源驱动）
+export function fetchLive() {
+  return request('/api/live')
+}
+
 // 提交某场比赛的赔率，获取投注建议（odds 为空则仅返回概率）
 export function predict(payload) {
   return request('/api/predict', {

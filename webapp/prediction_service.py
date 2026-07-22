@@ -82,6 +82,34 @@ def prematch_probabilities(home_en: str, away_en: str) -> Dict:
     }
 
 
+def live_probabilities(state: MatchState) -> Dict:
+    """给定一个「进行中」的实时状态，返回当前各市场概率与比分 TOP 分布。
+
+    与 prematch_probabilities 的区别：这里直接接收带 minute/score/射门 的
+    MatchState，模型按剩余时间 + 场面特征动态修正 λ。
+    """
+    probs = outcome_probabilities(state)
+    dist = final_score_distribution(state)
+    top = sorted(dist.items(), key=lambda x: x[1], reverse=True)[:6]
+
+    return {
+        "outcome": {
+            "home": probs["home"],
+            "draw": probs["draw"],
+            "away": probs["away"],
+        },
+        "over_under": {
+            "over_1.5": probs["over_1.5"], "under_1.5": probs["under_1.5"],
+            "over_2.5": probs["over_2.5"], "under_2.5": probs["under_2.5"],
+            "over_3.5": probs["over_3.5"], "under_3.5": probs["under_3.5"],
+        },
+        "btts": {"yes": probs["btts_yes"], "no": probs["btts_no"]},
+        "top_scores": [
+            {"score": f"{h}-{a}", "prob": p} for (h, a), p in top
+        ],
+    }
+
+
 def _build_odds(odds_in: Dict) -> OddsSnapshot:
     """把前端传来的赔率字典转成 OddsSnapshot。
 
