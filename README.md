@@ -186,6 +186,16 @@ python3 -m data.train_nn --goals --save
 # 只需给主队、客队名(支持中文/英文, 自动模糊匹配)
 python3 predict_score.py 北京国安 长春亚泰
 python3 predict_score.py "Shanghai Shenhua" "Wuhan Three Towns" --top 12
+
+# 实时(滚球)预测: 给当前分钟+比分, 预测最终比分
+python3 predict_score.py 北京国安 长春亚泰 --minute 60 --score 1-0
+
+# 指定赔率文件 -> 额外输出价值投注推荐(EV + 凯利仓位)
+python3 predict_score.py --odds-template            # 先生成赔率模板
+python3 predict_score.py 北京国安 长春亚泰 --odds odds.example.json
+
+# 从 JSON 文件读全部输入(队名/分钟/比分/赔率), 兼容 predict.py 的中文字段格式
+python3 predict_score.py match_cn.json
 ```
 
 输出示例：
@@ -197,10 +207,22 @@ python3 predict_score.py "Shanghai Shenhua" "Wuhan Three Towns" --top 12
 【比分概率 TOP 8】  2-0 10.6% / 2-1 9.3% / 3-0 9.0% / 1-0 8.3% ...
 【胜平负】         主胜 73.2%   平局 15.9%   客胜 10.9%
 【进球盘口】       大2.5 66.1%   双方进球 是 53.8%   总进球期望 3.43
+【价值投注建议】   ✅ 大球2.5 赔率2.40 EV +58.6% 仓位2.00%  (需 --odds)
 ```
 
 > 模型会输出主/客队**预期进球 λ**，再用泊松分布组合出完整比分矩阵，
 > 从而给出最可能比分、TOP 比分榜及各类盘口概率。
+> 传入 `--odds 文件` 后，会用模型概率对比赔率隐含概率，筛出 **EV≥3%** 的
+> 价值投注并按 1/4 凯利给出建议仓位（封顶 2%）。赔率文件支持 `home/draw/away`、
+> `over/under`、`btts_yes/no`、`exact`（精确比分）等盘口，只填关心的即可。
+>
+> **实时预测**（`--minute N --score H-A`）：把整场 λ 按剩余时间比例折算
+> （`λ_剩余 = λ × (90-分钟)/90`），再叠加当前已进球数得到**最终比分**分布。
+> 例如第 60 分钟 1-0 时，主胜概率会因领先+时间不多而显著上升。
+>
+> **JSON 文件模式**（`predict_score.py match_cn.json`）：一次性从文件读入队名、
+> 分钟、比分、赔率，兼容 `predict.py` 的嵌套中文字段格式
+> （`比赛状态`/`赔率`）。大小球支持**任意盘口线**（如 3.0），自动从比分矩阵计算。
 
 ## 拉取真实中超数据
 
