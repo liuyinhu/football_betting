@@ -21,6 +21,14 @@ const odds = reactive({
   over15: '', over35: '',
 })
 
+// 半全场赔率输入（9 格），key = "半场/全场"
+const htftOdds = reactive({
+  'home/home': '', 'home/draw': '', 'home/away': '',
+  'draw/home': '', 'draw/draw': '', 'draw/away': '',
+  'away/home': '', 'away/draw': '', 'away/away': '',
+})
+const showHtftOdds = ref(false)
+
 const pct = (v) => (v == null ? '-' : (v * 100).toFixed(1) + '%')
 
 const outcome = computed(() => prediction.value?.outcome || {})
@@ -70,6 +78,12 @@ function buildOddsPayload() {
   if (num(odds.under25)) under['2.5'] = num(odds.under25)
   if (Object.keys(over).length) payload.over = over
   if (Object.keys(under).length) payload.under = under
+  const htft = {}
+  for (const k in htftOdds) {
+    const o = num(htftOdds[k])
+    if (o) htft[k] = o
+  }
+  if (Object.keys(htft).length) payload.htft = htft
   return payload
 }
 
@@ -95,6 +109,7 @@ async function submitOdds() {
 
 function clearOdds() {
   Object.keys(odds).forEach((k) => (odds[k] = ''))
+  Object.keys(htftOdds).forEach((k) => (htftOdds[k] = ''))
   recommendations.value = null
   hasOdds.value = false
 }
@@ -217,6 +232,22 @@ function clearOdds() {
           <input v-model="odds.over35" type="number" step="0.01" placeholder="-" />
         </div>
       </div>
+
+      <!-- 半全场赔率（可选，9 格） -->
+      <button class="htft-odds-toggle" @click="showHtftOdds = !showHtftOdds">
+        {{ showHtftOdds ? '▲ 收起半全场赔率' : '＋ 半全场赔率（可选）' }}
+      </button>
+      <div class="htft-odds-grid" v-show="showHtftOdds">
+        <div class="htft-odds-cell" v-for="ht in signs" :key="ht">
+          <div class="htft-odds-col">
+            <div class="field" v-for="ft in signs" :key="ft">
+              <label>{{ SIGN_ZH[ht] }}/{{ SIGN_ZH[ft] }}</label>
+              <input v-model="htftOdds[ht + '/' + ft]" type="number" step="0.01" placeholder="-" />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div>
         <button class="btn-primary" :disabled="loading" @click="submitOdds">
           {{ loading ? '计算中…' : '获取投注建议' }}

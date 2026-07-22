@@ -14,7 +14,10 @@ from core.state import MatchState, OddsSnapshot
 from models.poisson_live import (
     outcome_probabilities, final_score_distribution, half_full_distribution,
 )
-from strategy.decision import evaluate
+from strategy.decision import (
+    evaluate, _ev, _kelly,
+    MIN_EDGE, KELLY_FRACTION, MAX_STAKE_PER_BET, MIN_ODDS, MAX_ODDS,
+)
 from data.train_strength import load as load_strength, expected_lambdas, MODEL_PATH
 
 # 全局缓存强度模型，避免每次请求都读磁盘
@@ -87,7 +90,8 @@ def _build_odds(odds_in: Dict) -> OddsSnapshot:
           "home": 1.8, "draw": 3.5, "away": 4.2,
           "over":  {"2.5": 2.0, "1.5": 1.3},
           "under": {"2.5": 1.8},
-          "exact": {"1-0": 6.5, "2-1": 8.0}
+          "exact": {"1-0": 6.5, "2-1": 8.0},
+          "htft":  {"home/home": 2.5, "draw/away": 15.0}
         }
     """
     odds = OddsSnapshot(match_id="PREMATCH", minute=0)
@@ -128,6 +132,9 @@ _MARKET_ZH = {
 }
 
 
+_SIGN_ZH = {"home": "主", "draw": "平", "away": "客"}
+
+
 def _market_label(market: str) -> str:
     if market in _MARKET_ZH:
         return _MARKET_ZH[market]
@@ -137,7 +144,47 @@ def _market_label(market: str) -> str:
         return f"小 {market[len('OU:under'):]} 球"
     if market.startswith("CS:"):
         return f"精确比分 {market[3:]}"
+    if market.startswith("HTFT:"):
+        ht, ft = market[len("HTFT:"):].split("/")
+        return f"半全场 {_SIGN_ZH.get(ht, ht)}/{_SIGN_ZH.get(ft, ft)}"
     return market
+
+
+def _evaluate_half_full(state: MatchState, htft_in: Dict) -> List[Dict]:
+    """评估半全场 (HT/FT) 赔率, 返回正 EV 建议。
+
+    htft_in 形如 {"home/home": 2.5, "draw/away": 15.0, ...}
+    key = "半场/全场"，取值 home/draw/away。
+    """
+    if not htft_in:
+        return []
+    hf = half_full_distribution(state)
+    recs: List[Dict] = []
+    for combo, v in htft_in.items():
+        try:
+            o = float(v)
+        except (TypeError, ValueError):
+            continue
+        if o <= 1.0 or o < MIN_ODDS or o > MAX_ODDS:
+            continue
+        p = hf.get(combo, 0.0)
+        edge = _ev(p, o)
+        if edge < MIN_EDGE:
+            continue
+        stake = min(_kelly(p, o) * KELLY_FRACTION, MAX_STAKE_PER_BET)
+        if stake <= 0:
+            continue
+        market = f"HTFT:{combo}"
+        recs.append({
+            "market": market,
+            "market_zh": _market_label(market),
+            "odds": o,
+            "model_prob": p,
+            "edge": edge,
+            "stake_fraction": stake,
+            "reason": f"模型概率={p:.3f} vs 赔率隐含概率={1/o:.3f}",
+        })
+    return recs
 
 
 def evaluate_bets(home_en: str, away_en: str, odds_in: Dict) -> List[Dict]:
@@ -145,7 +192,7 @@ def evaluate_bets(home_en: str, away_en: str, odds_in: Dict) -> List[Dict]:
     state = _build_state(home_en, away_en)
     odds = _build_odds(odds_in)
     recs = evaluate(state, odds)
-    return [
+    out = [
         {
             "market": r.market,
             "market_zh": _market_label(r.market),
@@ -157,3 +204,8 @@ def evaluate_bets(home_en: str, away_en: str, odds_in: Dict) -> List[Dict]:
         }
         for r in recs
     ]
+    # 半全场市场（core 的 OddsSnapshot 不含该市场，单独处理）
+    out.extend(_evaluate_half_full(state, odds_in.get("htft") or {}))
+    # 合并后按 EV 降序
+    out.sort(key=lambda d: d["edge"], reverse=True)
+    return out

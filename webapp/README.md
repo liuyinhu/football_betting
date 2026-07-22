@@ -142,12 +142,15 @@ python3 -m data.train_strength
     "home": 1.8, "draw": 3.5, "away": 4.5,
     "over":  { "2.5": 2.0 },
     "under": { "2.5": 1.8 },
-    "exact": { "1-0": 6.5 }
+    "exact": { "1-0": 6.5 },
+    "htft":  { "home/home": 4.0, "away/away": 8.0 }
   }
 }
 ```
 
 > 也可用中文队名字段 `home_zh` / `away_zh`，后端会自动映射。
+> `htft` 为**半全场**赔率，key = `"半场/全场"`（取值 `home`/`draw`/`away`），
+> 例如 `"home/away"` = 半场主队领先、全场客队反超。
 
 响应中 `recommendations` 为按 EV 降序排列的正期望值投注：
 
