@@ -179,21 +179,22 @@ onUnmounted(stopLivePolling)
 .tab-bar button {
   flex: 1;
   padding: 10px 16px;
-  border: 1px solid #d1d5db;
-  background: #fff;
+  border: 1px solid #111827;
+  background: #111827;
   border-radius: 8px;
   font-size: 15px;
   font-weight: 600;
-  color: #6b7280;
+  color: #fff;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  transition: all 0.15s ease;
 }
 .tab-bar button.active {
-  background: #111827;
-  color: #fff;
+  background: #fff;
+  color: #111827;
   border-color: #111827;
 }
 .tab-live-dot {
@@ -225,9 +226,6 @@ onUnmounted(stopLivePolling)
 .live-disabled {
   text-align: center;
   padding: 40px 20px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
 }
 .live-disabled-icon {
   font-size: 44px;
@@ -235,10 +233,10 @@ onUnmounted(stopLivePolling)
 }
 .live-disabled h3 {
   margin: 0 0 8px;
-  color: #111827;
+  color: #f9fafb;
 }
 .live-disabled p {
-  color: #6b7280;
+  color: #9ca3af;
   margin: 6px 0;
 }
 .live-disabled-hint {
@@ -249,16 +247,17 @@ onUnmounted(stopLivePolling)
   display: inline-block;
   margin-top: 6px;
   padding: 4px 10px;
-  background: #f3f4f6;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 6px;
-  color: #374151;
+  color: #d1d5db;
   font-size: 12px;
 }
 .live-disabled button {
   margin-top: 16px;
   padding: 8px 20px;
-  border: 1px solid #d1d5db;
-  background: #fff;
+  border: 1px solid #4b5563;
+  background: transparent;
+  color: #e5e7eb;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
