@@ -45,6 +45,7 @@ from data.upcoming import upcoming_matches
 from data.team_names import zh_to_en, en_to_zh
 from webapp.prediction_service import (
     prematch_probabilities, evaluate_bets, live_probabilities,
+    available_engines, _effective_default, DEFAULT_ENGINE,
 )
 
 # 实时数据源选择：
@@ -87,6 +88,20 @@ def health():
     return jsonify({"status": "ok"})
 
 
+@app.get("/api/engines")
+def engines():
+    """返回可用的预测引擎列表（dc / nn 及其可用状态）。
+
+    default 为「实际生效」的默认引擎：若配置默认为 nn 但未训练，则返回 dc。
+    """
+    return jsonify({"engines": available_engines(), "default": _effective_default()})
+
+
+def _engine_arg(default: str = DEFAULT_ENGINE) -> str:
+    """从查询串里取 engine 参数（dc/nn），缺省用默认引擎。"""
+    return (request.args.get("engine") or default).lower()
+
+
 @app.get("/api/matches")
 def matches():
     """接下来 N 场未赛中超 + 各自赛前预测概率。"""
@@ -96,6 +111,7 @@ def matches():
     except ValueError:
         limit = 10
     limit = max(1, min(limit, 30))
+    engine = _engine_arg()
 
     now = time.time()
     if (_MATCH_CACHE["data"] is not None
@@ -114,12 +130,12 @@ def matches():
     for m in fixtures:
         item = dict(m)
         try:
-            item["prediction"] = prematch_probabilities(m["home_en"], m["away_en"])
+            item["prediction"] = prematch_probabilities(m["home_en"], m["away_en"], engine)
         except Exception as e:
             item["prediction"] = None
             item["prediction_error"] = str(e)
         out.append(item)
-    return jsonify({"count": len(out), "matches": out})
+    return jsonify({"count": len(out), "matches": out, "engine": engine})
 
 
 @app.get("/api/live")
@@ -134,6 +150,7 @@ def live():
     """
     import time
     now = time.time()
+    engine = _engine_arg()
 
     # 实时功能开关：无 key 时明确告知前端未启用
     if not _live_enabled():
@@ -141,10 +158,12 @@ def live():
             "live_enabled": False,
             "count": 0,
             "matches": [],
+            "engine": engine,
             "note": "未启用实时更新：服务器未配置 API_FOOTBALL_KEY 环境变量。",
         })
 
     if (_LIVE_CACHE["data"] is not None
+            and _LIVE_CACHE.get("engine") == engine
             and now - _LIVE_CACHE["ts"] < _LIVE_TTL):
         return jsonify(_LIVE_CACHE["data"])
 
@@ -176,7 +195,7 @@ def live():
             },
         }
         try:
-            item["prediction"] = live_probabilities(state)
+            item["prediction"] = live_probabilities(state, engine, home_en, away_en)
         except Exception as e:
             item["prediction"] = None
             item["prediction_error"] = str(e)
@@ -186,12 +205,13 @@ def live():
         "live_enabled": True,
         "count": len(out),
         "matches": out,
+        "engine": engine,
         "server_time": now,
         "source": "simulated" if _LIVE_DEMO else "api-football",
     }
     if _LIVE_DEMO:
         payload["note"] = "演示模式：实时数据由模拟数据源生成，非真实比赛。"
-    _LIVE_CACHE.update(ts=now, data=payload)
+    _LIVE_CACHE.update(ts=now, data=payload, engine=engine)
     return jsonify(payload)
 
 
@@ -206,8 +226,10 @@ def predict():
     if not home or not away:
         return jsonify({"error": "缺少主/客队参数 (home_en 或 home_zh)"}), 400
 
+    engine = (data.get("engine") or DEFAULT_ENGINE).lower()
+
     try:
-        prediction = prematch_probabilities(home, away)
+        prediction = prematch_probabilities(home, away, engine)
     except KeyError as e:
         return jsonify({"error": f"球队不在模型中: {e}"}), 404
     except Exception as e:
@@ -217,7 +239,7 @@ def predict():
     recommendations = []
     if odds:
         try:
-            recommendations = evaluate_bets(home, away, odds)
+            recommendations = evaluate_bets(home, away, odds, engine)
         except Exception as e:
             return jsonify({"error": f"投注评估失败: {e}"}), 500
 
@@ -225,6 +247,7 @@ def predict():
         "home_en": home, "away_en": away,
         "home_zh": en_to_zh(home) or home,
         "away_zh": en_to_zh(away) or away,
+        "engine": engine,
         "prediction": prediction,
         "has_odds": bool(odds),
         "recommendations": recommendations,

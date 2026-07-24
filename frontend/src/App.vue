@@ -1,10 +1,39 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { fetchMatches, fetchLive } from './api.js'
+import { fetchMatches, fetchLive, fetchEngines } from './api.js'
 import MatchCard from './components/MatchCard.vue'
 import LiveMatchCard from './components/LiveMatchCard.vue'
 
 const tab = ref('prematch')   // 'prematch' | 'live'
+
+// —— 预测引擎（dc = Dixon-Coles 泊松, nn = 神经网络）——
+const engines = ref([{ id: 'dc', name: 'Dixon-Coles 泊松', available: true }])
+const engine = ref('dc')
+
+async function loadEngines() {
+  try {
+    const res = await fetchEngines()
+    if (res.engines && res.engines.length) {
+      engines.value = res.engines
+      // 默认选中后端标记的 default，且必须可用
+      const def = res.engines.find((e) => e.default && e.available)
+      engine.value = (def || res.engines.find((e) => e.available) || res.engines[0]).id
+    }
+  } catch (e) {
+    // 拉取失败时保留默认 dc，不阻塞页面
+  }
+}
+
+// 切换引擎：重新拉取当前标签页的数据
+function switchEngine(id) {
+  if (engine.value === id) return
+  engine.value = id
+  if (tab.value === 'prematch') {
+    load()
+  } else {
+    startLivePolling()
+  }
+}
 
 // —— 赛前 ——
 const matches = ref([])
@@ -16,7 +45,7 @@ async function load() {
   loading.value = true
   errorMsg.value = ''
   try {
-    const res = await fetchMatches(limit.value)
+    const res = await fetchMatches(limit.value, engine.value)
     matches.value = res.matches
   } catch (e) {
     errorMsg.value = e.message
@@ -39,7 +68,7 @@ async function loadLive(showSpinner = true) {
   if (showSpinner) liveLoading.value = true
   liveError.value = ''
   try {
-    const res = await fetchLive()
+    const res = await fetchLive(engine.value)
     liveEnabled.value = res.live_enabled !== false
     liveMatches.value = res.matches || []
     liveNote.value = res.note || ''
@@ -80,7 +109,10 @@ function switchTab(t) {
   }
 }
 
-onMounted(load)
+onMounted(async () => {
+  await loadEngines()
+  load()
+})
 onUnmounted(stopLivePolling)
 </script>
 
@@ -90,6 +122,24 @@ onUnmounted(stopLivePolling)
       <h1>⚽ 中超预测与投注建议</h1>
       <p>基于 Dixon-Coles 时变泊松模型：赛前给出预测概率，比赛进行中每 30 秒刷新实时预测。</p>
     </header>
+
+    <!-- 预测引擎切换 -->
+    <div class="engine-bar">
+      <span class="engine-label">预测引擎</span>
+      <div class="engine-options">
+        <button
+          v-for="e in engines"
+          :key="e.id"
+          :class="{ active: engine === e.id }"
+          :disabled="e.available === false"
+          :title="e.available === false ? '该模型尚未训练：python3 -m data.train_nn --goals --save' : e.name"
+          @click="switchEngine(e.id)"
+        >
+          {{ e.name }}
+          <span v-if="e.available === false" class="engine-na">未训练</span>
+        </button>
+      </div>
+    </div>
 
     <!-- 标签切换 -->
     <div class="tab-bar">
@@ -121,7 +171,7 @@ onUnmounted(stopLivePolling)
       <p v-else-if="!matches.length" class="status-line">暂无即将开赛的中超赛程。</p>
 
       <div v-else class="match-grid">
-        <MatchCard v-for="m in matches" :key="m.match_id" :match="m" />
+        <MatchCard v-for="m in matches" :key="m.match_id" :match="m" :engine="engine" />
       </div>
     </template>
 
@@ -171,6 +221,51 @@ onUnmounted(stopLivePolling)
 </template>
 
 <style scoped>
+.engine-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.engine-label {
+  font-size: 13px;
+  color: #9ca3af;
+  font-weight: 600;
+}
+.engine-options {
+  display: inline-flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.engine-options button {
+  padding: 6px 14px;
+  border: 1px solid #374151;
+  background: transparent;
+  color: #d1d5db;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.engine-options button.active {
+  background: #22d3ee;
+  border-color: #22d3ee;
+  color: #0b1120;
+}
+.engine-options button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.engine-na {
+  font-size: 11px;
+  font-weight: 500;
+  color: #f59e0b;
+}
 .tab-bar {
   display: flex;
   gap: 8px;

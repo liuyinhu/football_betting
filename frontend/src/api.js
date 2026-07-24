@@ -10,17 +10,23 @@ async function request(path, options = {}) {
   return data
 }
 
-// 获取接下来 N 场比赛 + 赛前预测概率
-export function fetchMatches(limit = 10) {
-  return request(`/api/matches?limit=${limit}`)
+// 获取可用的预测引擎列表（dc / nn 及其可用状态）
+export function fetchEngines() {
+  return request('/api/engines')
 }
 
-// 获取当前「进行中」比赛的实时状态 + 实时预测（演示：模拟数据源驱动）
-export function fetchLive() {
-  return request('/api/live')
+// 获取接下来 N 场比赛 + 赛前预测概率（engine: 'dc' | 'nn'）
+export function fetchMatches(limit = 10, engine = 'dc') {
+  return request(`/api/matches?limit=${limit}&engine=${engine}`)
+}
+
+// 获取当前「进行中」比赛的实时状态 + 实时预测（engine: 'dc' | 'nn'）
+export function fetchLive(engine = 'dc') {
+  return request(`/api/live?engine=${engine}`)
 }
 
 // 提交某场比赛的赔率，获取投注建议（odds 为空则仅返回概率）
+// payload 可含 engine 字段
 export function predict(payload) {
   return request('/api/predict', {
     method: 'POST',

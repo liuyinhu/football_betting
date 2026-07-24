@@ -1,9 +1,10 @@
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, watch } from 'vue'
 import { predict } from '../api.js'
 
 const props = defineProps({
   match: { type: Object, required: true },
+  engine: { type: String, default: 'dc' },
 })
 
 // 概率初始值来自列表接口（无赔率），提交赔率后用返回值覆盖
@@ -12,6 +13,14 @@ const loading = ref(false)
 const errorMsg = ref('')
 const recommendations = ref(null)   // null=未提交, []=提交但无建议
 const hasOdds = ref(false)
+
+// 切换引擎后 App 会重新拉取赛程，match.prediction 随之更新；
+// 因组件实例被复用(key=match_id 不变)，需手动同步概率并清空旧的投注建议。
+watch(() => props.match.prediction, (p) => {
+  prediction.value = p
+  recommendations.value = null
+  hasOdds.value = false
+})
 
 // 赔率输入模型
 const odds = reactive({
@@ -110,6 +119,7 @@ async function submitOdds() {
     const res = await predict({
       home_en: props.match.home_en,
       away_en: props.match.away_en,
+      engine: props.engine,
       odds: oddsPayload,
     })
     prediction.value = res.prediction
