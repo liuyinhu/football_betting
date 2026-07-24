@@ -274,12 +274,12 @@ onUnmounted(stopLivePolling)
 .tab-bar button {
   flex: 1;
   padding: 10px 16px;
-  border: 1px solid #111827;
-  background: #111827;
+  border: 1px solid #374151;
+  background: #1f2937;
   border-radius: 8px;
   font-size: 15px;
   font-weight: 600;
-  color: #fff;
+  color: #9ca3af;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -287,10 +287,14 @@ onUnmounted(stopLivePolling)
   gap: 6px;
   transition: all 0.15s ease;
 }
+.tab-bar button:hover {
+  color: #e5e7eb;
+  border-color: #4b5563;
+}
 .tab-bar button.active {
-  background: #fff;
-  color: #111827;
-  border-color: #111827;
+  background: #164e63;
+  color: #a5f3fc;
+  border-color: #22d3ee;
 }
 .tab-live-dot {
   width: 8px;
