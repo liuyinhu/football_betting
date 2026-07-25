@@ -37,6 +37,14 @@ const hfBest = computed(() => {
 })
 const isImpossible = (ht, ft) => hfImpossible.value.has(`${ht}/${ft}`)
 
+// 实时比分：最终比分不可能小于当前任一方已进球数（进球不会减少）
+const isScoreImpossible = (score) => {
+  const [h, a] = String(score).split('-').map((n) => parseInt(n, 10))
+  const ch = props.match.score?.home ?? 0
+  const ca = props.match.score?.away ?? 0
+  return h < ch || a < ca
+}
+
 // 比赛阶段（上半场/中场/下半场/完场）：优先用后端 status（API-Football 提供），
 // 否则按分钟推断（模拟数据源无 status）。
 const phaseLabel = computed(() => {
@@ -83,8 +91,15 @@ const htftOdds = reactive({
   'draw/home': '', 'draw/draw': '', 'draw/away': '',
   'away/home': '', 'away/draw': '', 'away/away': '',
 })
+// 比分（正确比分）赔率输入，key = "主-客"，按主胜/平局/客胜分组
+const CS_HOME = ['1-0', '2-0', '2-1', '3-0', '3-1', '3-2']
+const CS_DRAW = ['0-0', '1-1', '2-2', '3-3']
+const CS_AWAY = ['0-1', '0-2', '1-2', '0-3', '1-3', '2-3']
+const CS_SCORES = [...CS_HOME, ...CS_DRAW, ...CS_AWAY]
+const csOdds = reactive(Object.fromEntries(CS_SCORES.map((s) => [s, ''])))
 const showOuOdds = ref(false)
 const showHtftOdds = ref(false)
+const showCsOdds = ref(false)
 const loading = ref(false)
 const errorMsg = ref('')
 const recommendations = ref(null)   // null=未提交, []=提交但无建议
@@ -113,6 +128,14 @@ function buildOddsPayload() {
     if (o) htft[k] = o
   }
   if (Object.keys(htft).length) payload.htft = htft
+  const exact = {}
+  for (const s in csOdds) {
+    // 实时：最终比分不能小于当前已进球数，已不可能的比分跳过
+    if (isScoreImpossible(s)) continue
+    const o = num(csOdds[s])
+    if (o) exact[s] = o
+  }
+  if (Object.keys(exact).length) payload.exact = exact
   return payload
 }
 
@@ -136,6 +159,7 @@ async function submitOdds() {
 function clearOdds() {
   Object.keys(odds).forEach((k) => (odds[k] = ''))
   Object.keys(htftOdds).forEach((k) => (htftOdds[k] = ''))
+  Object.keys(csOdds).forEach((k) => (csOdds[k] = ''))
   recommendations.value = null
   errorMsg.value = ''
 }
@@ -314,6 +338,46 @@ function clearOdds() {
           </div>
         </div>
 
+        <!-- 比分（正确比分）赔率（可选，已不可能的最终比分禁用） -->
+        <button class="htft-odds-toggle" @click="showCsOdds = !showCsOdds">
+          {{ showCsOdds ? '▲ 收起比分赔率' : '＋ 比分赔率（可选）' }}
+        </button>
+        <div class="cs-odds" v-show="showCsOdds">
+          <div class="cs-group">
+            <div class="cs-group-title">主胜比分</div>
+            <div class="cs-grid">
+              <div class="field" v-for="s in CS_HOME" :key="s">
+                <label>{{ s }}</label>
+                <input v-model="csOdds[s]" type="number" step="0.01"
+                  :placeholder="isScoreImpossible(s) ? '—' : '-'"
+                  :disabled="isScoreImpossible(s)" />
+              </div>
+            </div>
+          </div>
+          <div class="cs-group">
+            <div class="cs-group-title">平局比分</div>
+            <div class="cs-grid">
+              <div class="field" v-for="s in CS_DRAW" :key="s">
+                <label>{{ s }}</label>
+                <input v-model="csOdds[s]" type="number" step="0.01"
+                  :placeholder="isScoreImpossible(s) ? '—' : '-'"
+                  :disabled="isScoreImpossible(s)" />
+              </div>
+            </div>
+          </div>
+          <div class="cs-group">
+            <div class="cs-group-title">客胜比分</div>
+            <div class="cs-grid">
+              <div class="field" v-for="s in CS_AWAY" :key="s">
+                <label>{{ s }}</label>
+                <input v-model="csOdds[s]" type="number" step="0.01"
+                  :placeholder="isScoreImpossible(s) ? '—' : '-'"
+                  :disabled="isScoreImpossible(s)" />
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div>
           <button class="btn-primary" :disabled="loading" @click="submitOdds">
             {{ loading ? '计算中…' : '获取投注建议' }}
@@ -459,7 +523,8 @@ function clearOdds() {
   margin-bottom: 8px;
 }
 /* 禁用的半全场赔率输入（下半场已不可能的组合） */
-.htft-odds-col .field input:disabled {
+.htft-odds-col .field input:disabled,
+.cs-grid .field input:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }

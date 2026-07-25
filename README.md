@@ -94,20 +94,34 @@ python3 -m data.train_strength
 
 页面顶部有「**赛前预测 / 实时预测**」两个标签。切到"实时预测"后：
 
-- 页面会列出**当前正在进行的中超比赛**，显示**比赛分钟、实时比分、射门/射正/角球/控球**等场面数据；
-- 每 **30 秒自动刷新**一次，预测概率会随比赛进程动态更新；
-- 无需操作，看着数据和预测实时变化即可。
+- 页面会列出**当前正在进行的中超比赛**，每张卡片顶部显示：
+  - **进行中/完场**状态（进行中带红色跳动圆点）；
+  - **比赛阶段标签**（青色胶囊：上半场 / 中场休息 / 下半场 / 加时赛 / 点球大战 / 完场）；
+  - **比赛时钟分钟数**（如 `18'`）——阶段优先取数据源 `status`，缺失时按分钟推断（≤45 上半场，>45 下半场）。
+- 卡片内展示**实时比分、射门/射正/角球/控球**等场面数据；
+- 实时预测概率区包含**胜平负、比分 TOP、半全场（HT/FT）矩阵**，随比赛进程动态更新；
+- 每 **30 秒自动刷新**一次（也可点"立即刷新"）；
+- 想要**实时投注建议**：在卡片下方输入当前赔率，程序会基于**实时修正后的概率**对比赔率隐含概率，
+  列出期望收益为正的值得下注项及建议仓位（对应后端 `POST /api/live/predict`）。
 
-> ⚠️ **实时功能需要数据源 API key**。实时比分来自 [API-Football](https://www.api-football.com/)，
-> 只有在启动后端时提供 `API_FOOTBALL_KEY` 环境变量才会启用；否则实时页会提示"未启用实时更新"（赛前预测不受影响）。
+**两种数据源：**
 
-开启实时预测的启动方式：
+1. **模拟演示模式（无需 API key，推荐先体验）**：用内置模拟器驱动几场"正在进行"的中超比赛，
+   分别处于不同分钟（如 3'/10'/25'/45'），可直接看到上下半场标签、分钟推进和概率变化。
 
-```bash
-API_FOOTBALL_KEY=你的key ./start_web.sh
-```
+   ```bash
+   LIVE_SOURCE=sim ./start_web.sh
+   ```
 
-（当前若没有正在进行的中超比赛，实时页会显示"当前没有进行中的中超比赛"，属正常。）
+2. **真实数据源（需 API key）**：实时比分来自 [API-Football](https://www.api-football.com/)，
+   启动后端时提供 `API_FOOTBALL_KEY` 环境变量才会启用：
+
+   ```bash
+   API_FOOTBALL_KEY=你的key ./start_web.sh
+   ```
+
+> ⚠️ 若两者都未配置，实时页会提示"未启用实时更新"（赛前预测不受影响）。
+> 真实模式下当前若没有正在进行的中超比赛，实时页会显示"当前没有进行中的中超比赛"，属正常。
 
 ### 遇到问题？
 
@@ -296,7 +310,10 @@ A：必须在**项目根目录**（`qqq/`）里运行。顶层脚本用 `python3
 A：这支队不在你训练用的赛季里。跑 `python3 -m data.cfa_loader` 拉最新数据后重新训练。
 
 **Q：网页版启动失败 / 打不开？**
-A：确认装了 Node.js 18+；查看 `/tmp/csl_frontend.log` 和 `/tmp/csl_backend.log` 里的报错信息。
+A：确认装了 Node.js 18+；查看 `/tmp/csl_frontend.log` 和 `/tmp/csl_backend.log` 里的报错信息。若前端报 `Cannot find module '@rollup/rollup-*'` 或 dev server 无响应，通常是 `node_modules` 与当前 Node 架构/版本不匹配，删除 `frontend/node_modules` 和 `package-lock.json` 后重新 `npm install` 即可；仍不行可改用 `npm run build && npm run preview`。
+
+**Q：没有 API key 也能体验实时预测吗？**
+A：可以。用 `LIVE_SOURCE=sim ./start_web.sh` 启动模拟演示模式，会有几场"正在进行"的比赛展示上下半场标签、分钟推进和实时概率，无需任何 key。
 
 **Q：投注建议为什么经常是空的？**
 A：只有当模型认为"某个赔率明显偏高、长期有利可图"（期望收益 ≥ 3%）时才推荐。多数赔率被博彩公司定得很准，没有价值属正常。
@@ -326,5 +343,6 @@ qqq/
 
 **网页版技术架构**：浏览器 → Vite 前端(:5173) →（`/api` 代理）→ Flask 后端(:5001) → 预测模型。
 后端主要接口：`GET /api/matches?limit=10`（返回赛程+预测）、`POST /api/predict`（传赔率、返回投注建议）、
-`GET /api/live`（进行中比赛的实时状态+预测，需配置 `API_FOOTBALL_KEY`，否则返回 `live_enabled:false`）。
+`GET /api/live`（进行中比赛的实时状态+预测，含分钟/阶段/半全场，需配置 `API_FOOTBALL_KEY` 或 `LIVE_SOURCE=sim`，否则返回 `live_enabled:false`）、
+`POST /api/live/predict`（对某场进行中比赛传实时赔率、返回基于实时概率的投注建议）。
 实时数据源模块：`feeds/live_apifootball.py`（真实源）与 `feeds/live_sim_manager.py`（模拟源，设 `LIVE_SOURCE=sim` 启用）。
