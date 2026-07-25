@@ -208,7 +208,7 @@ onUnmounted(stopLivePolling)
         <p v-else-if="!liveMatches.length" class="status-line">当前没有进行中的中超比赛。</p>
 
         <div v-else class="match-grid">
-          <LiveMatchCard v-for="m in liveMatches" :key="m.match_id" :match="m" />
+          <LiveMatchCard v-for="m in liveMatches" :key="m.match_id" :match="m" :engine="engine" />
         </div>
       </template>
     </template>

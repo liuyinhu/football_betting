@@ -98,6 +98,17 @@ def _build_state(fx: dict, stats_by_team: Dict[int, Dict[str, object]],
     as_ = stats_by_team.get(teams["away"]["id"], {})
     poss_h = _parse_possession(hs.get("Ball Possession"))
 
+    # 半场比分：仅当比赛已进入下半场/中场后 API 才提供 score.halftime；
+    # 未定时用 -1 标记（仍在上半场），供实时半全场预测判断阶段。
+    status_short = status.get("short")
+    ht = (fx.get("score") or {}).get("halftime") or {}
+    ht_h_raw, ht_a_raw = ht.get("home"), ht.get("away")
+    if ht_h_raw is not None and ht_a_raw is not None and status_short != "1H":
+        ht_score_h = _to_int(ht_h_raw)
+        ht_score_a = _to_int(ht_a_raw)
+    else:
+        ht_score_h = ht_score_a = -1
+
     state = MatchState(
         match_id=str(fx["fixture"]["id"]),
         minute=min(minute, 90),
@@ -116,6 +127,8 @@ def _build_state(fx: dict, stats_by_team: Dict[int, Dict[str, object]],
         possession_h=poss_h if poss_h is not None else 50.0,
         prior_lambda_h=lam_h,
         prior_lambda_a=lam_a,
+        ht_score_h=ht_score_h,
+        ht_score_a=ht_score_a,
     )
 
     fixture_info = {

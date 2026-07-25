@@ -48,6 +48,11 @@ class SimulatedFeed:
         if self._maybe_goal(p_goal_h): s.score_h += 1
         if self._maybe_goal(p_goal_a): s.score_a += 1
 
+        # 跨过 45 分钟时，锁定当前比分为半场比分（供实时半全场预测使用）
+        if s.minute >= 45 and s.ht_score_h < 0:
+            s.ht_score_h = s.score_h
+            s.ht_score_a = s.score_a
+
         # 节奏统计
         s.shots_h += self._bump(0.18); s.shots_a += self._bump(0.14)
         s.sot_h  += self._bump(0.06); s.sot_a  += self._bump(0.05)

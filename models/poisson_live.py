@@ -249,3 +249,92 @@ def half_full_distribution(state: MatchState,
     result["ht_draw"] = ht_marg["draw"]
     result["ht_away"] = ht_marg["away"]
     return result
+
+
+def _poisson_score_dist(lam_h: float, lam_a: float,
+                        max_goals: int = 6) -> Dict[Tuple[int, int], float]:
+    """给定两队进球率, 返回增量比分 (主, 客) 的概率分布 (含 DC 修正+归一化)。
+
+    与 _half_score_distribution 相同, 语义上表示「某一段时间内新增的进球」。
+    """
+    return _half_score_distribution(lam_h, lam_a, max_goals)
+
+
+def live_half_full_distribution(state: MatchState,
+                                max_goals: int = 6) -> Dict[str, object]:
+    """实时半全场 (HT/FT) 预测, 依据当前分钟与比分动态计算。
+
+    两种情形:
+      1) 仍在上半场 (minute < 45 且半场比分未定):
+         半场比分 = 当前比分 + 上半场剩余时间的新增进球;
+         全场比分 = 半场比分 + 整个下半场的新增进球。
+      2) 已进入下半场 / 中场 (半场比分已定 ht_score_*):
+         半场结果已确定 → 只有该半场符号对应的那一行组合可能发生,
+         其余 6 个组合为「不可能」(概率 0, 并在 impossible 里标记);
+         全场比分 = 当前比分 + 下半场剩余时间的新增进球。
+
+    返回:
+      {
+        "home/home": p, ... (9 项组合概率, 已归一到可能组合上),
+        "ht_home"/"ht_draw"/"ht_away": 半场胜平负边际概率,
+        "ht_decided": bool,               # 半场结果是否已确定
+        "ht_actual": "home"/"draw"/"away"/None,  # 已确定时的半场符号
+        "impossible": ["home/away", ...], # 因赛程进程已不可能出现的组合
+      }
+    """
+    lam_h_90, lam_a_90 = adjusted_lambdas_90(state)
+    f1 = FIRST_HALF_GOAL_FRACTION
+    f2 = 1.0 - f1
+    signs = ("home", "draw", "away")
+    combo: Dict[str, float] = {f"{ht}/{ft}": 0.0 for ht in signs for ft in signs}
+    ht_marg: Dict[str, float] = {s: 0.0 for s in signs}
+
+    ht_decided = state.ht_score_h >= 0 and state.ht_score_a >= 0
+    ht_h = ht_a = 0
+    # 保险: 分钟已过半场但数据源没给半场比分时, 用「当前比分」兜底当作半场比分
+    if not ht_decided and state.minute >= 45:
+        ht_h, ht_a = state.score_h, state.score_a
+        ht_decided = True
+    elif ht_decided:
+        ht_h, ht_a = state.ht_score_h, state.ht_score_a
+
+    if not ht_decided:
+        # —— 情形 1: 上半场进行中 ——
+        rem1_frac = max(0.0, min(1.0, (45 - state.minute) / 45.0))
+        # 上半场剩余新增进球分布
+        d_rem1 = _poisson_score_dist(lam_h_90 * f1 * rem1_frac,
+                                     lam_a_90 * f1 * rem1_frac, max_goals)
+        # 整个下半场新增进球分布
+        d_2nd = _poisson_score_dist(lam_h_90 * f2, lam_a_90 * f2, max_goals)
+        for (rh, ra), p1 in d_rem1.items():
+            ht_h = state.score_h + rh
+            ht_a = state.score_a + ra
+            ht = _sign(ht_h, ht_a)
+            ht_marg[ht] += p1
+            for (sh, sa), p2 in d_2nd.items():
+                ft = _sign(ht_h + sh, ht_a + sa)
+                combo[f"{ht}/{ft}"] += p1 * p2
+        impossible: list = []
+        ht_actual = None
+    else:
+        # —— 情形 2: 半场已定, 只算下半场剩余 ——
+        ht_actual = _sign(ht_h, ht_a)
+        ht_marg[ht_actual] = 1.0
+        rem2_frac = max(0.0, min(1.0, (90 - state.minute) / 45.0))
+        d_rem2 = _poisson_score_dist(lam_h_90 * f2 * rem2_frac,
+                                     lam_a_90 * f2 * rem2_frac, max_goals)
+        for (sh, sa), p in d_rem2.items():
+            ft = _sign(state.score_h + sh, state.score_a + sa)
+            combo[f"{ht_actual}/{ft}"] += p
+        # 半场符号已确定, 其它两行的组合都不可能
+        impossible = [f"{ht}/{ft}" for ht in signs if ht != ht_actual
+                      for ft in signs]
+
+    result: Dict[str, object] = dict(combo)
+    result["ht_home"] = ht_marg["home"]
+    result["ht_draw"] = ht_marg["draw"]
+    result["ht_away"] = ht_marg["away"]
+    result["ht_decided"] = ht_decided
+    result["ht_actual"] = ht_actual
+    result["impossible"] = impossible
+    return result

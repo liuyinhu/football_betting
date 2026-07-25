@@ -34,3 +34,13 @@ export function predict(payload) {
     body: JSON.stringify(payload),
   })
 }
+
+// 提交某场「进行中」比赛的 match_id + 当前赔率，获取实时投注建议
+// payload: { match_id, engine?, odds }
+export function predictLive(payload) {
+  return request('/api/live/predict', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+}

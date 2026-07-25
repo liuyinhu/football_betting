@@ -19,6 +19,7 @@
         给定赔率，返回正 EV 的投注建议。
 """
 from __future__ import annotations
+from dataclasses import replace
 from typing import Dict, List, Optional
 
 import numpy as np
@@ -26,6 +27,7 @@ import numpy as np
 from core.state import MatchState, OddsSnapshot
 from models.poisson_live import (
     outcome_probabilities, final_score_distribution, half_full_distribution,
+    live_half_full_distribution,
 )
 from strategy.decision import (
     evaluate, _ev, _kelly,
@@ -196,21 +198,31 @@ def live_probabilities(state: MatchState, engine: str = DEFAULT_ENGINE,
     与 prematch_probabilities 的区别：这里直接接收带 minute/score/射门 的
     MatchState，模型按剩余时间 + 场面特征动态修正 λ。
 
-    engine="nn" 且提供了 home_en/away_en 时，会用神经网络重算赛前先验 λ
-    覆盖 state 里的 DC 先验，再进入同一套实时修正逻辑；否则沿用 state 现有先验。
+    只要提供了 home_en/away_en，就按所选引擎（dc/nn）重新计算赛前先验 λ，
+    覆盖传入 state 里的先验后再进入同一套实时修正逻辑，保证切换引擎时结果会变。
+    注意：传入的 state 往往是被数据源缓存/复用的共享对象，这里必须在**副本**
+    上修改先验，否则一次 nn 请求会污染该 state，导致之后的 dc 请求仍用 nn 的 λ。
     """
     engine = _resolve_engine(engine)
-    if engine == "nn" and home_en and away_en:
+    if home_en and away_en:
         try:
-            lam_h, lam_a = _prematch_lambdas(home_en, away_en, "nn")
-            state.prior_lambda_h = lam_h
-            state.prior_lambda_a = lam_a
+            lam_h, lam_a = _prematch_lambdas(home_en, away_en, engine)
+            # 在副本上改写先验，避免污染被数据源复用的共享 state
+            state = replace(state, prior_lambda_h=lam_h, prior_lambda_a=lam_a)
         except Exception:
-            # NN 不可用/球队缺失时静默回退到 state 已有的 DC 先验
+            # 模型不可用/球队缺失时静默沿用 state 已有的先验
             pass
     probs = outcome_probabilities(state)
     dist = final_score_distribution(state)
     top = sorted(dist.items(), key=lambda x: x[1], reverse=True)[:6]
+
+    # 实时半全场：按当前分钟/比分动态计算，下半场时部分组合已不可能
+    hf = live_half_full_distribution(state)
+    signs = ("home", "draw", "away")
+    half_full = [
+        {"ht": ht, "ft": ft, "prob": hf[f"{ht}/{ft}"]}
+        for ht in signs for ft in signs
+    ]
 
     return {
         "engine": engine,
@@ -228,6 +240,13 @@ def live_probabilities(state: MatchState, engine: str = DEFAULT_ENGINE,
         "top_scores": [
             {"score": f"{h}-{a}", "prob": p} for (h, a), p in top
         ],
+        "half_full": half_full,
+        "ht_outcome": {
+            "home": hf["ht_home"], "draw": hf["ht_draw"], "away": hf["ht_away"],
+        },
+        "ht_decided": hf["ht_decided"],
+        "ht_actual": hf["ht_actual"],
+        "hf_impossible": hf["impossible"],
     }
 
 
@@ -299,15 +318,19 @@ def _market_label(market: str) -> str:
     return market
 
 
-def _evaluate_half_full(state: MatchState, htft_in: Dict) -> List[Dict]:
+def _evaluate_half_full(state: MatchState, htft_in: Dict,
+                        hf: Optional[Dict] = None) -> List[Dict]:
     """评估半全场 (HT/FT) 赔率, 返回正 EV 建议。
 
     htft_in 形如 {"home/home": 2.5, "draw/away": 15.0, ...}
     key = "半场/全场"，取值 home/draw/away。
+    hf: 可传入已算好的半全场分布(赛前用 half_full_distribution，
+        实时用 live_half_full_distribution)；缺省则按赛前分布计算。
     """
     if not htft_in:
         return []
-    hf = half_full_distribution(state)
+    if hf is None:
+        hf = half_full_distribution(state)
     recs: List[Dict] = []
     for combo, v in htft_in.items():
         try:
@@ -317,6 +340,9 @@ def _evaluate_half_full(state: MatchState, htft_in: Dict) -> List[Dict]:
         if o <= 1.0 or o < MIN_ODDS or o > MAX_ODDS:
             continue
         p = hf.get(combo, 0.0)
+        # 分布里非数值(如 ht_actual)或已不可能的组合跳过
+        if not isinstance(p, (int, float)) or p <= 0:
+            continue
         edge = _ev(p, o)
         if edge < MIN_EDGE:
             continue
@@ -361,5 +387,50 @@ def evaluate_bets(home_en: str, away_en: str, odds_in: Dict,
     # 半全场市场（core 的 OddsSnapshot 不含该市场，单独处理）
     out.extend(_evaluate_half_full(state, odds_in.get("htft") or {}))
     # 合并后按 EV 降序
+    out.sort(key=lambda d: d["edge"], reverse=True)
+    return out
+
+
+def live_evaluate_bets(state: MatchState, odds_in: Dict,
+                       engine: str = DEFAULT_ENGINE,
+                       home_en: Optional[str] = None,
+                       away_en: Optional[str] = None) -> List[Dict]:
+    """实时投注建议：给定「进行中」的 state 与当前赔率，返回正 EV 建议列表。
+
+    与 evaluate_bets 的区别：
+      1. 直接使用带 minute/score/场面统计的实时 state（λ 会按剩余时间动态修正）；
+      2. 半全场用 live_half_full_distribution（下半场已定的组合会被自动排除）；
+      3. 若提供 home_en/away_en，则按所选引擎在**副本**上重算赛前先验 λ，
+         保证切换引擎结果会变，且不污染被数据源复用的共享 state。
+    """
+    engine = _resolve_engine(engine)
+    if home_en and away_en:
+        try:
+            lam_h, lam_a = _prematch_lambdas(home_en, away_en, engine)
+            state = replace(state, prior_lambda_h=lam_h, prior_lambda_a=lam_a)
+        except Exception:
+            pass
+
+    odds = _build_odds(odds_in)
+    # 让赔率快照与实时 state 对齐（分钟数），语义更清晰
+    odds.match_id = state.match_id
+    odds.minute = state.minute
+
+    recs = evaluate(state, odds)
+    out = [
+        {
+            "market": r.market,
+            "market_zh": _market_label(r.market),
+            "odds": r.odds,
+            "model_prob": r.model_prob,
+            "edge": r.edge,
+            "stake_fraction": r.stake_fraction,
+            "reason": r.reason,
+        }
+        for r in recs
+    ]
+    # 半全场：用实时分布（下半场已定组合概率为 0，会被自动跳过）
+    hf = live_half_full_distribution(state)
+    out.extend(_evaluate_half_full(state, odds_in.get("htft") or {}, hf=hf))
     out.sort(key=lambda d: d["edge"], reverse=True)
     return out

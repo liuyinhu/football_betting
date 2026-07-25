@@ -31,6 +31,9 @@ class MatchState:
     # 先验(赛前预期进球 λ)
     prior_lambda_h: float = 1.4
     prior_lambda_a: float = 1.1
+    # 半场比分(用于实时半全场预测)；-1 表示尚未确定(仍在上半场)
+    ht_score_h: int = -1
+    ht_score_a: int = -1
     # 可选的实时累计 xG(预期进球)
     xg_h: float = 0.0
     xg_a: float = 0.0

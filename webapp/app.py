@@ -45,6 +45,7 @@ from data.upcoming import upcoming_matches
 from data.team_names import zh_to_en, en_to_zh
 from webapp.prediction_service import (
     prematch_probabilities, evaluate_bets, live_probabilities,
+    live_evaluate_bets,
     available_engines, _effective_default, DEFAULT_ENGINE,
 )
 
@@ -250,6 +251,68 @@ def predict():
         "engine": engine,
         "prediction": prediction,
         "has_odds": bool(odds),
+        "recommendations": recommendations,
+    })
+
+
+@app.post("/api/live/predict")
+def live_predict():
+    """给定一场「进行中」比赛的 match_id + 当前赔率，返回实时投注建议。
+
+    body: {
+      "match_id": 12345,             // 与 /api/live 返回的 match_id 对应
+      "engine": "nn",               // 可选，dc/nn
+      "odds": { "home":2.1, "draw":3.2, "away":3.6,
+                "over":{"2.5":1.9}, "under":{"2.5":1.9},
+                "exact":{"2-1":7.0}, "htft":{"home/home":3.5} }
+    }
+    与赛前 /api/predict 的差别：这里用服务器端「实时 state」(带分钟/比分/
+    场面统计) 评估，λ 会按剩余时间动态修正；半全场用实时分布，
+    下半场已定的组合会被自动排除。
+    """
+    if not _live_enabled():
+        return jsonify({"error": "未启用实时更新：服务器未配置 API_FOOTBALL_KEY。"}), 400
+
+    data = request.get_json(silent=True) or {}
+    match_id = data.get("match_id")
+    if match_id is None:
+        return jsonify({"error": "缺少 match_id"}), 400
+
+    engine = (data.get("engine") or DEFAULT_ENGINE).lower()
+    odds = data.get("odds") or {}
+    if not odds:
+        return jsonify({"error": "缺少赔率 odds"}), 400
+
+    # 从实时数据源按 match_id 找到对应的 state
+    try:
+        pairs = _live_states()
+    except Exception as e:
+        return jsonify({"error": f"获取实时比赛失败: {e}"}), 502
+
+    found = None
+    for fixture, state in pairs:
+        if str(fixture.get("match_id")) == str(match_id):
+            found = (fixture, state)
+            break
+    if found is None:
+        return jsonify({"error": f"未找到进行中的比赛 match_id={match_id}"}), 404
+
+    fixture, state = found
+    home_en = fixture.get("home_en")
+    away_en = fixture.get("away_en")
+
+    try:
+        recommendations = live_evaluate_bets(state, odds, engine, home_en, away_en)
+    except Exception as e:
+        return jsonify({"error": f"实时投注评估失败: {e}"}), 500
+
+    return jsonify({
+        "match_id": match_id,
+        "home_zh": fixture.get("home_zh") or (en_to_zh(home_en) or home_en),
+        "away_zh": fixture.get("away_zh") or (en_to_zh(away_en) or away_en),
+        "engine": engine,
+        "minute": state.minute,
+        "score": {"home": state.score_h, "away": state.score_a},
         "recommendations": recommendations,
     })
 
