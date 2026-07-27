@@ -1,0 +1,23 @@
+{
+  "name": "中超赛事数据",
+  "appid": "__UNI__CSLPRD",
+  "description": "中超赛事数据与概率分析科普",
+  "versionName": "1.0.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "app-plus": {
+    "usingComponents": true,
+    "modules": {},
+    "distribute": {}
+  },
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": true,
+      "es6": true,
+      "minified": true
+    },
+    "usingComponents": true
+  },
+  "vueVersion": "3"
+}

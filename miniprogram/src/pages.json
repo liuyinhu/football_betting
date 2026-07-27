@@ -1,0 +1,41 @@
+{
+  "pages": [
+    {
+      "path": "pages/prematch/prematch",
+      "style": {
+        "navigationBarTitleText": "赛事数据分析",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/live/live",
+      "style": {
+        "navigationBarTitleText": "实时赛事数据"
+      }
+    }
+  ],
+  "tabBar": {
+    "color": "#8b96ab",
+    "selectedColor": "#4f8cff",
+    "backgroundColor": "#1a2131",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/prematch/prematch",
+        "text": "赛事分析"
+      },
+      {
+        "pagePath": "pages/live/live",
+        "text": "实时数据"
+      }
+    ]
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "中超赛事数据",
+    "navigationBarBackgroundColor": "#0f1420",
+    "backgroundColor": "#0f1420",
+    "backgroundColorTop": "#0f1420",
+    "backgroundColorBottom": "#0f1420"
+  }
+}
