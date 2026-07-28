@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "中超赛事数据与概率分析 · 微信小程序 (uni-app + Vue3)",
+  "engines": {
+    "node": "^18.0.0 || >=20.0.0"
+  },
   "scripts": {
     "dev:mp-weixin": "uni -p mp-weixin",
     "build:mp-weixin": "uni build -p mp-weixin",

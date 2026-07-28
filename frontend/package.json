@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "中超赛前预测与投注建议前端 (Vue 3 + Vite)",
+  "engines": {
+    "node": "^18.0.0 || >=20.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
