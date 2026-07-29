@@ -1,7 +1,7 @@
 {
-  "name": "中超赛事数据",
+  "name": "中超赛事资讯",
   "appid": "__UNI__CSLPRD",
-  "description": "中超赛事数据与概率分析科普",
+  "description": "中超赛事数据与胜率分析",
   "versionName": "1.0.0",
   "versionCode": "100",
   "transformPx": false,

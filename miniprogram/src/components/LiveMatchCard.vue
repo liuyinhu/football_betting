@@ -10,30 +10,8 @@ const pct = (v) => (v == null ? '-' : (v * 100).toFixed(1) + '%')
 
 const prediction = computed(() => props.match.prediction || null)
 const outcome = computed(() => prediction.value?.outcome || {})
-const ou = computed(() => prediction.value?.over_under || {})
-const btts = computed(() => prediction.value?.btts || {})
 const topScores = computed(() => prediction.value?.top_scores || [])
 const stats = computed(() => props.match.stats || {})
-
-// 半全场（HT/FT）：整理成 3x3 网格；下半场已定时部分组合不可能
-const SIGN_ZH = { home: '主', draw: '平', away: '客' }
-const signs = ['home', 'draw', 'away']
-const halfFull = computed(() => prediction.value?.half_full || [])
-const hfGrid = computed(() => {
-  const map = {}
-  halfFull.value.forEach((c) => { map[`${c.ht}/${c.ft}`] = c.prob })
-  return map
-})
-const hfImpossible = computed(() => new Set(prediction.value?.hf_impossible || []))
-const htDecided = computed(() => !!prediction.value?.ht_decided)
-const htActual = computed(() => prediction.value?.ht_actual || null)
-const hfBest = computed(() => {
-  if (!halfFull.value.length) return null
-  const cand = halfFull.value.filter((c) => !hfImpossible.value.has(`${c.ht}/${c.ft}`))
-  if (!cand.length) return null
-  return cand.reduce((a, b) => (b.prob > a.prob ? b : a))
-})
-const isImpossible = (ht, ft) => hfImpossible.value.has(`${ht}/${ft}`)
 
 const phaseLabel = computed(() => {
   if (props.match.finished) return '完场'
@@ -118,8 +96,8 @@ const barSegs = computed(() => {
     </view>
 
     <template v-if="prediction">
-      <view class="live-pred-title">实时概率分析（随比赛进程更新）</view>
-      <!-- 胜平负概率条 -->
+      <view class="live-pred-title">实时胜率分析（随比赛进程更新）</view>
+      <!-- 胜平负分析条 -->
       <view class="prob-bar">
         <view class="seg home" :style="{ width: barSegs.home + '%' }">{{ pct(outcome.home) }}</view>
         <view class="seg draw" :style="{ width: barSegs.draw + '%' }">{{ pct(outcome.draw) }}</view>
@@ -129,50 +107,15 @@ const barSegs = computed(() => {
         <text>主胜</text><text>平局</text><text>客胜</text>
       </view>
 
-      <!-- 大小球 / 双方进球 概率 -->
-      <view class="sub-grid">
-        <view class="kv"><text>大 2.5</text><text class="v">{{ pct(ou['over_2.5']) }}</text></view>
-        <view class="kv"><text>小 2.5</text><text class="v">{{ pct(ou['under_2.5']) }}</text></view>
-        <view class="kv"><text>大 1.5</text><text class="v">{{ pct(ou['over_1.5']) }}</text></view>
-        <view class="kv"><text>大 3.5</text><text class="v">{{ pct(ou['over_3.5']) }}</text></view>
-        <view class="kv"><text>双方进球 是</text><text class="v">{{ pct(btts.yes) }}</text></view>
-        <view class="kv"><text>双方进球 否</text><text class="v">{{ pct(btts.no) }}</text></view>
-      </view>
-
-      <!-- 最终比分预测 TOP -->
-      <view class="section-label">最终比分预测</view>
+      <!-- 最终比分分析 TOP -->
+      <view class="section-label">最终比分分析</view>
       <view class="scores">
         <text class="chip" v-for="s in topScores" :key="s.score">
           {{ s.score }} <text class="chip-b">{{ pct(s.prob) }}</text>
         </text>
       </view>
-
-      <!-- 半全场 (HT/FT) 实时概率 -->
-      <view class="hf-panel" v-if="halfFull.length">
-        <view class="section-label">半全场概率</view>
-        <view class="hf-row hf-head">
-          <text class="hf-cell hf-th">半场＼全场</text>
-          <text class="hf-cell hf-th">全主</text>
-          <text class="hf-cell hf-th">全平</text>
-          <text class="hf-cell hf-th">全客</text>
-        </view>
-        <view class="hf-row" v-for="ht in signs" :key="ht">
-          <text class="hf-cell hf-th" :class="{ 'hf-row-dim': htDecided && htActual !== ht }">半{{ SIGN_ZH[ht] }}</text>
-          <text class="hf-cell" v-for="ft in signs" :key="ft"
-                :class="{
-                  hi: hfBest && hfBest.ht === ht && hfBest.ft === ft,
-                  'hf-x': isImpossible(ht, ft),
-                }">
-            {{ isImpossible(ht, ft) ? '—' : pct(hfGrid[ht + '/' + ft]) }}
-          </text>
-        </view>
-        <view class="hf-note">
-          行=半场结果，列=全场结果；高亮为最可能组合。
-          <text v-if="htDecided">半场已定（半{{ SIGN_ZH[htActual] }}），灰色“—”为已不可能的组合。</text>
-        </view>
-      </view>
     </template>
-    <view v-else class="rec-empty">该场暂无预测数据。</view>
+    <view v-else class="rec-empty">该场暂无分析数据。</view>
   </view>
 </template>
 
@@ -262,7 +205,7 @@ const barSegs = computed(() => {
 .stat-row .sl { padding: 0 28rpx; color: #9ca3af; white-space: nowrap; }
 .live-pred-title { font-size: 26rpx; font-weight: 700; color: #9ca3af; margin-bottom: 16rpx; }
 
-/* 胜平负概率条 */
+/* 胜平负分析条 */
 .prob-bar {
   display: flex;
   height: 60rpx;
@@ -289,17 +232,8 @@ const barSegs = computed(() => {
   color: var(--muted);
   margin-bottom: 24rpx;
 }
-.sub-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16rpx 36rpx;
-  font-size: 26rpx;
-  margin-bottom: 24rpx;
-}
-.sub-grid .kv { display: flex; justify-content: space-between; }
-.sub-grid .kv .v { color: var(--home); font-weight: 600; }
 .section-label { font-size: 24rpx; color: var(--muted); font-weight: 600; margin: 8rpx 0 12rpx; }
-.scores { display: flex; flex-wrap: wrap; gap: 12rpx; margin-bottom: 20rpx; }
+.scores { display: flex; flex-wrap: wrap; gap: 12rpx; }
 .scores .chip {
   background: var(--card2);
   border: 1rpx solid var(--line);
@@ -309,21 +243,5 @@ const barSegs = computed(() => {
 }
 .scores .chip-b { color: var(--gold); font-weight: 600; }
 
-/* 半全场网格 */
-.hf-panel { margin-top: 8rpx; }
-.hf-row { display: flex; }
-.hf-cell {
-  flex: 1;
-  border: 1rpx solid var(--line);
-  padding: 10rpx 6rpx;
-  font-size: 24rpx;
-  text-align: center;
-  color: var(--text);
-}
-.hf-th { color: var(--muted); font-weight: 500; }
-.hf-cell.hi { background: rgba(245, 196, 81, 0.18); color: var(--gold); font-weight: 700; }
-.hf-cell.hf-x { color: #4b5563; background: rgba(255, 255, 255, 0.02); }
-.hf-th.hf-row-dim { color: #4b5563; }
-.hf-note { color: var(--muted); font-size: 22rpx; margin-top: 12rpx; }
 .rec-empty { color: var(--muted); font-size: 26rpx; padding: 16rpx 0; }
 </style>

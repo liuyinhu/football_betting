@@ -3,7 +3,7 @@
     {
       "path": "pages/prematch/prematch",
       "style": {
-        "navigationBarTitleText": "赛事数据分析",
+        "navigationBarTitleText": "中超赛事资讯",
         "enablePullDownRefresh": true
       }
     },
@@ -22,7 +22,7 @@
     "list": [
       {
         "pagePath": "pages/prematch/prematch",
-        "text": "赛事分析"
+        "text": "赛事资讯"
       },
       {
         "pagePath": "pages/live/live",
@@ -32,7 +32,7 @@
   },
   "globalStyle": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "中超赛事数据",
+    "navigationBarTitleText": "中超赛事资讯",
     "navigationBarBackgroundColor": "#0f1420",
     "backgroundColor": "#0f1420",
     "backgroundColorTop": "#0f1420",

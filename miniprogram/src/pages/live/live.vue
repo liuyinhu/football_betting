@@ -5,8 +5,8 @@ import { fetchLive, fetchEngines } from '../../common/api.js'
 import LiveMatchCard from '../../components/LiveMatchCard.vue'
 import EngineBar from '../../components/EngineBar.vue'
 
-// —— 预测引擎 ——
-const engines = ref([{ id: 'dc', name: 'Dixon-Coles 泊松', available: true }])
+// —— 分析引擎 ——
+const engines = ref([{ id: 'dc', name: 'Dixon-Coles', available: true }])
 const engine = ref('dc')
 
 async function loadEngines() {
@@ -91,7 +91,7 @@ onUnload(stopPolling)
   <view class="page">
     <view class="app-header">
       <text class="title"><text class="tab-live-dot"></text> 实时赛事数据</text>
-      <text class="subtitle">比赛进行中每 30 秒自动刷新数据与概率</text>
+      <text class="subtitle">比赛进行中每 30 秒自动刷新数据</text>
     </view>
 
     <EngineBar :engines="engines" :engine="engine" @switch="switchEngine" />
@@ -99,8 +99,8 @@ onUnload(stopPolling)
     <!-- 实时功能未启用 -->
     <view v-if="!liveEnabled" class="live-disabled">
       <text class="live-disabled-icon">🔌</text>
-      <text class="live-disabled-title">实时更新未启用</text>
-      <text class="live-disabled-p">{{ liveNote || '服务器未配置 API_FOOTBALL_KEY 环境变量，无法获取实时比赛数据。' }}</text>
+      <text class="live-disabled-title">实时数据未启用</text>
+      <text class="live-disabled-p">{{ liveNote || '服务器未配置数据源环境变量，无法获取实时比赛数据。' }}</text>
       <view class="tb-btn" @click="loadLive(true)">{{ liveLoading ? '检查中…' : '↻ 重新检查' }}</view>
     </view>
 
@@ -124,7 +124,7 @@ onUnload(stopPolling)
     </template>
 
     <view class="app-footer">
-      ⚠️ 本小程序仅提供赛事数据与概率科普，不构成任何投注建议，与博彩无关。
+      数据来源：中国足协官方 API · 分析引擎：Dixon-Coles
     </view>
   </view>
 </template>

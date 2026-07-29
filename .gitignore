@@ -19,6 +19,8 @@ env/
 node_modules/
 frontend/dist/
 frontend/node_modules/
+miniprogram/dist/
+miniprogram/node_modules/
 .vite/
 *.local
 npm-debug.log*

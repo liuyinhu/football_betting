@@ -4,19 +4,36 @@
 //    request 合法域名」里配置过的域名，不能用 IP / localhost。
 //
 // 开发调试时，可在「微信开发者工具 → 详情 → 本地设置」勾选
-//   “不校验合法域名、web-view、TLS 版本以及 HTTPS 证书”，
+//   "不校验合法域名、web-view、TLS 版本以及 HTTPS 证书"，
 //   即可临时访问本地后端（如 http://127.0.0.1:5001）。
 //
-// 正式发布前，请把 BASE_URL 换成你已备案 + HTTPS 的后端域名。
+// === 配置线上后端地址 ===
+//
+// 方式 1（推荐）：编译时通过环境变量传入，不用改代码
+//   VITE_API_BASE=https://weixin.your-domain.com npm run build:mp-weixin
+//   VITE_API_BASE=https://weixin.your-domain.com npm run dev:mp-weixin:prod
+//
+// 方式 2：直接改下面 __VITE_PROD_BASE__ 的 fallback 默认值
+//
+// === 开发模式切换 ===
+//   npm run dev:mp-weixin          → 本地后端 (http://127.0.0.1:5001)
+//   npm run dev:mp-weixin:prod    → 线上后端（需同时设 VITE_API_BASE）
 
 // 开发环境：本机 Flask（需在开发者工具关闭域名校验）
 const DEV_BASE = 'http://127.0.0.1:5001'
-// 生产环境：替换为你的 HTTPS 域名（必须 ICP 备案 + SSL 证书）
-//   示例：'https://api.example.com'
-const PROD_BASE = 'https://api.your-domain.com'
+
+// 生产环境线上地址：由 Vite define 注入 __VITE_PROD_BASE__，
+//   来源 = 环境变量 VITE_API_BASE；未设时用下方的 fallback。
+const __prodBaseFallback = 'https://weixin.your-domain.com'
+const PROD_BASE = typeof __VITE_PROD_BASE__ !== 'undefined' && __VITE_PROD_BASE__
+  ? __VITE_PROD_BASE__
+  : __prodBaseFallback
+
+// 开发/生产模式切换：__VITE_API_MODE__ 由 Vite define 注入
+const apiMode = typeof __VITE_API_MODE__ !== 'undefined' ? __VITE_API_MODE__ : 'local'
 
 // #ifdef MP-WEIXIN
-export const BASE_URL = process.env.NODE_ENV === 'development' ? DEV_BASE : PROD_BASE
+export const BASE_URL = (process.env.NODE_ENV === 'production' || apiMode === 'prod') ? PROD_BASE : DEV_BASE
 // #endif
 
 // #ifndef MP-WEIXIN

@@ -1,5 +1,5 @@
 <script setup>
-// 预测引擎切换条（dc = Dixon-Coles 泊松, nn = 神经网络）
+// 分析引擎切换条（dc = Dixon-Coles, nn = 神经网络）
 defineProps({
   engines: { type: Array, default: () => [] },
   engine: { type: String, default: 'dc' },
@@ -9,7 +9,7 @@ const emit = defineEmits(['switch'])
 
 <template>
   <view class="engine-bar">
-    <text class="engine-label">预测引擎</text>
+    <text class="engine-label">分析引擎</text>
     <view class="engine-options">
       <view
         v-for="e in engines"

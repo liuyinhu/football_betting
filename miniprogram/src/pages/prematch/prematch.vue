@@ -5,8 +5,8 @@ import { fetchMatches, fetchEngines } from '../../common/api.js'
 import MatchCard from '../../components/MatchCard.vue'
 import EngineBar from '../../components/EngineBar.vue'
 
-// —— 预测引擎 ——
-const engines = ref([{ id: 'dc', name: 'Dixon-Coles 泊松', available: true }])
+// —— 分析引擎 ——
+const engines = ref([{ id: 'dc', name: 'Dixon-Coles', available: true }])
 const engine = ref('dc')
 
 async function loadEngines() {
@@ -28,7 +28,7 @@ function switchEngine(id) {
   load()
 }
 
-// —— 赛前赛程 + 预测 ——
+// —— 赛程 + 分析 ——
 const matches = ref([])
 const loading = ref(false)
 const errorMsg = ref('')
@@ -67,8 +67,8 @@ onPullDownRefresh(() => load())
 <template>
   <view class="page">
     <view class="app-header">
-      <text class="title">⚽ 中超赛事数据分析</text>
-      <text class="subtitle">基于 Dixon-Coles 时变泊松模型的赛事概率科普与数据展示</text>
+      <text class="title">⚽ 中超赛事资讯</text>
+      <text class="subtitle">中超赛事数据与胜率分析</text>
     </view>
 
     <EngineBar :engines="engines" :engine="engine" @switch="switchEngine" />
@@ -81,7 +81,7 @@ onPullDownRefresh(() => load())
       <view class="tb-btn" @click="load">{{ loading ? '加载中…' : '↻ 刷新' }}</view>
     </view>
 
-    <view v-if="loading" class="status-line">正在加载赛程与预测…</view>
+    <view v-if="loading" class="status-line">正在加载赛程…</view>
     <view v-else-if="errorMsg" class="status-line error">加载失败：{{ errorMsg }}</view>
     <view v-else-if="!matches.length" class="status-line">暂无即将开赛的中超赛程。</view>
 
@@ -90,8 +90,7 @@ onPullDownRefresh(() => load())
     </view>
 
     <view class="app-footer">
-      数据来源：中国足协官方 API · 模型：时变泊松 + Dixon-Coles{{ '\n' }}
-      ⚠️ 本小程序仅提供赛事数据与概率科普，不构成任何投注建议，与博彩无关。
+      数据来源：中国足协官方 API · 分析引擎：Dixon-Coles
     </view>
   </view>
 </template>
