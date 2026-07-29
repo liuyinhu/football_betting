@@ -11,8 +11,9 @@
 
 // 开发环境：本机 Flask（需在开发者工具关闭域名校验）
 const DEV_BASE = 'http://127.0.0.1:5001'
-// 生产环境：替换为你的 HTTPS 域名
-const PROD_BASE = 'https://your-domain.com'
+// 生产环境：替换为你的 HTTPS 域名（必须 ICP 备案 + SSL 证书）
+//   示例：'https://api.example.com'
+const PROD_BASE = 'https://api.your-domain.com'
 
 // #ifdef MP-WEIXIN
 export const BASE_URL = process.env.NODE_ENV === 'development' ? DEV_BASE : PROD_BASE

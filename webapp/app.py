@@ -64,8 +64,15 @@ else:
 
     _LIVE_DEMO = False
 
+# ── CORS 跨域配置 ──────────────────────────────────
+# 小程序不涉及浏览器 CORS，生产环境可限制来源或直接关闭。
+# 开发时 Vue dev server 需要跨域，所以本地保留全开。
+_cors_origin = "*" if os.environ.get("FLASK_DEBUG", "0") == "1" else None
 app = Flask(__name__)
-CORS(app)  # 允许 Vue 开发服务器跨域访问
+if _cors_origin:
+    CORS(app, origins=_cors_origin)  # 开发模式：全开
+else:
+    CORS(app)  # 生产模式：默认不允许跨域（小程序不走 CORS）
 
 
 # 简单的赛程缓存（避免频繁打 CFA API），TTL 10 分钟

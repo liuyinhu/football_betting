@@ -39,3 +39,6 @@ data/apifootball_raw/cache/
 
 # ============ 日志 ============
 *.log
+
+# ============ 部署 ============
+deploy/.env

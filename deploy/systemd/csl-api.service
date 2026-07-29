@@ -1,0 +1,58 @@
+# ============================================================
+#  systemd 服务配置 — 中超预测后端 (Gunicorn)
+#
+#  安装：
+#    1. 把此文件复制到 /etc/systemd/system/csl-api.service
+#    2. 修改 User / Group / WorkingDirectory 为你的服务器实际值
+#    3. systemctl daemon-reload
+#    4. systemctl enable csl-api          # 开机自启
+#    5. systemctl start csl-api           # 立即启动
+#
+#  日常运维：
+#    systemctl status csl-api             # 查看状态
+#    systemctl restart csl-api            # 重启
+#    journalctl -u csl-api -f            # 实时查看日志
+# ============================================================
+
+[Unit]
+Description=中超预测后端 API (Gunicorn)
+After=network.target
+
+[Service]
+Type=notify
+# 运行用户（改成你服务器上的实际用户名）
+User=ubuntu
+Group=ubuntu
+
+# 项目根目录（改成你服务器上的实际路径）
+WorkingDirectory=/home/ubuntu/qqq
+
+# 环境变量
+EnvironmentFile=/home/ubuntu/qqq/deploy/.env
+
+# Gunicorn 启动命令
+# --bind 127.0.0.1:5001   只监听本机（由 Nginx 代理外部访问）
+# -c gunicorn_conf.py     使用项目自带的 Gunicorn 配置
+ExecStart=/home/ubuntu/qqq/venv/bin/gunicorn \
+    --bind 127.0.0.1:5001 \
+    -c gunicorn_conf.py \
+    webapp.app:app
+
+# 优雅重启
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+KillSignal=SIGQUIT
+TimeoutStopSec=30
+
+# 自动重启策略
+Restart=on-failure
+RestartSec=5
+
+# 安全加固
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/home/ubuntu/qqq
+
+[Install]
+WantedBy=multi-user.target
