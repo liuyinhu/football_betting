@@ -10,6 +10,7 @@
     "dev:mp-weixin": "uni -p mp-weixin",
     "dev:mp-weixin:prod": "VITE_API_MODE=prod uni -p mp-weixin",
     "build:mp-weixin": "uni build -p mp-weixin",
+    "build:mp-weixin:release": "VITE_API_MODE=prod uni build -p mp-weixin",
     "dev:h5": "uni",
     "build:h5": "uni build"
   },

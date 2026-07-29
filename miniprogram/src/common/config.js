@@ -15,6 +15,12 @@
 //
 // 方式 2：直接改下面 __VITE_PROD_BASE__ 的 fallback 默认值
 //
+// === 配置微信 AppID ===
+//
+// 同样通过环境变量注入（由 vite-plugin-inject-appid.js 在构建后写入 project.config.json）：
+//   VITE_WX_APPID=wx1234567890 npm run build:mp-weixin
+// 不设时保持 uni-app 默认值 "touristappid"（游客模式，无法真机预览/上传）
+//
 // === 开发模式切换 ===
 //   npm run dev:mp-weixin          → 本地后端 (http://127.0.0.1:5001)
 //   npm run dev:mp-weixin:prod    → 线上后端（需同时设 VITE_API_BASE）
